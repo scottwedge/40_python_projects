@@ -21,7 +21,7 @@
 # Prompt for user name; all lower case name in example gets capitalized 
 name = input("What is your name? ")
 name_capitalized = name.capitalize()
-print("Welcome", name_capitalized, ".")
+print("Welcome {}.".format(name_capitalized))
 
 # Prompt for line of text
 line = input("Please enter the line of text to be evaluated: ")
@@ -42,4 +42,4 @@ for j in line_lower:
         count = count + 1
 
 # Output results
-print(name_capitalized, "there are", count,"occurrences of", letter, ".")
+print(name_capitalized, "there are {} occurrences of {}.".format(count,letter_lower))
