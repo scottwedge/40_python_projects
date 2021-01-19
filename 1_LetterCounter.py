@@ -18,6 +18,16 @@
 # count: number of occurrences of letter in line
 # j: loop through line
 
+# Functions
+def count_letters(user_line, user_letter):
+    num = 0
+    for j in user_line:
+        if j == user_letter:
+            num = num + 1
+    return num
+
+
+
 # Prompt for user name; all lower case name in example gets capitalized 
 name = input("What is your name? ")
 name_capitalized = name.capitalize()
@@ -36,10 +46,8 @@ letter_lower=letter.lower()
 # Convert line to all lower case to simplify count
 line_lower = line.lower()
 
-count = 0
-for j in line_lower:
-    if j == letter_lower:
-        count = count + 1
+# Count how many times the (upper or lower case) letter occurs in the line
+count = count_letters(line_lower, letter_lower)
 
 # Output results
-print(name_capitalized, "there are {} occurrences of {}.".format(count,letter_lower))
+print("{}, there are {} occurrences of {}.".format(name_capitalized, count, letter_lower))
