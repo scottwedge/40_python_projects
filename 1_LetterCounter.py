@@ -11,15 +11,33 @@
 # Variables:
 # name: entered name of user
 # line: text string to be evaluated
+# line_lower: line in all lower case to simplify counting
 # letter: letter to be counted in line
+# letter_lower: letter in lower case to simplify counting
 # count: number of occurrences of letter in line
 
 # Prompt for user name, capitalize to be safe
 name = input("What is your name? ")
 name = name.capitalize()
-
 print("Welcome", name)
-line = input("Please enter the line of text to be evaluated: ")
 
+# Prompt for line of text
+line = input("Please enter the line of text to be evaluated: ")
 print("Thank you for entering:", line)
 
+# Prompt for letter to be counted
+letter = input("What letter should be counted? ")
+
+# Convert letter to lower case to simplify counting
+letter_lower=letter.lower()
+
+# Convert line to all lower case to simplify count
+line_lower = line.lower()
+
+count = 0
+for j in line_lower:
+    if j == letter_lower:
+        count = count + 1
+
+# Output results
+print("There are", count,"occurrences of", letter)
