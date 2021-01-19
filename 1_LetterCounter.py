@@ -10,16 +10,18 @@
 
 # Variables:
 # name: entered name of user
+# name_capitalized: capitalize name (as per example)
 # line: text string to be evaluated
 # line_lower: line in all lower case to simplify counting
 # letter: letter to be counted in line
 # letter_lower: letter in lower case to simplify counting
 # count: number of occurrences of letter in line
+# j: loop through line
 
-# Prompt for user name, capitalize to be safe
+# Prompt for user name; all lower case name in example gets capitalized 
 name = input("What is your name? ")
-name = name.capitalize()
-print("Welcome", name)
+name_capitalized = name.capitalize()
+print("Welcome", name_capitalized, ".")
 
 # Prompt for line of text
 line = input("Please enter the line of text to be evaluated: ")
@@ -40,4 +42,4 @@ for j in line_lower:
         count = count + 1
 
 # Output results
-print("There are", count,"occurrences of", letter)
+print(name_capitalized, "there are", count,"occurrences of", letter, ".")
