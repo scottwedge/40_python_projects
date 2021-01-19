@@ -26,29 +26,36 @@ def count_letters(user_line, user_letter):
             num = num + 1
     return num
 
+# Tests
+def test_count_letters():
+    assert True
 
 
 
-# Prompt for user name; all lower case name in example gets capitalized 
-name = input("What is your name? ")
-name_capitalized = name.capitalize()
-print("Welcome {}.".format(name_capitalized))
+def main():
+    # Prompt for user name; all lower case name in example gets capitalized 
+    name = input("What is your name? ")
+    name_capitalized = name.capitalize()
+    print("Welcome {}.".format(name_capitalized))
+    
+    # Prompt for line of text
+    line = input("Please enter the line of text to be evaluated: ")
+    print("Thank you for entering:", line)
+    
+    # Prompt for letter to be counted
+    letter = input("What letter should be counted? ")
+    
+    # Convert letter to lower case to simplify counting
+    letter_lower=letter.lower()
+    
+    # Convert line to all lower case to simplify count
+    line_lower = line.lower()
+    
+    # Count how many times the (upper or lower case) letter occurs in the line
+    count = count_letters(line_lower, letter_lower)
+    
+    # Output results
+    print("{}, there are {} occurrences of {}.".format(name_capitalized, count, letter_lower))
 
-# Prompt for line of text
-line = input("Please enter the line of text to be evaluated: ")
-print("Thank you for entering:", line)
-
-# Prompt for letter to be counted
-letter = input("What letter should be counted? ")
-
-# Convert letter to lower case to simplify counting
-letter_lower=letter.lower()
-
-# Convert line to all lower case to simplify count
-line_lower = line.lower()
-
-# Count how many times the (upper or lower case) letter occurs in the line
-count = count_letters(line_lower, letter_lower)
-
-# Output results
-print("{}, there are {} occurrences of {}.".format(name_capitalized, count, letter_lower))
+if __name__ == "__main__":
+    main()
