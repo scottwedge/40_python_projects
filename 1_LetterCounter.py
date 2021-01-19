@@ -26,6 +26,15 @@ def count_letters(user_line, user_letter):
             num = num + 1
     return num
 
+# Testing
+def test_fail():
+    assert False
+
+def test_pass():
+    assert True
+
+
+
 
 
 # Prompt for user name; all lower case name in example gets capitalized 
