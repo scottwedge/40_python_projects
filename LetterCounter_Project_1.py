@@ -19,6 +19,11 @@
 # j: loop through line
 
 # Functions
+
+def cap_user_name():
+    name = input("What is your name? ")
+    return name.capitalize()
+
 def count_letters(user_line, user_letter):
     num = 0
     for j in user_line:
@@ -29,8 +34,7 @@ def count_letters(user_line, user_letter):
 
 def main():
     # Prompt for user name; all lower case name in example gets capitalized 
-    name = input("What is your name? ")
-    name_capitalized = name.capitalize()
+    name_capitalized = cap_user_name()
     print("Welcome {}.".format(name_capitalized))
     
     # Prompt for line of text
@@ -41,7 +45,8 @@ def main():
     letter = input("What letter should be counted? ")
     
     # Convert letter to lower case to simplify counting
-    letter_lower=letter.lower()
+    letter_lower = letter.lower()
+    letter_upper = letter.upper()
     
     # Convert line to all lower case to simplify count
     line_lower = line.lower()
@@ -50,7 +55,7 @@ def main():
     count = count_letters(line_lower, letter_lower)
     
     # Output results
-    print("{}, there are {} occurrences of {}.".format(name_capitalized, count, letter_lower))
+    print("{}, there are {} occurrences of {} or {}.".format(name_capitalized, count, letter_lower, letter_upper))
 
 if __name__ == "__main__":
     main()
