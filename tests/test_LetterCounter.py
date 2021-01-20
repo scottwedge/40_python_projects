@@ -10,4 +10,5 @@ def test_pass():
 def test_count_letters():
     assert LC.count_letters("hello there", "h") == 2
 
-
+def test_cap_user_name():
+    assert LC.cap_user_name("mike") == "Mike"
