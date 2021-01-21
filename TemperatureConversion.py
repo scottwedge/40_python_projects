@@ -7,15 +7,24 @@
 # Print welcome and purpose of application
 print("Welcome to the temperature conversion application.")
 
-# Get user value in Fahrenheit
-f_temp = input("Please enter the temperature in Fahrenheit")
+# Get user (string) value in Fahrenheit
+user_temp = input("Please enter the temperature in Fahrenheit")
+
+# Convert user input string value to float type
+f_temp = float(user_temp)
 
 # Convert temperature to Celcius
-
+c_temp = (f_temp - 32) * 5 / 9
 
 # Convert temperature to Kelvin
+k_temp = c_temp + 273.15
 
 
 # Display all three values, with results accurate to four decimal places.
-
+# formatting syntax is left align with two decimal places is '{:<11.2f}'
+# center aligned with four decimal places is '{:^14.4f}'
+# right aligned with four decimal places is '{:>18.4f}'
+print("Degrees Fahrenheit: {:>11.4f}".format(f_temp))
+print("Degrees Celsius:    {:>11.4f}".format(c_temp))
+print("Degrees Kelvin:     {:>11.4f}".format(k_temp))
 
