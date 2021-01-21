@@ -18,6 +18,5 @@ speed_mph = float(user_speed)
 speed_mps = speed_mph * 1.6
 
 # Print output
-print("Your speed in meters per second is: ", speed_mps)
-
+print("Your speed in meters per second is {:.2f} .".format(speed_mps))
 
