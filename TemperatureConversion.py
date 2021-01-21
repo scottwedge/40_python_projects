@@ -19,12 +19,12 @@ c_temp = (f_temp - 32) * 5 / 9
 # Convert temperature to Kelvin
 k_temp = c_temp + 273.15
 
-
-# Display all three values, with results accurate to four decimal places.
+# Display both conversion values with results accurate to four decimal places.
 # formatting syntax is left align with two decimal places is '{:<11.2f}'
 # center aligned with four decimal places is '{:^14.4f}'
 # right aligned with four decimal places is '{:>18.4f}'
-print("Degrees Fahrenheit: {:>11.4f}".format(f_temp))
-print("Degrees Celsius:    {:>11.4f}".format(c_temp))
-print("Degrees Kelvin:     {:>11.4f}".format(k_temp))
+# seems that we need to use left alignment according to video demonstration with F > 250
+print("Degrees Fahrenheit:     {:<8}".format(f_temp))
+print("Degrees Celsius:        {:<8.4f}".format(c_temp))
+print("Degrees Kelvin:         {:<8.4f}".format(k_temp))
 
