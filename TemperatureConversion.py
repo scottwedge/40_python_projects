@@ -8,7 +8,7 @@
 print("Welcome to the temperature conversion application.")
 
 # Get user (string) value in Fahrenheit
-user_temp = input("Please enter the temperature in Fahrenheit")
+user_temp = input("Please enter the temperature in Fahrenheit: ")
 
 # Convert user input string value to float type
 f_temp = float(user_temp)
