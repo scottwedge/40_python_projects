@@ -9,7 +9,10 @@
 print("Welcome to the Miles Per Hour to Meters Per Second Conversion App.")
 
 # Prompt for user input
-speed_mph = input("What is your speed in miles per hour? ")
+user_speed = input("What is your speed in miles per hour? ")
+
+# Convert input to float type
+speed_mph = float(user_speed)
 
 # Convert from miles per hour to meter per second then round to two decimal places
 speed_mps = speed_mph * 1.6
