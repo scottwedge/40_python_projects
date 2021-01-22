@@ -15,6 +15,12 @@ def calc_area(a, b):
     area = 0.5 * a * b
     return area
 
+# Tests
+def test_calc_hyp():
+    assert calc_hyp(3, 4) == 5
+
+def test_calc_area(3, 4) == 6
+
 # Welcome user and state purpose of application.
 print("Welcome to the right angle triangle application")
 
