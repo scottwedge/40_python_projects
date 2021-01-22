@@ -19,28 +19,32 @@ def calc_area(a, b):
 def test_calc_hyp():
     assert calc_hyp(3, 4) == 5
 
-def test_calc_area(3, 4) == 6
+def test_calc_area():
+    assert calc_area(3, 4) == 6
 
-# Welcome user and state purpose of application.
-print("Welcome to the right angle triangle application")
+def main():
+    # Welcome user and state purpose of application.
+    print("Welcome to the right angle triangle application")
 
-# Prompt for first side length.
-user_side_1 = input("What is the first leg of the triangle: ")
-side1 = float(user_side_1)
+    # Prompt for first side length.
+    user_side_1 = input("What is the first leg of the triangle: ")
+    side1 = float(user_side_1)
 
-# Prompt for second side length.
-user_side_2 = input("What is the second leg of the triangle: ")
-side2 = float(user_side_2)
+    # Prompt for second side length.
+    user_side_2 = input("What is the second leg of the triangle: ")
+    side2 = float(user_side_2)
 
-# Calculate hypotenuse (square root of sum of square of other two sides)
-hypotenuse = calc_hyp(side1, side2)
+    # Calculate hypotenuse (square root of sum of square of other two sides)
+    hypotenuse = calc_hyp(side1, side2)
 
-# Display length of hypotenuse accurate to three decimal places.
-print("For a triangle with legs of {} and {} the hypotenuse is {:.3f}.".format(side1, side2, hypotenuse))
+    # Display length of hypotenuse accurate to three decimal places.
+    print("For a triangle with legs of {} and {} the hypotenuse is {:.3f}.".format(side1, side2, hypotenuse))
 
-# Calculate area of triangle (half of one side multiply by other side)
-area = calc_area(side1, side2)
+    # Calculate area of triangle (half of one side multiply by other side)
+    area = calc_area(side1, side2)
 
-# Display area of triangle accurate to three decimal places.
-print("For a triangle with legs of {} and {} the area is {:.3f}.".format(side1, side2, area))
+    # Display area of triangle accurate to three decimal places.
+    print("For a triangle with legs of {} and {} the area is {:.3f}.".format(side1, side2, area))
 
+if __name__ == "__main__":
+    main()
