@@ -29,7 +29,9 @@ for n in range(1,10,1):
 
 # Display exponentiation table for 1 through 9
 print()  # blank line
-print("Exponentiation table for", user_number)
+print("Exponent table for", user_number)
+for n in  range(1, 10, 1):
+    print("{} ** {} = {}".format(num, n, num ** n))
 
 # Print math is cool four times
 phrase = "math is cool!"
