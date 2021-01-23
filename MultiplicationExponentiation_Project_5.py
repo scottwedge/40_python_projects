@@ -31,10 +31,11 @@ for n in range(1,10,1):
 print()  # blank line
 print("Exponent table for", user_number)
 for n in  range(1, 10, 1):
-    print("{} ** {} = {}".format(num, n, num ** n))
+    print("{:>10} ** {} = {:.4f}".format(num, n, num ** n))
 
 # Print math is cool four times
 phrase = "math is cool!"
+print()  # add blank line
 print(user_name.capitalize(), phrase.capitalize())
 print("    ", user_name.lower(), phrase.lower())
 print("        ", user_name.capitalize(), string.capwords(phrase))
