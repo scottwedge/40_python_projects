@@ -24,7 +24,8 @@ print() # blank line
 print("Multiplication table for", user_number)
 
 for n in range(1,10,1):
-    print("{:>10} * {} = {}".format(n, num, n * num))
+    float_n = float(n)
+    print("{:>10} * {} = {}".format(float_n, num, float_n * num))
     
 
 # Display exponentiation table for 1 through 9
