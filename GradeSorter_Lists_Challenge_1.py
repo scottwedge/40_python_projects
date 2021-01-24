@@ -24,6 +24,12 @@ print() # blank line
 print("Your grades from highest to lowest are: ", grades_list)
 
 # State and list the two lowest grades will be removed
+print("The lowest two grades will now be dropped")
+
+for count in range (1, 3, 1):
+    lowest = grades_list.pop()
+    print("Removed grade: ", lowest)
+
 
 # Display the remaining grades
 
