@@ -14,9 +14,14 @@ for j in ["first", "second", "third", "fourth"]:
     grades_list.append(grade)
 
 # List the four grades
+print() # blank line
 print("Your grades are: ", grades_list)
 
 # Display the grades sorted from highest to lowest
+grades_list.sort() # sort grades from lowest to highest
+grades_list.reverse() # sort grades from highest to lowest
+print() # blank line
+print("Your grades from highest to lowest are: ", grades_list)
 
 # State and list the two lowest grades will be removed
 
