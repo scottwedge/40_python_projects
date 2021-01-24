@@ -36,3 +36,6 @@ print()  # blank line
 print("Your remaining grades are: ", grades_list)
 
 # Comment on the highest grade
+highest = grades_list[0]
+print() # blank line
+print("Nice work! Your highest grade is: ", highest)
