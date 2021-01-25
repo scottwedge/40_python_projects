@@ -34,4 +34,5 @@ num_strings.sort()
 num_ints.sort()
 print("Sorted num_strings: {}".format(num_strings))
 print("Sorted num_ints: {}".format(num_ints)) 
+print() # blank line
 print("Strings are sorted alphabetically while integers are sorted numerically!")
