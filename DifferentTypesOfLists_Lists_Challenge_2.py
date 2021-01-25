@@ -27,3 +27,10 @@ for num in range(len(list_of_list_names)):
     print("It contains the elements: {}".format(list_of_list_contents[num]))
     print("The first element {} is a {}.".format(list_of_list_contents[num][0], type(list_of_list_contents[num][0])))
     print() # blank line
+
+# Now sort and print list of strings and list of integers and display results
+print("Now sorting num_strings and num_ints...")
+num_strings.sort()
+num_ints.sort()
+print("Sorted num_strings: {}".format(num_strings))
+print("Sorted num_ints: {}".format(num_ints)) 
