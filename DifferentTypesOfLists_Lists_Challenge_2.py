@@ -19,11 +19,11 @@ list_of_list_contents = [num_strings, num_ints, num_floats, num_lists]
 title = "Summary Table"
 centred_title = title.center(80)
 print(centred_title)
+print() # blank line
 
 # Cycle through each list
 for num in range(len(list_of_list_names)):
-#    print(list_of_list_names[num], type(list_of_list_contents[num]))
-#for num in range(list_of_lists):
     print("The variable {} is a {}.".format(list_of_list_names[num], type(list_of_list_contents[num])))
     print("It contains the elements: {}".format(list_of_list_contents[num]))
-#    print("The first element {} is a {}.".format(list_of_lists[j].[0], type(list_of_lists[j].[0]))
+    print("The first element {} is a {}.".format(list_of_list_contents[num][0], type(list_of_list_contents[num][0])))
+    print() # blank line
