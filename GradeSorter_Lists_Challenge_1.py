@@ -18,6 +18,11 @@ def sort_grades(grades_list):
     print() # blank line
     print("Your grades from highest to lowest are: ", grades_list)
     
+def pop_lowest_grade(grades_list, num):
+    for count in range (1, 1+num, 1):
+        lowest = grades_list.pop()
+        print("Removed grade: ", lowest)
+    return grades_list
 
 # main function
 def main():
@@ -39,16 +44,14 @@ def main():
     print()  # blank line
     print("The lowest two grades will now be dropped")
     
-    for count in range (1, 3, 1):
-        lowest = grades_list.pop()
-        print("Removed grade: ", lowest)
+    remaining_grades = pop_lowest_grade(grades_list, 2)  
     
     # Display the remaining grades
     print()  # blank line
-    print("Your remaining grades are: ", grades_list)
+    print("Your remaining grades are: ", remaining_grades)
     
     # Comment on the highest grade
-    highest = grades_list[0]
+    highest = remaining_grades[0]
     print() # blank line
     print("Nice work! Your highest grade is a {}.".format(highest))
 
