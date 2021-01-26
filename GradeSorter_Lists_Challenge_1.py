@@ -24,11 +24,17 @@ def pop_lowest_grade(grades_list, num):
         print("Removed grade: ", lowest)
     return grades_list
 
+# Tests
+def test_sort_grades([5, 1, 2, 3]):
+    sort_grades(order)
+    assert order == [5, 3, 2, 1]
+
 # main function
 def main():
     # Print welcome message
     print("Welcome to the grade sorter application")
     print() # blank line
+
     
     # Get grades from users
     grades_list = get_grades()
