@@ -35,6 +35,9 @@ def test_sort_grades():
 def test_pop_lowest_grade():
     assert [9,8,7] == pop_lowest_grade([9,8,7,6], 1)
 
+def test_pop_lowest_2grades():
+    assert [10,8] == pop_lowest_grade([10,8,7,6], 2)
+
 # main function
 def main():
     # Print welcome message
