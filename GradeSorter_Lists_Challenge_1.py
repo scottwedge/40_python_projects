@@ -12,37 +12,45 @@ def get_grades():
         grades_list.append(grade)
     return grades_list
 
+def sort_grades(grades_list):
+    grades_list.sort() # sort grades from lowest to highest
+    grades_list.reverse() # sort grades from highest to lowest
+    print() # blank line
+    print("Your grades from highest to lowest are: ", grades_list)
+    
 
-# Print welcome message
-print("Welcome to the grade sorter application")
-print() # blank line
+# main function
+def main():
+    # Print welcome message
+    print("Welcome to the grade sorter application")
+    print() # blank line
+    
+    # Get grades from users
+    grades_list = get_grades()
+    
+    # List the four grades
+    print() # blank line
+    print("Your grades are: ", grades_list)
+    
+    # Display the grades sorted from highest to lowest
+    sort_grades(grades_list)
 
-# Get grades from users
-grades_list = get_grades()
+    # State and list the two lowest grades will be removed
+    print()  # blank line
+    print("The lowest two grades will now be dropped")
+    
+    for count in range (1, 3, 1):
+        lowest = grades_list.pop()
+        print("Removed grade: ", lowest)
+    
+    # Display the remaining grades
+    print()  # blank line
+    print("Your remaining grades are: ", grades_list)
+    
+    # Comment on the highest grade
+    highest = grades_list[0]
+    print() # blank line
+    print("Nice work! Your highest grade is a {}.".format(highest))
 
-# List the four grades
-print() # blank line
-print("Your grades are: ", grades_list)
-
-# Display the grades sorted from highest to lowest
-grades_list.sort() # sort grades from lowest to highest
-grades_list.reverse() # sort grades from highest to lowest
-print() # blank line
-print("Your grades from highest to lowest are: ", grades_list)
-
-# State and list the two lowest grades will be removed
-print()  # blank line
-print("The lowest two grades will now be dropped")
-
-for count in range (1, 3, 1):
-    lowest = grades_list.pop()
-    print("Removed grade: ", lowest)
-
-# Display the remaining grades
-print()  # blank line
-print("Your remaining grades are: ", grades_list)
-
-# Comment on the highest grade
-highest = grades_list[0]
-print() # blank line
-print("Nice work! Your highest grade is a {}.".format(highest))
+if __name__ == "__main__":
+    main()
