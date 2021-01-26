@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# Get four grades, sort them, drop lowest two grades and list them, then display remaining list
+
 # Functions
 def get_grades():
     # initialize empty list of grades
