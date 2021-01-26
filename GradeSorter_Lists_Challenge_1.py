@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
 
+# Functions
+def get_grades():
+    # initialize empty list of grades
+    grades_list = []
+
+    # Prompt for a grade four times
+    for j in ["first", "second", "third", "fourth"]:
+        grade = input("What is your {} grade (0-100): ".format(j))
+        grade = int(grade)  # convert string input to integer to match demo example
+        grades_list.append(grade)
+    return grades_list
+
+
 # Print welcome message
 print("Welcome to the grade sorter application")
 print() # blank line
 
-# initialize empty list of grades
-grades_list = []
-
-# Prompt for a grade four times
-for j in ["first", "second", "third", "fourth"]:
-    grade = input("What is your {} grade (0-100): ".format(j))
-    grade = int(grade)  # convert string input to integer to match demo example
-    grades_list.append(grade)
+# Get grades from users
+grades_list = get_grades()
 
 # List the four grades
 print() # blank line
