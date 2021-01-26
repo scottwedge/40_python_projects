@@ -25,9 +25,13 @@ def pop_lowest_grade(grades_list, num):
     return grades_list
 
 # Tests
-def test_sort_grades([5, 1, 2, 3]):
+def test_sort_grades():
+    order = [5,1,2,3]
     sort_grades(order)
     assert order == [5, 3, 2, 1]
+
+def test_pop_lowest_grade():
+    assert [9,8,7] == pop_lowest_grade([9,8,7,6], 1)
 
 # main function
 def main():
