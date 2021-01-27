@@ -4,7 +4,13 @@
 # Results to be accurate to four decimal places and aligned in a table
 
 # Functions
+def f_to_c(f_num):
+    c_temp = (f_num - 32) * 5 / 9
+    return c_temp
 
+def c_to_k(c_temp):
+    k_temp = c_temp + 273.15
+    return k_temp
 
 def main():
     # Print welcome and purpose of application
@@ -17,10 +23,10 @@ def main():
     f_temp = float(user_temp)
     
     # Convert temperature to Celcius
-    c_temp = (f_temp - 32) * 5 / 9
+    c_temp = f_to_c(f_temp)
     
     # Convert temperature to Kelvin
-    k_temp = c_temp + 273.15
+    k_temp = c_to_k(c_temp) 
     
     # Display both conversion values with results accurate to four decimal places.
     # formatting syntax is left align with two decimal places is '{:<11.2f}'
