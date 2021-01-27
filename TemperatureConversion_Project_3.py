@@ -12,6 +12,13 @@ def c_to_k(c_temp):
     k_temp = c_temp + 273.15
     return k_temp
 
+# Tests
+def test_32f_to_c():
+    assert f_to_c(32) == 0
+
+def test_0c_to_k():
+    assert c_to_k(0) == 273.15
+
 def main():
     # Print welcome and purpose of application
     print("Welcome to the temperature conversion application.")
