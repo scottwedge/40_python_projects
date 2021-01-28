@@ -34,9 +34,12 @@ for j in range(1,4,1):
     # Add to list
     glist.append(newfood)
 
-# Sort list alphabetically
-glist.sort()
+# Display sorted list
+print("Here is your grocery list: ", glist)
 
+# Sort list alphabetically
+sorted_glist = glist
+sorted_glist.sort()
 
 # Display sorted list
-print("Current full list is: ", glist)
+print("Here is your grocery list sorted: ", sorted_glist)
