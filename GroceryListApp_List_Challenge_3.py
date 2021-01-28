@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
-# Script that will prompt for items to add to shopping list until there are five items
+# Script will use datetime module to display current time when shopping occurs.
+# Script that starts with two items in shopping list.
+# Then will prompt for three more items so there are five items total.
 # Sort list alphabetically and display the list.
 # Then remove three items (spelled in any case) from list when prompted
 # When two items remain, say requested purchase not available
