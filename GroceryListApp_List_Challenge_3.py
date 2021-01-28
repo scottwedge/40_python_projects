@@ -23,3 +23,14 @@ print("Current Date and Time:  {}/{}    {}:{}".format(now.month, now.day, now.ho
 # Display current (two item) list
 print("You currently have {} and {} in your list.".format(glist[0], glist[1]))
 
+# Prompt for three more food types
+for j in range(1,4,1):
+    newfood = input("Type of food to add to the grocery list: ")
+    # Convert to lower case
+    newfood = newfood.lower()
+    # Capitalize new food
+    newfood = newfood.capitalize()
+    # Add to list
+    glist.append(newfood)
+
+print("Current full list is: ", glist)
