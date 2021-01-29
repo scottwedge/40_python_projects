@@ -11,6 +11,14 @@
 # Imports
 import datetime
 
+# Functions
+def capitalize_food(food):
+    # Convert to lower case
+    food = food.lower()
+    # Capitalize first letter
+    cap_lower_food = food.capitalize()
+    return cap_lower_food
+
 # Get current time
 now = datetime.datetime.now()
 
@@ -27,6 +35,8 @@ print() # blank line
 # Prompt for three more food types
 for j in range(1,4,1):
     newfood = input("Type of food to add to the grocery list: ")
+    cap_lower_food = capitalize_food(newfood)
+
     # Convert to lower case
     newfood = newfood.lower()
     # Capitalize new food
@@ -47,7 +57,15 @@ print("Here is your grocery list sorted: ", sorted_glist)
 print("Simulating grocery shopping...")
 print() # blank line
 
-# Print current list
-print("Current grocery list: {} items.".format(len(sorted_glist)))
-purchase = input("What food did you just buy: ")
-print("Removing {} from the list...".format(purchase))
+# Prompt three times to remove item from the list
+for j in range(1,4,1):
+    # Print current list
+    print("Current grocery list: {} items.".format(len(sorted_glist)))
+    print(sorted_glist)
+    purchase = input("What food did you just buy: ")
+    cap_purchase = capitalize_food(purchase)
+    print("Removing {} from the list...".format(cap_purchase))
+    sorted_glist.remove(cap_purchase)
+    print() # blank line
+
+
