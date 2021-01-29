@@ -30,9 +30,9 @@ for j in range(1,4,1):
     # Convert to lower case
     newfood = newfood.lower()
     # Capitalize new food
-    newfood = newfood.capitalize()
+    cap_lower_newfood = newfood.capitalize()
     # Add to list
-    glist.append(newfood)
+    glist.append(cap_lower_newfood)
 
 # Display sorted list
 print("Here is your grocery list: ", glist)
@@ -43,3 +43,11 @@ sorted_glist.sort()
 
 # Display sorted list
 print("Here is your grocery list sorted: ", sorted_glist)
+
+print("Simulating grocery shopping...")
+print() # blank line
+
+# Print current list
+print("Current grocery list: {} items.".format(len(sorted_glist)))
+purchase = input("What food did you just buy: ")
+print("Removing {} from the list...".format(purchase))
