@@ -68,4 +68,14 @@ for j in range(1,4,1):
     sorted_glist.remove(cap_purchase)
     print() # blank line
 
+# Randomly choose one remaining item and say it is not available 
+# Then prompt for a replacement
+out_of_stock = sorted_glist[0]
+print("Sorry the store is out of {}.".format(out_of_stock))
+replacement = input("What food would you like instead: ")
+capitalized_replacement = capitalize_food(replacement)
+sorted_glist.append(capitalized_replacement)
 
+print()
+print("Here is what remains on your grocery list: ")
+print(sorted_glist)
