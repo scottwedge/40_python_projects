@@ -19,6 +19,17 @@ def capitalize_food(food):
     cap_lower_food = food.capitalize()
     return cap_lower_food
 
+def remove_item(sorted_glist):
+    # Print current list
+    print("Current grocery list: {} items.".format(len(sorted_glist)))
+    print(sorted_glist)
+    purchase = input("What food did you just buy: ")
+    cap_purchase = capitalize_food(purchase)
+    print("Removing {} from the list...".format(cap_purchase))
+    sorted_glist.remove(cap_purchase)
+    print() # blank line
+    return sorted_glist
+
 # Tests
 def test_upper_capitalize_food():
     assert capitalize_food("FISH") == "Fish"
@@ -46,7 +57,7 @@ def main():
         cap_lower_food = capitalize_food(newfood)
     
         # Add to list
-        glist.append(cap_lower_newfood)
+        glist.append(cap_lower_food)
     
     # display sorted list
     print("Here is your grocery list: ", glist)
@@ -61,21 +72,18 @@ def main():
     print("Simulating grocery shopping...")
     print() # blank line
     
-    # prompt three times to remove item from the list
+    # remove item from the list and display remaining items
     for j in range(1,4,1):
-        # Print current list
-        print("Current grocery list: {} items.".format(len(sorted_glist)))
-        print(sorted_glist)
-        purchase = input("What food did you just buy: ")
-        cap_purchase = capitalize_food(purchase)
-        print("Removing {} from the list...".format(cap_purchase))
-        sorted_glist.remove(cap_purchase)
-        print() # blank line
+        sorted_glist = remove_item(sorted_glist)
     
     # randomly choose one remaining item and say it is not available 
     # then prompt for a replacement
     out_of_stock = sorted_glist[0]
     print("Sorry the store is out of {}.".format(out_of_stock))
+
+    # Remove "missing" item
+    sorted_glist.remove(out_of_stock)
+
     replacement = input("What food would you like instead: ")
     capitalized_replacement = capitalize_food(replacement)
     sorted_glist.append(capitalized_replacement)
