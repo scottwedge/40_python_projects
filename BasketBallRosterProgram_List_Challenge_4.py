@@ -13,10 +13,21 @@ print("Welcome to the Basketball Roster program.")
 print() # blank line
 
 # List roster positions
-roster = ["point guard", "shooting guard","small forward","power forward","center"]
+position = ["point guard", "shooting guard","small forward","power forward","center"]
+
+# Initialize roster as a dictionary
+roster = {}
 
 # Prompt for each position (point guard, shooting guard, small forward
 # power forward, center)
 
-for j in roster:
-    print(j)
+for j in position:
+    player = input("Who is your {}:".format(j))
+    roster[j] = player
+
+# Display roster
+print("Your starting 5 for the upcoming basketball season")
+
+for k in position:
+    print("           {}           {}".format(k, roster[k]))
+
