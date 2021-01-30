@@ -31,3 +31,7 @@ print("Your starting 5 for the upcoming basketball season")
 for k in position:
     print("           {}           {}".format(k, roster[k]))
 
+# Simulate injury
+print("Oh no, {} is injured.".format(roster[position[0]]))
+print("Your roster only has 4 players.")
+player = input("Who will take {}'s spot: ".format(roster[position[0]]))
