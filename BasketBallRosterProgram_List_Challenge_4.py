@@ -22,7 +22,7 @@ roster = {}
 # power forward, center)
 
 for j in position:
-    player = input("Who is your {}:".format(j))
+    player = input("Who is your {}: ".format(j))
     roster[j] = player
 
 # Display roster
