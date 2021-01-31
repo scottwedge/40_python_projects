@@ -7,7 +7,6 @@
 # Prompt for replacement for that position
 # Display count and aligned list of position and names of final team
 
-
 # Welcome user
 print("Welcome to the Basketball Roster program.")
 print() # blank line
@@ -23,7 +22,7 @@ roster = {}
 
 for j in position:
     player = input("Who is your {}: ".format(j))
-    roster[j] = player
+    roster[j] = player.title()  # convert name to title format
 
 # Display roster
 title = "Your starting 5 for the upcoming basketball season"
@@ -31,22 +30,24 @@ print() # blank line
 print("{:^80}".format(title))
 
 for k in position:
-    print("          {:20s} {:20s}".format(k, roster[k]))
+    print("          {:20s} {:20s}".format(k.title(), roster[k]))
 
 # Simulate injury
 print() # blank line
 print("Oh no, {} is injured.".format(roster[position[0]]))
 print("Your roster only has 4 players.")
 player = input("Who will take {}'s spot: ".format(roster[position[0]]))
-roster[position[0]] = player
+roster[position[0]] = player.title()  # convert to title format
 
 # Display roster again
+print() # blank line
 print("Your starting 5 for the upcoming basketball season")
 
 for k in position:
-    print("          {:20s} {:20s}".format(k, roster[k]))
+    print("          {:20s} {:20s}".format(k.title(), roster[k]))
 
 # Wish new player best
+print() # blank line
 print("Good luck {} you will do great!".format(roster[position[0]]))
 print("Your roster now has 5 players.")
 
