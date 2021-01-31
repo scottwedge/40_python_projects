@@ -26,10 +26,11 @@ for j in position:
     roster[j] = player
 
 # Display roster
-print("Your starting 5 for the upcoming basketball season")
+title = "Your starting 5 for the upcoming basketball season"
+print("{:^80}".format(title))
 
 for k in position:
-    print("           {}           {}".format(k, roster[k]))
+    print("          {:20s} {:20s}".format(k, roster[k]))
 
 # Simulate injury
 print("Oh no, {} is injured.".format(roster[position[0]]))
@@ -41,7 +42,7 @@ roster[position[0]] = player
 print("Your starting 5 for the upcoming basketball season")
 
 for k in position:
-    print("           {}           {}".format(k, roster[k]))
+    print("          {:20s} {:20s}".format(k, roster[k]))
 
 # Wish new player best
 print("Good luck {} you will do great!".format(roster[position[0]]))
