@@ -27,12 +27,14 @@ for j in position:
 
 # Display roster
 title = "Your starting 5 for the upcoming basketball season"
+print() # blank line
 print("{:^80}".format(title))
 
 for k in position:
     print("          {:20s} {:20s}".format(k, roster[k]))
 
 # Simulate injury
+print() # blank line
 print("Oh no, {} is injured.".format(roster[position[0]]))
 print("Your roster only has 4 players.")
 player = input("Who will take {}'s spot: ".format(roster[position[0]]))
