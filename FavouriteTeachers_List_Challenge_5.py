@@ -48,4 +48,6 @@ print("The next two teachers are: {} and {}".format(teacher_list[2], teacher_lis
 # Then list the last teacher
 print("Your last favourite teacher is: {}".format(teacher_list[-1]))
 
+# Display number of teachers in list
+print("Your have a total of {} favourite teachers.".format(len(teacher_list)))
 
