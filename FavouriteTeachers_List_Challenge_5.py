@@ -38,4 +38,14 @@ print("Your favourite teachers ranked are:", teacher_list)  # list in order of e
 print("Your favourite teachers alphabetically are: {}". format(teacher_alpha))
 print("Your favourite teachers in reverse alphabetical order are: {}".format(teacher_revalpha))
 
+# Then list the top two teachers
+print() # blank line
+print("Your top two teachers are: {} and {}".format(teacher_list[0], teacher_list[1]))
+
+# Then list the next two teachers
+print("The next two teachers are: {} and {}".format(teacher_list[2], teacher_list[3]))
+
+# Then list the last teacher
+print("Your last favourite teacher is: {}".format(teacher_list[-1]))
+
 
