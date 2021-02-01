@@ -51,3 +51,32 @@ print("Your last favourite teacher is: {}".format(teacher_list[-1]))
 # Display number of teachers in list
 print("Your have a total of {} favourite teachers.".format(len(teacher_list)))
 
+# Get a new favourite teacher
+new_teacher = input("Oops {} is no longer your favourite teacher. Who is your new FAVOURITE teacher: ".format(teacher_list[0]))
+new_teacher = new_teacher.title() # convert to title format
+teacher_list.insert(0, new_teacher)  # Place new name first in list
+
+# Sort lists again 
+teacher_alpha = teacher_list.copy()
+teacher_alpha.sort() # sort alphabetically
+teacher_revalpha = teacher_alpha.copy()
+teacher_revalpha.reverse() # sort reverse alphabetically
+
+# Display teachers in different orders
+print() # blank line
+print("Your favourite teachers ranked are:", teacher_list)  # list in order of entry
+print("Your favourite teachers alphabetically are: {}". format(teacher_alpha))
+print("Your favourite teachers in reverse alphabetical order are: {}".format(teacher_revalpha))
+
+# Then list the top two teachers
+print() # blank line
+print("Your top two teachers are: {} and {}".format(teacher_list[0], teacher_list[1]))
+
+# Then list the next two teachers
+print("The next two teachers are: {} and {}".format(teacher_list[2], teacher_list[3]))
+
+# Then list the last teacher
+print("Your last favourite teacher is: {}".format(teacher_list[-1]))
+
+# Display number of teachers in list
+print("Your have a total of {} favourite teachers.".format(len(teacher_list)))
