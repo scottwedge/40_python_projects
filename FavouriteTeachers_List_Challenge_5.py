@@ -16,4 +16,26 @@
 # Then prompt to remove one teacher and relist allo
 
  
+print("Welcome to the Favourite Teachers Program")
+print() # blank line
+
+# get first four favourite teachers
+teacher_list = [] # initialize blank list
+count_list = ["first", "second", "third", "fourth"]
+for j in count_list:
+    teacher_input = input("Who is your {} favourite teacher: ".format(j))
+    
+    teacher = teacher_input.title() # convert to title format
+    teacher_list.append(teacher)
+    teacher_alpha = teacher_list.copy()
+    teacher_alpha.sort() # sort alphabetically
+    teacher_revalpha = teacher_alpha.copy()
+    teacher_revalpha.reverse() # sort reverse alphabetically
+    
+# Display teachers in different orders
+print() # blank line
+print("Your favourite teachers ranked are:", teacher_list)  # list in order of entry
+print("Your favourite teachers alphabetically are: {}". format(teacher_alpha))
+print("Your favourite teachers in reverse alphabetical order are: {}".format(teacher_revalpha))
+
 
