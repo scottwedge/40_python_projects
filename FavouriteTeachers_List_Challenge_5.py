@@ -32,7 +32,7 @@ def sort_alpha(teacher_list):
     teacher_alpha_list.sort() # sort alphabetically
     return teacher_alpha_list
 
-def sort_rev_alpha(teacher_alpha):
+def sort_rev_alpha(teacher_alpha_list):
     teacher_rev_alpha_list = teacher_alpha_list.copy()
     teacher_rev_alpha_list.reverse() # sort into reverse alphabetical order
     return teacher_rev_alpha_list
@@ -57,6 +57,12 @@ def display_pairs_last_count(teacher_list):
     # Display number of teachers in list
     print("Your have a total of {} favourite teachers.".format(len(teacher_list)))
     
+def get_new_fav(teacher_list):
+    print()
+    new_teacher = input("Oops {} is no longer your favourite teacher. Who is your new FAVOURITE teacher: ".format(teacher_list[0]))
+    new_teacher = new_teacher.title() # convert to title format
+    teacher_list.insert(0, new_teacher)  # Place new name first in list
+    return teacher_list
 
 
 def main():
@@ -73,16 +79,14 @@ def main():
     teacher_rev_alpha_list = sort_rev_alpha(teacher_alpha_list)
 
     # Display teachers in different orders
-    display_lists(teacher_list, teacher_alpha_list, teacher_rev_alpha_list):
+    display_lists(teacher_list, teacher_alpha_list, teacher_rev_alpha_list)
     
     # List the top two teachers, next two teachers, last teacher and number of teachers
     display_pairs_last_count(teacher_list)
     
 
     # Get a new favourite teacher
-    new_teacher = input("Oops {} is no longer your favourite teacher. Who is your new FAVOURITE teacher: ".format(teacher_list[0]))
-    new_teacher = new_teacher.title() # convert to title format
-    teacher_list.insert(0, new_teacher)  # Place new name first in list
+    teacher_list = get_new_fav(teacher_list)
     
     # Sort lists again 
     teacher_alpha = teacher_list.copy()
@@ -110,7 +114,9 @@ def main():
     print("Your have a total of {} favourite teachers.".format(len(teacher_list)))
     
     # Remove a teacher
+    print() # blank line
     removed_teacher = input("You've decided that you no longer like a teacher. Which teacher would you like to remove from the list: ")
+    removed_teacher = removed_teacher.title() # convert to common title format
     teacher_list.remove(removed_teacher)
     
     # Display in order
