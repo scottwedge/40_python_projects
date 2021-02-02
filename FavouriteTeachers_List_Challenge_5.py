@@ -23,20 +23,25 @@ def get_names():
     count_list = ["first", "second", "third", "fourth"]
     for j in count_list:
         teacher_input = input("Who is your {} favourite teacher: ".format(j))
-        teacher = teacher_input.title() # convert to title format
+        teacher = teacher_input.title() # convert names to title format
         teacher_list.append(teacher)
     return teacher_list
 
 def sort_alpha(teacher_list):
-    teacher_alpha = teacher_list.copy()
-    teacher_alpha.sort() # sort alphabetically
-    return teacher_alpha
+    teacher_alpha_list = teacher_list.copy()
+    teacher_alpha_list.sort() # sort alphabetically
+    return teacher_alpha_list
 
 def sort_rev_alpha(teacher_alpha):
-    teacher_rev_alpha = teacher_alpha.copy()
-    teacher_rev_alpha.reverse()
-    return teacher_rev_alpha
+    teacher_rev_alpha_list = teacher_alpha_list.copy()
+    teacher_rev_alpha_list.reverse() # sort into reverse alphabetical order
+    return teacher_rev_alpha_list
         
+def display_lists(teacher_list, teacher_alpha_list, teacher_rev_alpha_list):
+    print() # blank line
+    print("Your favourite teachers ranked are:", teacher_list)  # list in order of entry
+    print("Your favourite teachers alphabetically are: {}". format(teacher_alpha_list))
+    print("Your favourite teachers in reverse alphabetical order are: {}".format(teacher_rev_alpha_list))
  
 def main()"
     print("Welcome to the Favourite Teachers Program")
@@ -46,16 +51,14 @@ def main()"
     teacher_list = get_names()
 
     # Create list sorted alphabetically
-        teacher_alpha = teacher_list.copy()
-        teacher_alpha.sort() # sort alphabetically
-        teacher_revalpha = teacher_alpha.copy()
-        teacher_revalpha.reverse() # sort reverse alphabetically
+    teacher_alpha_list = sort_alpha(teacher_list)
+
+    # Create list sorted reverse alphabetically
+    teacher_rev_alpha_list = sort_rev_alpha(teacher_alpha_list)
+
         
     # Display teachers in different orders
-    print() # blank line
-    print("Your favourite teachers ranked are:", teacher_list)  # list in order of entry
-    print("Your favourite teachers alphabetically are: {}". format(teacher_alpha))
-    print("Your favourite teachers in reverse alphabetical order are: {}".format(teacher_revalpha))
+    display_lists(teacher_list, teacher_alpha_list, teacher_rev_alpha_list):
     
     # Then list the top two teachers
     print() # blank line
