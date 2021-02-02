@@ -64,6 +64,13 @@ def get_new_fav(teacher_list):
     teacher_list.insert(0, new_teacher)  # Place new name first in list
     return teacher_list
 
+def remove_teacher(teacher_list):
+    print() # blank line
+    removed_teacher = input("You've decided that you no longer like a teacher. Which teacher would you like to remove from the list: ")
+    removed_teacher = removed_teacher.title() # convert to common title format
+    teacher_list.remove(removed_teacher)
+    return teacher_list
+
 
 def main():
     print("Welcome to the Favourite Teachers Program")
@@ -83,48 +90,39 @@ def main():
     
     # List the top two teachers, next two teachers, last teacher and number of teachers
     display_pairs_last_count(teacher_list)
-    
 
     # Get a new favourite teacher
     teacher_list = get_new_fav(teacher_list)
     
     # Sort lists again 
-    teacher_alpha = teacher_list.copy()
-    teacher_alpha.sort() # sort alphabetically
-    teacher_revalpha = teacher_alpha.copy()
-    teacher_revalpha.reverse() # sort reverse alphabetically
-    
+    # Create list sorted alphabetically
+    teacher_alpha_list = sort_alpha(teacher_list)
+
+    # Create list sorted reverse alphabetically
+    teacher_rev_alpha_list = sort_rev_alpha(teacher_alpha_list)
+
     # Display teachers in different orders
-    print() # blank line
-    print("Your favourite teachers ranked are:", teacher_list)  # list in order of entry
-    print("Your favourite teachers alphabetically are: {}". format(teacher_alpha))
-    print("Your favourite teachers in reverse alphabetical order are: {}".format(teacher_revalpha))
+    display_lists(teacher_list, teacher_alpha_list, teacher_rev_alpha_list)
     
-    # Then list the top two teachers
-    print() # blank line
-    print("Your top two teachers are: {} and {}".format(teacher_list[0], teacher_list[1]))
-    
-    # Then list the next two teachers
-    print("The next two teachers are: {} and {}".format(teacher_list[2], teacher_list[3]))
-    
-    # Then list the last teacher
-    print("Your last favourite teacher is: {}".format(teacher_list[-1]))
-    
-    # Display number of teachers in list
-    print("Your have a total of {} favourite teachers.".format(len(teacher_list)))
+    # List the top two teachers, next two teachers, last teacher and number of teachers
+    display_pairs_last_count(teacher_list)
+
     
     # Remove a teacher
-    print() # blank line
-    removed_teacher = input("You've decided that you no longer like a teacher. Which teacher would you like to remove from the list: ")
-    removed_teacher = removed_teacher.title() # convert to common title format
-    teacher_list.remove(removed_teacher)
+    teacher_list = remove_teacher(teacher_list)
     
-    # Display in order
-    
-    # resort alphabetically and display
-    
-    # resort reverse alphabetically and display
+    # Create list sorted alphabetically
+    teacher_alpha_list = sort_alpha(teacher_list)
 
+    # Create list sorted reverse alphabetically
+    teacher_rev_alpha_list = sort_rev_alpha(teacher_alpha_list)
+
+    # Display teachers in different orders
+    display_lists(teacher_list, teacher_alpha_list, teacher_rev_alpha_list)
+    
+    # List the top two teachers, next two teachers, last teacher and number of teachers
+    display_pairs_last_count(teacher_list)
+    
 
 if __name__ == "__main__":
     main()
