@@ -27,17 +27,13 @@ def get_names():
         teacher_list.append(teacher)
     return teacher_list
 
-def sort_alpha(teacher_list):
+def sort_and_display_lists(teacher_list):
     teacher_alpha_list = teacher_list.copy()
     teacher_alpha_list.sort() # sort alphabetically
-    return teacher_alpha_list
 
-def sort_rev_alpha(teacher_alpha_list):
     teacher_rev_alpha_list = teacher_alpha_list.copy()
     teacher_rev_alpha_list.reverse() # sort into reverse alphabetical order
-    return teacher_rev_alpha_list
 
-def display_lists(teacher_list, teacher_alpha_list, teacher_rev_alpha_list):
     print() # blank line
     print("Your favourite teachers ranked are:", teacher_list)  # list in order of entry
     print("Your favourite teachers alphabetically are: {}". format(teacher_alpha_list))
@@ -79,14 +75,8 @@ def main():
     # get first four favourite teachers
     teacher_list = get_names()
 
-    # Create list sorted alphabetically
-    teacher_alpha_list = sort_alpha(teacher_list)
-
-    # Create list sorted reverse alphabetically
-    teacher_rev_alpha_list = sort_rev_alpha(teacher_alpha_list)
-
-    # Display teachers in different orders
-    display_lists(teacher_list, teacher_alpha_list, teacher_rev_alpha_list)
+    # Create and display sorted lists
+    sort_and_display_lists(teacher_list)
     
     # List the top two teachers, next two teachers, last teacher and number of teachers
     display_pairs_last_count(teacher_list)
@@ -94,32 +84,18 @@ def main():
     # Get a new favourite teacher
     teacher_list = get_new_fav(teacher_list)
     
-    # Sort lists again 
-    # Create list sorted alphabetically
-    teacher_alpha_list = sort_alpha(teacher_list)
-
-    # Create list sorted reverse alphabetically
-    teacher_rev_alpha_list = sort_rev_alpha(teacher_alpha_list)
-
-    # Display teachers in different orders
-    display_lists(teacher_list, teacher_alpha_list, teacher_rev_alpha_list)
+    # Create and display sorted lists
+    sort_and_display_lists(teacher_list)
     
     # List the top two teachers, next two teachers, last teacher and number of teachers
     display_pairs_last_count(teacher_list)
-
     
     # Remove a teacher
     teacher_list = remove_teacher(teacher_list)
     
-    # Create list sorted alphabetically
-    teacher_alpha_list = sort_alpha(teacher_list)
+    # Create and display sorted lists
+    sort_and_display_lists(teacher_list)
 
-    # Create list sorted reverse alphabetically
-    teacher_rev_alpha_list = sort_rev_alpha(teacher_alpha_list)
-
-    # Display teachers in different orders
-    display_lists(teacher_list, teacher_alpha_list, teacher_rev_alpha_list)
-    
     # List the top two teachers, next two teachers, last teacher and number of teachers
     display_pairs_last_count(teacher_list)
     
