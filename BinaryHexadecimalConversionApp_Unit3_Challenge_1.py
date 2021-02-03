@@ -43,3 +43,11 @@ print("Hexadecimal values from {} to {}:".format(min, max))
 for j in range(min, max+1):
     print(hex(j))
 
+print() # blank line
+enter = input("Press Enter to see all values from 1 to {}".format(val))
+print("Decimal----Binary----Hexadecimal") # column headings
+print("--------------------------------") # divider line
+if enter == "":  # input is Enter key
+    for j in range(1, max+1):
+        print("{}----{}----{}".format(j, bin(j), hex(j)))
+
