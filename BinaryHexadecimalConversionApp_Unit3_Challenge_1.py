@@ -12,3 +12,17 @@
 # Prompt for user to press enter to display all values
 # using format of decimal number then binary then hexadecimal on same line separated by "----"
 
+
+# print welcome banner
+print("Welcome to the Binary/Hexadecimal Converter app")
+
+# get value
+val = input("Compute binary and hexidecimal values up to the following decimal number: ")
+print("Generating lists .... complete!")
+
+# Get range of slice to display
+print("Using slices, we will now show a portion of each list.")
+min = input("What decimal number would you like to start at: ")
+max = input("What decimal number would you like to stop at: ")
+
+
