@@ -18,11 +18,16 @@ print("Welcome to the Binary/Hexadecimal Converter app")
 
 # get value
 val = input("Compute binary and hexidecimal values up to the following decimal number: ")
+val = int(val) # convert string to integer
 print("Generating lists .... complete!")
 
 # Get range of slice to display
 print("Using slices, we will now show a portion of each list.")
 min = input("What decimal number would you like to start at: ")
+min = int(min) # convert string to integer
 max = input("What decimal number would you like to stop at: ")
+max = int(max) # convert string to integer
 
-
+print("Decimal values from {} to {}:".format(min, max))
+for j in range(min, max+1):
+    print(j)
