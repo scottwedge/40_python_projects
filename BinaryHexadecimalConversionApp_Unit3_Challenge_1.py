@@ -28,6 +28,18 @@ min = int(min) # convert string to integer
 max = input("What decimal number would you like to stop at: ")
 max = int(max) # convert string to integer
 
+print() # blank line
 print("Decimal values from {} to {}:".format(min, max))
 for j in range(min, max+1):
     print(j)
+
+print() # blank line
+print("Binary values from {} to {}:".format(min, max))
+for j in range(min, max+1):
+    print(bin(j))
+
+print() # blank line
+print("Hexadecimal values from {} to {}:".format(min, max))
+for j in range(min, max+1):
+    print(hex(j))
+
