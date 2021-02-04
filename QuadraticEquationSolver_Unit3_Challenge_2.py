@@ -40,6 +40,8 @@ for n in range(1, num_eq + 1):
     sol1 =  (-b-cmath.sqrt(d))/(2 * a)
     sol2 =  (-b+cmath.sqrt(d))/(2 * a)
 
-    print("First solution is: {}".format(sol1))
-    print("Second solution is: {}".format(sol2))
+    print("        x1 is: {}".format(sol1))
+    print("        x2 is: {}".format(sol2))
     
+print() # blank line
+print("Thank you for using the Quadratic Solver App. Goodbye.")
