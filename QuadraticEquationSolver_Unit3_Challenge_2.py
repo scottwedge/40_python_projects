@@ -4,6 +4,7 @@
 # Explain format of a quadratic equation 
 # Ask how many equations will be solved today.
 
+import cmath
 
 print("Welcome to the Quadratic Solver App.")
 print() # blank line
@@ -17,14 +18,28 @@ print()
 num_eq = input("How many equations would you like to solve today: ")
 num_eq = int(num_eq) # convert string input to integer
 
-for j in range(1, num_eq + 1):
+for n in range(1, num_eq + 1):
     print() # blank line
-    print("Solving equation #{}".format(j))
+    print("Solving equation #{}".format(n))
     print("----------------------------------------------------")
     print() # blank line
     a = input("Please enter your value of a (coefficient of x**2): ")
+    a = float(a)
     b = input("Please enter your value of b (coefficient of x): ")
+    b = float(b)
     c = input("Please enter your value of c (coefficient): ")
+    c = float(c)
     print() # blank line
     print("Your solutions to {}x**2 + {}x + {} are:".format(a, b, c))
 
+    # d = b**2 - 4*a*c
+    # sol1 =  (-b-cmath.sqrt(d))/(2 * a)
+    # sol1 =  (-b+cmath.sqrt(d))/(2 * a)
+
+    d = b**2 - 4*a*c
+    sol1 =  (-b-cmath.sqrt(d))/(2 * a)
+    sol2 =  (-b+cmath.sqrt(d))/(2 * a)
+
+    print("First solution is: {}".format(sol1))
+    print("Second solution is: {}".format(sol2))
+    
