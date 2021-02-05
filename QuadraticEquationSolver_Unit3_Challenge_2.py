@@ -3,6 +3,8 @@
 # Welcome banner
 # Explain format of a quadratic equation 
 # Ask how many equations will be solved today.
+# For each equation, enter values for coefficients then display two solutions
+# Then thank user and say goodbye
 
 import cmath
 
