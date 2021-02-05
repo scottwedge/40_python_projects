@@ -17,6 +17,15 @@ def welcome():
     print("Where a is the real portion and bj is the imaginary portion.")
     print()
 
+def prompt_for_values():
+    a = input("Please enter your value of a (coefficient of x**2): ")
+    a = float(a)
+    b = input("Please enter your value of b (coefficient of x): ")
+    b = float(b)
+    c = input("Please enter your value of c (coefficient): ")
+    c = float(c)
+    return (a, b, c)
+
 
 def main():
     # print welcome and explain quadratic equations
@@ -30,12 +39,7 @@ def main():
         print("Solving equation #{}".format(n))
         print("----------------------------------------------------")
         print() # blank line
-        a = input("Please enter your value of a (coefficient of x**2): ")
-        a = float(a)
-        b = input("Please enter your value of b (coefficient of x): ")
-        b = float(b)
-        c = input("Please enter your value of c (coefficient): ")
-        c = float(c)
+        (a, b, c) = prompt_for_values()
         print() # blank line
         print("Your solutions to {}x**2 + {}x + {} are:".format(a, b, c))
     
