@@ -34,9 +34,17 @@ print("{}! = {}".format(fact_str, f_string))
 # Use math library to calculate factorial
 print() # blank line
 print("Here is the result from the math library:")
-print("The factorial of {} is {}!".format(fact_str, math.factorial(10)))
+print("The factorial of {} is {}!".format(fact_str, math.factorial(fact_num)))
 
 # Calculate using own function and display result
 print() # blank line
 print("Here is the result from my own algorithm:")
 print("The factorial of {} is {}!".format(fact_str, fact(fact_num)))
+print() # blank line
+
+# Compare math and own algorithm values
+if math.factorial(fact_num) == fact(fact_num):
+    print("It is shown twice that {}! = {} (with excitement)".format(fact_num, fact(fact_num)))
+else:
+    print("The values differ with math module result of {} different than own \
+calculation of {}".format(math.factorial(fact_num), fact(fact_num)))
