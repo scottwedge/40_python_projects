@@ -10,6 +10,14 @@
 # Import modules
 import math
 
+# Functions
+def fact(n):
+    product = 1
+    for j in range(1, n+1):
+        product = product * j
+    return product
+
+
 print("Welcome to the Factorial Calculator App.")
 print() # blank line
 
@@ -28,3 +36,7 @@ print() # blank line
 print("Here is the result from the math library:")
 print("The factorial of {} is {}!".format(fact_str, math.factorial(10)))
 
+# Calculate using own function and display result
+print() # blank line
+print("Here is the result from my own algorithm:")
+print("The factorial of {} is {}!".format(fact_str, fact(fact_num)))
