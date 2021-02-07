@@ -28,5 +28,12 @@ elif num >= 2:
 else:
     print("number must be integer greater than zero")
 
-print(fib_list)
+for j in range(num): 
+    print(fib_list[j])  # print Fibonacci number from list
 
+print() # blank line
+print("The corresponding Golden Ratios are: ")
+# Calculate Golden Ratio (last number divided by second last number) and print
+for j in range(2, num+1):
+    gr = fib_list[j-1]/fib_list[j-2]
+    print(gr)
