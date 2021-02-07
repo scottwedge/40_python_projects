@@ -37,3 +37,7 @@ print("The corresponding Golden Ratios are: ")
 for j in range(2, num+1):
     gr = fib_list[j-1]/fib_list[j-2]
     print(gr)
+
+print() # blank line
+print("The ratio of consecutive Fibonacci terms approaches Phi: 1.618...")
+
