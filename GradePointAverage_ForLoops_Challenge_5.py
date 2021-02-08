@@ -40,4 +40,5 @@ print() # blank line
 # Display grade summary
 print("{}'s grade summary:".format(name))
 print("Total number of grades: {}".format(len(grade_list))
-print("Highest grade: {}".format(grade_list[0]))
+print("Highest grade: {}".format(grade_list[0]))   # first number in list is highest grade
+print("Lowest grade: {}".format(grade_list[-1])) # last number in list is lowest grade
