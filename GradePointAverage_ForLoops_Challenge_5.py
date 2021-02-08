@@ -21,3 +21,9 @@ name = name.title() # convert to title format
 num = input("How many grades would you like to enter: ")
 num = int(num) # convert input string type to integer type
 
+# Get grades
+grade_list = [] # initialize list
+for j in range(num):
+    grade = input("Enter grade: ")
+    grade = float(grade) # convert input from string type to float type
+    grade_list.append(grade) # add input to list
