@@ -27,3 +27,12 @@ for j in range(num):
     grade = input("Enter grade: ")
     grade = float(grade) # convert input from string type to float type
     grade_list.append(grade) # add input to list
+
+print() # blank line
+# Sort grades highest to lowest
+grade_list.sort()
+grade_list.reverse()
+print("Grades highest to lowest: ")
+for j in range(num):
+    print("     {}".format(grade_list[j]))
+
