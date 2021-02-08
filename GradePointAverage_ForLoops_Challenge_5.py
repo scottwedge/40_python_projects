@@ -11,6 +11,13 @@
 # Change one grade and see how it changes the average
 # Display new summary of grades
 
+# Functions
+def average_grade(list):
+    sum = 0 # initialize sum
+    num = len(list) 
+    for j in range(num):
+        sum = sum + list[j]
+    return sum/num
 
 # Welcome header
 print("Welcome to the Average Calculator App.")
@@ -34,11 +41,12 @@ grade_list.sort()
 grade_list.reverse()
 print("Grades highest to lowest: ")
 for j in range(num):
-    print("     {}".format(grade_list[j]))
+    print("\t{}".format(grade_list[j]))
 
 print() # blank line
 # Display grade summary
 print("{}'s grade summary:".format(name))
-print("Total number of grades: {}".format(len(grade_list))
-print("Highest grade: {}".format(grade_list[0]))   # first number in list is highest grade
-print("Lowest grade: {}".format(grade_list[-1])) # last number in list is lowest grade
+print("\tTotal number of grades: {}".format(len(grade_list)))
+print("\tHighest grade: {}".format(grade_list[0]))   # first number in list is highest grade
+print("\tLowest grade: {}".format(grade_list[-1])) # last number in list is lowest grade
+print("\tAverage grade: {}".format(average_grade(grade_list)))
