@@ -36,3 +36,8 @@ print("Grades highest to lowest: ")
 for j in range(num):
     print("     {}".format(grade_list[j]))
 
+print() # blank line
+# Display grade summary
+print("{}'s grade summary:".format(name))
+print("Total number of grades: {}".format(len(grade_list))
+print("Highest grade: {}".format(grade_list[0]))
