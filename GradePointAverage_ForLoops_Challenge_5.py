@@ -114,3 +114,9 @@ print() # blank line
 print("{}'s New Grade Summary:".format(name))
 show_summary(fantasy_grade_list)
 
+print() # blank line
+old_av = average_grade(grade_list) 
+fantasy_av = average_grade(fantasy_grade_list)
+print("Your new average would be a {} compared to your real average of {}!".format(fantasy_av, old_av))
+print("That is a change of {} points".format(fantasy_av - old_av))
+print() # blank line
