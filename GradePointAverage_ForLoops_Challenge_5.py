@@ -19,12 +19,23 @@ def average_grade(list):
         sum = sum + list[j]
     return sum/num
 
+def sum_list(list):
+    sum = 0
+    for j in (len(list)):
+        sum = sum + list[j]
+    return sum
+
+def calc_req(desire, grade_list):
+    total = desire * (len(grade_list) + 1)
+    need = total - sum(grade_list)
+    return need
+
 # Welcome header
 print("Welcome to the Average Calculator App.")
 print() # blank line
 
 name = input("What is your name: ")
-name = name.title() # convert to title format
+name = name.title() # convert input of any format to title format
 num = input("How many grades would you like to enter: ")
 num = int(num) # convert input string type to integer type
 
@@ -50,3 +61,15 @@ print("\tTotal number of grades: {}".format(len(grade_list)))
 print("\tHighest grade: {}".format(grade_list[0]))   # first number in list is highest grade
 print("\tLowest grade: {}".format(grade_list[-1])) # last number in list is lowest grade
 print("\tAverage grade: {}".format(average_grade(grade_list)))
+
+print() # blank line
+
+# get desired average
+desire = input("What is your desired average: ")
+desire = float(desire) # convert input string type to float type
+
+req_grade = calc_req(desire, grade_list)
+# wish user good luck and state what next grade must be to get that average.
+print() # blank line
+print("Good luck {}!".format(name))
+print("You will need to get a {} on your next assignment to earn a {} average.".format(req_grade, desire))
