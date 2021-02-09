@@ -25,24 +25,18 @@ def sort_grades(grade_list): # Sort grades highest to lowest
     grade_list.reverse()
 
 def show_grades(grade_list):
-    print() # blank line
-    print("Grades highest to lowest: ")
     for j in range(num):
         print("\t{}".format(grade_list[j]))
     
-    print() # blank line
+def show_summary(grade_list):
+#    print() # blank line
     # Display grade summary
-    print("{}'s grade summary:".format(name))
+#    print("{}'s Grade Summary:".format(name))
     print("\tTotal number of grades: {}".format(len(grade_list)))
     print("\tHighest grade: {}".format(grade_list[0]))   # first number in list is highest grade
     print("\tLowest grade: {}".format(grade_list[-1])) # last number in list is lowest grade
     print("\tAverage grade: {}".format(average_grade(grade_list)))
 
-def get_sort_show_grades():
-    grade_list = get_grades(num)
-    sort_grades(grade_list)
-    show_grades(grade_list)
-    return grade_list
 
 def average_grade(list):
     sum = 0 # initialize sum
@@ -72,7 +66,16 @@ num = input("How many grades would you like to enter: ")
 num = int(num) # convert input string type to integer type
 
 # Get grades then sort them then display them
-grade_list = get_sort_show_grades()
+grade_list = get_grades(num)
+sort_grades(grade_list)
+
+print("Grades Highest to Lowest: ")
+show_grades(grade_list)
+
+# Display grades summary
+print() # blank line
+print("{}'s Grade Summary:".format(name))
+show_summary(grade_list)
 
 # get desired average
 print() # blank line
@@ -94,4 +97,20 @@ grade_to_change = float(grade_to_change) # convert input string type to float ty
 # prompt for new grade
 print() # blank line
 new_grade = input("What grade would you like to change {} to: ".format(grade_to_change))
+new_grade = float(new_grade) # convert input string type to float type
+
+# copy grade list, remove old grade, add new grade, resort list and display list
+fantasy_grade_list = grade_list.copy()
+fantasy_grade_list.remove(grade_to_change) # remove old grade
+fantasy_grade_list.append(new_grade)
+sort_grades(fantasy_grade_list)
+
+print() # blank line
+print("New Grades Highest to Lowest: ")
+show_grades(fantasy_grade_list)
+
+# Display grades summary
+print() # blank line
+print("{}'s New Grade Summary:".format(name))
+show_summary(fantasy_grade_list)
 
