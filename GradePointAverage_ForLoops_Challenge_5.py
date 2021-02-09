@@ -16,7 +16,7 @@ def get_grades(num): # get grades from user
     grade_list = [] # initialize list
     for j in range(num):
         grade = input("Enter grade: ")
-        grade = float(grade) # convert input from string type to float type
+        grade = int(grade) # convert input from string type to int type
         grade_list.append(grade) # add input to list
     return grade_list
 
@@ -92,12 +92,12 @@ print("You will need to get a {} on your next assignment to earn a {} average.".
 print() # blank line
 print("Let's see what your average could have been if you did better/worse on an assignment.")
 grade_to_change = input("What grade would you like to change: ")
-grade_to_change = float(grade_to_change) # convert input string type to float type
+grade_to_change = int(grade_to_change) # convert input string type to int type
 
 # prompt for new grade
 print() # blank line
 new_grade = input("What grade would you like to change {} to: ".format(grade_to_change))
-new_grade = float(new_grade) # convert input string type to float type
+new_grade = int(new_grade) # convert input string type to int type
 
 # copy grade list, remove old grade, add new grade, resort list and display list
 fantasy_grade_list = grade_list.copy()
@@ -120,3 +120,8 @@ fantasy_av = average_grade(fantasy_grade_list)
 print("Your new average would be a {} compared to your real average of {}!".format(fantasy_av, old_av))
 print("That is a change of {} points".format(fantasy_av - old_av))
 print() # blank line
+
+# print too bad and list old list of grades
+print("Too bad your original grades are still the same!")
+print(grade_list)
+print("You should go ask for extra credit!")
