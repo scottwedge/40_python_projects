@@ -29,13 +29,12 @@ def show_grades(grade_list):
         print("\t{}".format(grade_list[j]))
     
 def show_summary(grade_list):
-#    print() # blank line
     # Display grade summary
-#    print("{}'s Grade Summary:".format(name))
-    print("\tTotal number of grades: {}".format(len(grade_list)))
-    print("\tHighest grade: {}".format(grade_list[0]))   # first number in list is highest grade
-    print("\tLowest grade: {}".format(grade_list[-1])) # last number in list is lowest grade
-    print("\tAverage grade: {}".format(average_grade(grade_list)))
+    print() # blank line
+    print("\tTotal Number of Grades: {}".format(len(grade_list)))
+    print("\tHighest Grade: {}".format(grade_list[0]))   # first number in list is highest grade
+    print("\tLowest Grade: {}".format(grade_list[-1])) # last number in list is lowest grade
+    print("\tAverage: {}".format(average_grade(grade_list)))
 
 
 def average_grade(list):
