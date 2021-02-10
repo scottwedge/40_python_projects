@@ -18,19 +18,29 @@ def user_list():
     users = ["me", "you", "us", "them"]
     return users
 
-def qty_to_cost(min, max, cost):
+def qty_to_cost(min, to_or_over, max, cost):
     print("Shipping orders {} to {}:\t\t${} each".format(min, max, cost))
 
-def qty_over_cost(min, cost):
+def qty_over_cost(min, to_or_over, cost):
     print("Shipping orders over {}:\t\t${} each".format(min, cost))
 
-def current_shipping_prices():
+def shipping_rates():
+    rates = [(0, "to", 100, "5.10"),\
+    (100, "to", 500, "5.00"),\
+    (500, "to", 1000, "4.95"),\
+    (1000, "over", "4.80")]
+    return rates
+
+def current_shipping_prices(rates):
     print("Current shipping prices are as follows:")
     print() # blank line
-    qty_to_cost(0, 100, "5.10")
-    qty_to_cost(100, 500, "5.00")
-    qty_to_cost(500, 1000, "4.95")
-    qty_over_cost(1000, "4.80")
+    for j in rates:
+        if "to" in j:
+            (a,b,c,d) = j
+            qty_to_cost(a,b,c,d) #(0, "to", 100, "5.10") for example
+        elif "over" in j:
+            (a,b,d) = j # no maximum "c"
+            qty_over_cost(a, b, d) # (1000, "over", "4.80") for example
 
 
 
@@ -45,4 +55,10 @@ if name not in user_list():
 else:
     print("Hello {}. Welcome back to your account.".format(name))
 
-    current_shipping_prices()
+    current_shipping_prices(shipping_rates())
+
+    print() # blank line
+    qty = input("How many items would you like to ship: ")
+    qty = int(qty) # convert input string type to integer
+
+    print("To ship {} it will cost you {} at {} per item".format(qty, calc(qty,cost), cost))
