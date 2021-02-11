@@ -80,3 +80,10 @@ else:
 
 print() # blank line
 y_or_n = input("Would you like to place this order (y/n): ")
+
+if y_or_n == "y":
+    print("Okay. Shipping your {} items".format(qty))
+elif y_or_n == "n":
+    print("Okay. Not shipping anything.")
+
+
