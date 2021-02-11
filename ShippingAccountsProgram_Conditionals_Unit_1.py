@@ -76,4 +76,4 @@ else:
 
     (cost, price) = calc(qty)
 
-    print("To ship {} it will cost you {} at {} per item".format(qty, cost, price))
+    print("To ship {} it will cost you {:.2f} at {} per item".format(qty, cost, price))
