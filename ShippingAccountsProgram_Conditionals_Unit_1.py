@@ -42,6 +42,19 @@ def current_shipping_prices(rates):
             (a,b,d) = j # no maximum "c"
             qty_over_cost(a, b, d) # (1000, "over", "4.80") for example
 
+def calc(qty):
+    if qty > 1000:
+        price = 4.8
+    elif qty >= 500:
+        price = 4.95
+    elif qty >= 100:
+        price = 5
+    else:
+        price = 5.1
+    cost = qty * price
+    return (cost, price)
+        
+    
 
 
 
@@ -61,4 +74,6 @@ else:
     qty = input("How many items would you like to ship: ")
     qty = int(qty) # convert input string type to integer
 
-    print("To ship {} it will cost you {} at {} per item".format(qty, calc(qty,cost), cost))
+    (cost, price) = calc(qty)
+
+    print("To ship {} it will cost you {} at {} per item".format(qty, cost, price))
