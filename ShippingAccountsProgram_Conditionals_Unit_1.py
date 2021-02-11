@@ -77,3 +77,6 @@ else:
     (cost, price) = calc(qty)
 
     print("To ship {} it will cost you {:.2f} at {} per item".format(qty, cost, price))
+
+print() # blank line
+y_or_n = input("Would you like to place this order (y/n): ")
