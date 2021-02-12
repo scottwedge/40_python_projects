@@ -105,7 +105,6 @@ def main():
     fantasy_grade_list.remove(grade_to_change) # remove old grade
     fantasy_grade_list.append(new_grade)
     sort_grades(fantasy_grade_list)
-    
     print() # blank line
     print("New Grades Highest to Lowest: ")
     show_grades(fantasy_grade_list)
@@ -122,7 +121,7 @@ def main():
     print("That is a change of {} points".format(fantasy_av - old_av))
     print() # blank line
     
-    # print too bad and list old list of grades
+    # print "too bad" and list old list of grades
     print("Too bad your original grades are still the same!")
     print(grade_list)
     print("You should go ask for extra credit!")
