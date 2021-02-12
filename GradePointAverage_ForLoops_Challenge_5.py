@@ -25,7 +25,7 @@ def sort_grades(grade_list): # Sort grades highest to lowest
     grade_list.reverse()
 
 def show_grades(grade_list):
-    for j in range(num):
+    for j in range(len(grade_list)):
         print("\t{}".format(grade_list[j]))
     
 def show_summary(grade_list):
@@ -55,72 +55,78 @@ def calc_req(desire, grade_list):
     need = total - sum(grade_list)
     return need
 
-# Welcome header
-print("Welcome to the Average Calculator App.")
-print() # blank line
 
-name = input("What is your name: ")
-name = name.title() # convert input of any format to title format
-num = input("How many grades would you like to enter: ")
-num = int(num) # convert input string type to integer type
+def main():
+    # Welcome header
+    print("Welcome to the Average Calculator App.")
+    print() # blank line
+    
+    name = input("What is your name: ")
+    name = name.title() # convert input of any format to title format
+    num = input("How many grades would you like to enter: ")
+    num = int(num) # convert input string type to integer type
+    
+    # Get grades then sort them then display them
+    grade_list = get_grades(num)
+    sort_grades(grade_list)
+    
+    print("Grades Highest to Lowest: ")
+    show_grades(grade_list)
+    
+    # Display grades summary
+    print() # blank line
+    print("{}'s Grade Summary:".format(name))
+    show_summary(grade_list)
+    
+    # get desired average
+    print() # blank line
+    desire = input("What is your desired average: ")
+    desire = float(desire) # convert input string type to float type
+    
+    req_grade = calc_req(desire, grade_list)
+    # wish user good luck and state what next grade must be to get that average.
+    print() # blank line
+    print("Good luck {}!".format(name))
+    print("You will need to get a {} on your next assignment to earn a {} average.".format(req_grade, desire))
+    
+    # Change one grade and see how that affects overall average
+    print() # blank line
+    print("Let's see what your average could have been if you did better/worse on an assignment.")
+    grade_to_change = input("What grade would you like to change: ")
+    grade_to_change = int(grade_to_change) # convert input string type to int type
+    
+    # prompt for new grade
+    print() # blank line
+    new_grade = input("What grade would you like to change {} to: ".format(grade_to_change))
+    new_grade = int(new_grade) # convert input string type to int type
+    
+    # copy grade list, remove old grade, add new grade, resort list and display list
+    fantasy_grade_list = grade_list.copy()
+    fantasy_grade_list.remove(grade_to_change) # remove old grade
+    fantasy_grade_list.append(new_grade)
+    sort_grades(fantasy_grade_list)
+    
+    print() # blank line
+    print("New Grades Highest to Lowest: ")
+    show_grades(fantasy_grade_list)
+    
+    # Display grades summary
+    print() # blank line
+    print("{}'s New Grade Summary:".format(name))
+    show_summary(fantasy_grade_list)
+    
+    print() # blank line
+    old_av = average_grade(grade_list) 
+    fantasy_av = average_grade(fantasy_grade_list)
+    print("Your new average would be a {} compared to your real average of {}!".format(fantasy_av, old_av))
+    print("That is a change of {} points".format(fantasy_av - old_av))
+    print() # blank line
+    
+    # print too bad and list old list of grades
+    print("Too bad your original grades are still the same!")
+    print(grade_list)
+    print("You should go ask for extra credit!")
 
-# Get grades then sort them then display them
-grade_list = get_grades(num)
-sort_grades(grade_list)
 
-print("Grades Highest to Lowest: ")
-show_grades(grade_list)
-
-# Display grades summary
-print() # blank line
-print("{}'s Grade Summary:".format(name))
-show_summary(grade_list)
-
-# get desired average
-print() # blank line
-desire = input("What is your desired average: ")
-desire = float(desire) # convert input string type to float type
-
-req_grade = calc_req(desire, grade_list)
-# wish user good luck and state what next grade must be to get that average.
-print() # blank line
-print("Good luck {}!".format(name))
-print("You will need to get a {} on your next assignment to earn a {} average.".format(req_grade, desire))
-
-# Change one grade and see how that affects overall average
-print() # blank line
-print("Let's see what your average could have been if you did better/worse on an assignment.")
-grade_to_change = input("What grade would you like to change: ")
-grade_to_change = int(grade_to_change) # convert input string type to int type
-
-# prompt for new grade
-print() # blank line
-new_grade = input("What grade would you like to change {} to: ".format(grade_to_change))
-new_grade = int(new_grade) # convert input string type to int type
-
-# copy grade list, remove old grade, add new grade, resort list and display list
-fantasy_grade_list = grade_list.copy()
-fantasy_grade_list.remove(grade_to_change) # remove old grade
-fantasy_grade_list.append(new_grade)
-sort_grades(fantasy_grade_list)
-
-print() # blank line
-print("New Grades Highest to Lowest: ")
-show_grades(fantasy_grade_list)
-
-# Display grades summary
-print() # blank line
-print("{}'s New Grade Summary:".format(name))
-show_summary(fantasy_grade_list)
-
-print() # blank line
-old_av = average_grade(grade_list) 
-fantasy_av = average_grade(fantasy_grade_list)
-print("Your new average would be a {} compared to your real average of {}!".format(fantasy_av, old_av))
-print("That is a change of {} points".format(fantasy_av - old_av))
-print() # blank line
-
-# print too bad and list old list of grades
-print("Too bad your original grades are still the same!")
-print(grade_list)
-print("You should go ask for extra credit!")
+if __name__ == "__main__":
+    main()
