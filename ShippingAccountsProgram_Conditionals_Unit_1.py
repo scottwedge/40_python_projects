@@ -56,34 +56,36 @@ def calc(qty):
         
     
 
+def main():
 
-
-header()
-
-name = input("Hello, what is your username: ")
-print() # blank line
-
-if name not in user_list():
-    print("You do not have an account. Goodbye.") # not a valid user - program stops here
-else:
-    print("Hello {}. Welcome back to your account.".format(name))
-
-    current_shipping_prices(shipping_rates())
-
+    header()
+    
+    name = input("Hello, what is your username: ")
     print() # blank line
-    qty = input("How many items would you like to ship: ")
-    qty = int(qty) # convert input string type to integer
-
-    (cost, price) = calc(qty)
-
-    print("To ship {} it will cost you {:.2f} at {} per item".format(qty, cost, price))
-
-print() # blank line
-y_or_n = input("Would you like to place this order (y/n): ")
-
-if y_or_n == "y":
-    print("Okay. Shipping your {} items".format(qty))
-elif y_or_n == "n":
-    print("Okay. Not shipping anything.")
-
-
+    
+    if name not in user_list():
+        print("You do not have an account. Goodbye.") # not a valid user - program stops here
+    else:
+        print("Hello {}. Welcome back to your account.".format(name))
+    
+        current_shipping_prices(shipping_rates())
+    
+        print() # blank line
+        qty = input("How many items would you like to ship: ")
+        qty = int(qty) # convert input string type to integer
+    
+        (cost, price) = calc(qty)
+    
+        print("To ship {} it will cost you {:.2f} at {} per item".format(qty, cost, price))
+    
+    print() # blank line
+    y_or_n = input("Would you like to place this order (y/n): ")
+    
+    if y_or_n == "y":
+        print("Okay. Shipping your {} items".format(qty))
+    elif y_or_n == "n":
+        print("Okay. Not shipping anything.")
+    
+    
+if __name__ == "__main__":
+    main()
