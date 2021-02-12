@@ -55,6 +55,10 @@ def calc(qty):
     return (cost, price)
         
     
+# Tests
+def test_calc():
+    assert (9600, 4.8) == calc(2000)
+
 
 def main():
 
