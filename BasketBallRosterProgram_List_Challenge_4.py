@@ -43,7 +43,7 @@ def main():
     inj_pos = random.randint(0,4)
 
     print() # blank line
-    print("Oh no, {} is injured.".format(roster[position[inj_pos]]))
+    print("Oh no, {} the {} is injured.".format(roster[position[inj_pos]], position[inj_pos])) # print name and position
     print("Your roster only has 4 players.")
     player = input("Who will take {}'s spot: ".format(roster[position[inj_pos]]))
     roster[position[inj_pos]] = player.title()  # convert to title format
