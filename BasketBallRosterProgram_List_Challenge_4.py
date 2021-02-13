@@ -8,10 +8,13 @@
 # Display count and aligned list of position and names of final team
 
 
-def main():
-    # Welcome user
+def header():
     print("Welcome to the Basketball Roster program.")
     print() # blank line
+
+def main():
+    # Welcome user
+    header()
     
     # List roster positions
     position = ["point guard", "shooting guard","small forward","power forward","center"]
