@@ -7,6 +7,8 @@
 # Prompt for replacement for that position
 # Display count and aligned list of position and names of final team
 
+# Imports
+import random
 
 def header():
     print("Welcome to the Basketball Roster program.")
@@ -37,12 +39,14 @@ def main():
     for k in position:
         print("          {:20s} {:20s}".format(k.title(), roster[k]))
     
-    # Simulate injury
+    # Simulate random injury
+    inj_pos = random.randint(0,4)
+
     print() # blank line
-    print("Oh no, {} is injured.".format(roster[position[0]]))
+    print("Oh no, {} is injured.".format(roster[position[inj_pos]]))
     print("Your roster only has 4 players.")
-    player = input("Who will take {}'s spot: ".format(roster[position[0]]))
-    roster[position[0]] = player.title()  # convert to title format
+    player = input("Who will take {}'s spot: ".format(roster[position[inj_pos]]))
+    roster[position[inj_pos]] = player.title()  # convert to title format
     
     # Display roster again
     print() # blank line
