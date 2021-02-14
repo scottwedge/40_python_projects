@@ -5,18 +5,22 @@
 # output value should be accurate to two decimal places
 # Starts with a welcome banner before prompt for user input.
 
-# Welcome message
-print("Welcome to the Miles Per Hour to Meters Per Second Conversion App.")
 
-# Prompt for user input
-user_speed = input("What is your speed in miles per hour? ")
-
-# Convert input to float type
-speed_mph = float(user_speed)
-
-# Convert from miles per hour to meter per second then round to two decimal places
-speed_mps = speed_mph * 1.6
-
-# Print output
-print("Your speed in meters per second is {:.2f} .".format(speed_mps))
-
+def main():
+    # Welcome message
+    print("Welcome to the Miles Per Hour to Meters Per Second Conversion App.")
+    
+    # Prompt for user input
+    user_speed = input("What is your speed in miles per hour? ")
+    
+    # Convert input to float type
+    speed_mph = float(user_speed)
+    
+    # Convert from miles per hour to meter per second then round to two decimal places
+    speed_mps = speed_mph * 1.6
+    
+    # Print output
+    print("Your speed in meters per second is {:.2f} .".format(speed_mps))
+    
+if __name__ == "__main__":
+    main()
