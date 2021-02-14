@@ -5,10 +5,13 @@
 # output value should be accurate to two decimal places
 # Starts with a welcome banner before prompt for user input.
 
+def header():
+    print("Welcome to the Miles Per Hour to Meters Per Second Conversion App.")
+
 
 def main():
     # Welcome message
-    print("Welcome to the Miles Per Hour to Meters Per Second Conversion App.")
+    header()
     
     # Prompt for user input
     user_speed = input("What is your speed in miles per hour? ")
