@@ -8,6 +8,9 @@
 def header():
     print("Welcome to the Miles Per Hour to Meters Per Second Conversion App.")
 
+def convert_mph_to_mps(speed_mph):
+    speed_mps = speed_mph * 1.6
+    return speed_mps
 
 def main():
     # Welcome message
@@ -20,7 +23,7 @@ def main():
     speed_mph = float(user_speed)
     
     # Convert from miles per hour to meter per second then round to two decimal places
-    speed_mps = speed_mph * 1.6
+    speed_mps = convert_mph_to_mps(speed_mph)
     
     # Print output
     print("Your speed in meters per second is {:.2f} .".format(speed_mps))
