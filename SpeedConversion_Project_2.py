@@ -5,6 +5,11 @@
 # output value should be accurate to two decimal places
 # Starts with a welcome banner before prompt for user input.
 
+# Tests
+def test_convert_mph_to_mps():
+    assert convert_mph_to_mps(100) == 160
+
+# Functions
 def header():
     print("Welcome to the Miles Per Hour to Meters Per Second Conversion App.")
 
