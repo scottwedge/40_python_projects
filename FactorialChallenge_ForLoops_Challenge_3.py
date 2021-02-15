@@ -18,33 +18,37 @@ def fact(n):
     return product
 
 
-print("Welcome to the Factorial Calculator App.")
-print() # blank line
+def main():
+    print("Welcome to the Factorial Calculator App.")
+    print() # blank line
+    
+    fact_str = input("What number would you like to compute the factorial of? ")
+    fact_num = int(fact_str) # convert input string type to integer type
+    
+    # Create factorial string then print it
+    f_string = ""
+    for j in range(1, fact_num): 
+        f_string = f_string + str(j) + "*"  # create string of 1*2*3*...* 
+    f_string = f_string + str(fact_num)   # add final value of fact_num to string
+    print("{}! = {}".format(fact_str, f_string))
+    
+    # Use math library to calculate factorial
+    print() # blank line
+    print("Here is the result from the math library:")
+    print("The factorial of {} is {}!".format(fact_str, math.factorial(fact_num)))
+    
+    # Calculate using own function and display result
+    print() # blank line
+    print("Here is the result from my own algorithm:")
+    print("The factorial of {} is {}!".format(fact_str, fact(fact_num)))
+    print() # blank line
+    
+    # Compare math and own algorithm values
+    if math.factorial(fact_num) == fact(fact_num):
+        print("It is shown twice that {}! = {} (with excitement)".format(fact_num, fact(fact_num)))
+    else:
+        print("The values differ with math module result of {} different than own \
+    calculation of {}".format(math.factorial(fact_num), fact(fact_num)))
 
-fact_str = input("What number would you like to compute the factorial of? ")
-fact_num = int(fact_str) # convert input string type to integer type
-
-# Create factorial string then print it
-f_string = ""
-for j in range(1, fact_num): 
-    f_string = f_string + str(j) + "*"  # create string of 1*2*3*...* 
-f_string = f_string + str(fact_num)   # add final value of fact_num to string
-print("{}! = {}".format(fact_str, f_string))
-
-# Use math library to calculate factorial
-print() # blank line
-print("Here is the result from the math library:")
-print("The factorial of {} is {}!".format(fact_str, math.factorial(fact_num)))
-
-# Calculate using own function and display result
-print() # blank line
-print("Here is the result from my own algorithm:")
-print("The factorial of {} is {}!".format(fact_str, fact(fact_num)))
-print() # blank line
-
-# Compare math and own algorithm values
-if math.factorial(fact_num) == fact(fact_num):
-    print("It is shown twice that {}! = {} (with excitement)".format(fact_num, fact(fact_num)))
-else:
-    print("The values differ with math module result of {} different than own \
-calculation of {}".format(math.factorial(fact_num), fact(fact_num)))
+if __name__ == "__main__":
+    main()
