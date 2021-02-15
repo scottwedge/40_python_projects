@@ -6,13 +6,16 @@
 # Which should approach 1.618
 
 # Functions
+def header():
+    print("Welcome to the Fibonacci Calculator App.")
+    print() # blank line
+
 def fib(last, second_last):
     return last + second_last
 
 def main():
-    print("Welcome to the Fibonacci Calculator App.")
-    print() # blank line
-    
+    header()    
+ 
     num = input("How many digits of the Fibonacci Sequence would you like to compute: ")
     num = int(num) # convert input string to integer
     print() # blank line
