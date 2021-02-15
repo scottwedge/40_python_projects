@@ -7,6 +7,9 @@
 # Then display hypotenuse and area accurate to three decimal spaces.
 
 # Functions
+def header():
+    print("Welcome to the right angle triangle application")
+
 def calc_hyp(a, b):
     hyp = (a**2 + b**2) ** 0.5
     return hyp
@@ -24,7 +27,7 @@ def test_calc_area():
 
 def main():
     # Welcome user and state purpose of application.
-    print("Welcome to the right angle triangle application")
+    header()
 
     # Prompt for first side length.
     user_side_1 = input("What is the first leg of the triangle: ")
