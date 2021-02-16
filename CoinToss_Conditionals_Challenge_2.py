@@ -42,27 +42,31 @@ def print_results(num, head_count, tail_count):
     print("Heads \t\t {}/{} \t {:.1f}".format(head_count, num, head_count/num * 100))
     print("Tails \t\t {}/{} \t {:.1f}".format(tail_count, num, tail_count/num * 100))
 
-header()
+def main():
+    header()
+    
+    num = get_number()
+    
+    see_result = get_see_result()
+    
+    # Initialize counters
+    head_count = 0
+    tail_count = 0 
+    
+    print("Flipping...")
+    for j in range (num):
+       res = flip()
+       if res == True:
+           head_count = head_count + 1
+           if see_result == "y": print("HEAD")
+       else:
+           tail_count = tail_count + 1
+           if see_result == "y": print("TAILS")
+       if head_count == tail_count and see_result == "y":
+           print("At {} flips, the number of heads and tails were equal at {},{} each.".format(head_count + tail_count, head_count, tail_count))
+    
+    # Print summary of all coin tosses
+    print_results(num, head_count, tail_count)
 
-num = get_number()
-
-see_result = get_see_result()
-
-# Initialize counters
-head_count = 0
-tail_count = 0 
-
-print("Flipping...")
-for j in range (num):
-   res = flip()
-   if res == True:
-       head_count = head_count + 1
-       if see_result == "y": print("HEAD")
-   else:
-       tail_count = tail_count + 1
-       if see_result == "y": print("TAILS")
-   if head_count == tail_count and see_result == "y":
-       print("At {} flips, the number of heads and tails were equal at {},{} each.".format(head_count + tail_count, head_count, tail_count))
-
-# Print summary of all coin tosses
-print_results(num, head_count, tail_count)
+if __name__ == "__main__":
+    main()
