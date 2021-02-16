@@ -11,3 +11,14 @@
 # State whether it is a major party or not
 
 
+def header():
+    print("Welcome to the Voter Registration App.")
+    print() # blank line
+
+def get_name():
+    name = input("Please enter your name: ")
+    return name
+
+
+header()
+name = get_name()
