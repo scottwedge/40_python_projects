@@ -30,11 +30,11 @@ def flip():
     random.seed()
     result = random.randint(0,1)
     if result == 1:
-        return True
+        return True # result of HEADS
     else:
-        return False
+        return False # result of TAILS
 
-def print_results(num, head_count, tail_count):
+def summary_results(num, head_count, tail_count):
     print() # blank line
     print("Results of Flipping a Coin {} Times".format(num))
     print() # blank line
@@ -66,7 +66,7 @@ def main():
            print("At {} flips, the number of heads and tails were equal at {},{} each.".format(head_count + tail_count, head_count, tail_count))
     
     # Print summary of all coin tosses
-    print_results(num, head_count, tail_count)
+    summary_results(num, head_count, tail_count)
 
 if __name__ == "__main__":
     main()
