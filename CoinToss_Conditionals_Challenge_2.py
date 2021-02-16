@@ -53,17 +53,16 @@ head_count = 0
 tail_count = 0 
 
 print("Flipping...")
-if see_result == "y":
-    for j in range (num):
-        res = flip()
-        if res == True:
-            head_count = head_count + 1
-            print("HEAD")
-        else:
-            tail_count = tail_count + 1
-            print("TAILS")
-        if head_count == tail_count:
-            print("At {} flips, the number of heads and tails were equal at {},{} each.".format(head_count + tail_count, head_count, tail_count))
+for j in range (num):
+   res = flip()
+   if res == True:
+       head_count = head_count + 1
+       if see_result == "y": print("HEAD")
+   else:
+       tail_count = tail_count + 1
+       if see_result == "y": print("TAILS")
+   if head_count == tail_count and see_result == "y":
+       print("At {} flips, the number of heads and tails were equal at {},{} each.".format(head_count + tail_count, head_count, tail_count))
 
 # Print summary of all coin tosses
 print_results(num, head_count, tail_count)
