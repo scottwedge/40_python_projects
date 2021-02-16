@@ -40,7 +40,18 @@ def list_parties():
 
 def join_party():
     party = input("What party would you like to join: ")
+    print() # blank line
     return party.title() # convert any case to title case
+
+def party_status(party):
+    if party == ("Republican" or "Democratic"):
+        print("That is a major party!")
+    else:
+        print("That is not a major party.")
+
+def congrats(name, party):
+    print("Congratulations {}!  You have joined the {} party!".format(name, party))
+    party_status(party)
 
 
 header()
@@ -52,7 +63,6 @@ age = get_age()
 if age < MIN_AGE:
     print("You are not old enough to register to vote")
 else:
-    congrats(name)
     list_parties()
     party = join_party()
-    print(party)
+    congrats(name, party)
