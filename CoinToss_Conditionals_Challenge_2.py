@@ -34,6 +34,14 @@ def flip():
     else:
         return False
 
+def print_results(num, head_count, tail_count):
+    print() # blank line
+    print("Results of Flipping a Coin {} Times".format(num))
+    print() # blank line
+    print("Side \t\t Count \t\t Percentage")
+    print("Heads \t\t {}/{} \t {:.1f}".format(head_count, num, head_count/num * 100))
+    print("Tails \t\t {}/{} \t {:.1f}".format(tail_count, num, tail_count/num * 100))
+
 header()
 
 num = get_number()
@@ -56,3 +64,6 @@ if see_result == "y":
             print("TAILS")
         if head_count == tail_count:
             print("At {} flips, the number of heads and tails were equal at {},{} each.".format(head_count + tail_count, head_count, tail_count))
+
+# Print summary of all coin tosses
+print_results(num, head_count, tail_count)
