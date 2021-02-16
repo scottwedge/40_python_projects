@@ -6,6 +6,9 @@
 # Display when number of heads = number of tails
 # Display summary of all results for each side: count and percentage
 
+# Imports
+import random
+
 # Functions
 def header():
     print("Welcome to the Coin Toss App")
@@ -17,5 +20,39 @@ def get_number():
     num = int(num) # Convert input string type to integer type
     return num
 
+def get_see_result():
+    see_result = input("Would you like to see the result of each flip (y/n): ")
+    see_result = see_result.lower() # convert to lower case (handle Y/N)
+    return see_result
+
+def flip():
+    # random value either 0 or 1, if 1 then "HEADS"
+    random.seed()
+    result = random.randint(0,1)
+    if result == 1:
+        return True
+    else:
+        return False
 
 header()
+
+num = get_number()
+
+see_result = get_see_result()
+
+# Initialize counters
+head_count = 0
+tail_count = 0 
+
+print("Flipping...")
+if see_result == "y":
+    for j in range (num):
+        res = flip()
+        if res == True:
+            head_count = head_count + 1
+            print("HEAD")
+        else:
+            tail_count = tail_count + 1
+            print("TAILS")
+        if head_count == tail_count:
+            print("At {} flips, the number of heads and tails were equal at {},{} each.".format(head_count + tail_count, head_count, tail_count))
