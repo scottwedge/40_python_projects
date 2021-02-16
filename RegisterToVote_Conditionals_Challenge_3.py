@@ -36,6 +36,11 @@ def list_parties():
     party_list = ["Republican", "Democratic", "Independent", "Libertarian", "Green"]
     for j in party_list:
         print("\t- {}".format(j))
+    print() # blank line
+
+def join_party():
+    party = input("What party would you like to join: ")
+    return party.title() # convert any case to title case
 
 
 header()
@@ -49,4 +54,5 @@ if age < MIN_AGE:
 else:
     congrats(name)
     list_parties()
-    
+    party = join_party()
+    print(party)
