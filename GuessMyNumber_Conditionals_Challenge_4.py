@@ -40,9 +40,12 @@ r = generate_random()
 for j in range(5):
     guess = take_guess()  # prompt for user input
     if guess == r:
-        print("You win, the correct value is {}.".format(r))
+        print() # blank line
+        print("Good job {}! You guessed my number in {} guesses!".format(name, j+1))
         break # stop loop
     elif guess < r:
-        print("Your guess is too low")
+        print("Your guess is too low.")
+        print() # blank line
     else:
-        print("Your guess is too high")
+        print("Your guess is too high.")
+        print() # blank line
