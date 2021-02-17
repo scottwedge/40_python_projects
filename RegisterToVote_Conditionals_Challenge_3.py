@@ -51,7 +51,6 @@ def party_status(party):
 
 def congrats(name, party):
     print("Congratulations {}!  You have joined the {} party!".format(name, party))
-    party_status(party)
 
 
 header()
@@ -66,3 +65,4 @@ else:
     list_parties()
     party = join_party()
     congrats(name, party)
+    party_status(party)
