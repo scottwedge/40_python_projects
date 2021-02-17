@@ -8,3 +8,16 @@
 # If not correct after five guesses, state value and end game.
 
 
+# Functions
+def welcome():
+    print("Welcome to the Guess My Number app.")
+    print() # blank line
+
+def get_name():
+    name = input("What is your name: ")
+    name = name.title() # convert name to title format
+
+
+welcome()
+
+name = get_name()
