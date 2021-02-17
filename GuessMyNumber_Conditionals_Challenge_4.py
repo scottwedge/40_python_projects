@@ -32,20 +32,24 @@ def take_guess():
     guess = int(guess) # convert input string type to integer type
     return guess
 
+def main():
+    welcome()
+    name = get_name()
+    r = generate_random()
+    
+    for j in range(5):
+        guess = take_guess()  # prompt for user input
+        if guess == r:
+            print() # blank line
+            print("Good job {}! You guessed my number in {} guesses!".format(name, j+1))
+            break # stop loop
+        elif guess < r:
+            print("Your guess is too low.")
+            print() # blank line
+        else:
+            print("Your guess is too high.")
+            print() # blank line
 
-welcome()
-name = get_name()
-r = generate_random()
 
-for j in range(5):
-    guess = take_guess()  # prompt for user input
-    if guess == r:
-        print() # blank line
-        print("Good job {}! You guessed my number in {} guesses!".format(name, j+1))
-        break # stop loop
-    elif guess < r:
-        print("Your guess is too low.")
-        print() # blank line
-    else:
-        print("Your guess is too high.")
-        print() # blank line
+if __name__ == "__main__":
+    main()
