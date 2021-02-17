@@ -18,16 +18,31 @@ def welcome():
 def get_name():
     name = input("Hello! What is your name: ")
     name = name.title() # convert name to title format
+    print("Well {}, I am thinking of a number between 1 and 20.".format(name))
+    print() # blank line
     return name
 
 def generate_random():
     random.seed()
-    r = random.randomint(1,20)
+    r = random.randint(1,20)
     return r
+
+def take_guess():
+    guess = input("Take a guess: ")
+    guess = int(guess) # convert input string type to integer type
+    return guess
 
 
 welcome()
-
 name = get_name()
-
 r = generate_random()
+
+for j in range(5):
+    guess = take_guess()  # prompt for user input
+    if guess == r:
+        print("You win, the correct value is {}.".format(r))
+        break # stop loop
+    elif guess < r:
+        print("Your guess is too low")
+    else:
+        print("Your guess is too high")
