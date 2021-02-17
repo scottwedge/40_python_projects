@@ -7,6 +7,8 @@
 # Reply if guess is correct, too high or too low.
 # If not correct after five guesses, state value and end game.
 
+# Imports
+import random
 
 # Functions
 def welcome():
@@ -14,10 +16,18 @@ def welcome():
     print() # blank line
 
 def get_name():
-    name = input("What is your name: ")
+    name = input("Hello! What is your name: ")
     name = name.title() # convert name to title format
+    return name
+
+def generate_random():
+    random.seed()
+    r = random.randomint(1,20)
+    return r
 
 
 welcome()
 
 name = get_name()
+
+r = generate_random()
