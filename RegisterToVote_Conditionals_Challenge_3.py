@@ -53,16 +53,21 @@ def congrats(name, party):
     print("Congratulations {}!  You have joined the {} party!".format(name, party))
 
 
-header()
-name = get_name()
-age = get_age()
+def main():
+    header()
+    name = get_name()
+    age = get_age()
+    
+    # check if age is allowed to vote
+    
+    if age < MIN_AGE:
+        print("You are not old enough to register to vote")
+    else:
+        list_parties()
+        party = join_party()
+        congrats(name, party)
+        party_status(party)
 
-# check if age is allowed to vote
 
-if age < MIN_AGE:
-    print("You are not old enough to register to vote")
-else:
-    list_parties()
-    party = join_party()
-    congrats(name, party)
-    party_status(party)
+if __name__ == "__main__":
+    main()
