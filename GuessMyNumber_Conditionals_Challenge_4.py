@@ -50,6 +50,8 @@ def main():
             print("Your guess is too high.")
             print() # blank line
 
+    if guess != r:
+        print("Game over! The number I was thinking of was {}.".format(r))
 
 if __name__ == "__main__":
     main()
