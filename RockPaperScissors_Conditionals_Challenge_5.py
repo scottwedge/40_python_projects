@@ -37,58 +37,60 @@ def get_user_choice():
     choice = choice.lower() # convert to lower case
     return choice
 
+def main():    
+    # Setup
+    list_of_choices = ["rock", "paper", "scissors"]
+    computer_score = 0
+    player_score = 0
     
-# Setup
-list_of_choices = ["rock", "paper", "scissors"]
-computer_score = 0
-player_score = 0
-
-welcome()
-num = get_num()
-
-for j in range(num):
-    computer_choice = choice(list_of_choices)
-    print() # blank line
-    print("Round {}".format(j+1))  # Round number
-    print("Player: {}\tComputer: {}".format(player_score, computer_score)) # Current score
-    player_choice = get_user_choice()
-
-    print("\tComputer: {}".format(computer_choice))
-    print("\tPlayer: {}".format(player_choice))
-
-    if player_choice not in list_of_choices:
-        print("That is not a valid game option!\nComputer gets the point!")
-        computer_score = computer_score + 1
-    else: # user input is valid
-        if computer_choice == player_choice: # tie scenario
-            print("\tIt is a tie, how boring!\n\tThis round was a tie")
-        else:
-            if computer_choice == "rock":
-                if player_choice == "paper":       # Player wins
-                    print("Paper covers rock!")
-                    player_score = player_score + 1
-                    print("You win round {}.".format(j+1))
-                else:                              # Computer wins
-                    print("Scissors block rock!")
-                    computer_score = computer_score + 1
-                    print("Computer wins round {}.".format(j+1))
-            if computer_choice == "paper":
-                if player_choice == "scissors":       # Player wins
-                    print("Scissors cut paper!")
-                    player_score = player_score + 1
-                    print("You win round {}.".format(j+1))
-                else:                              # Computer wins
-                    print("Paper covers rock!")
-                    computer_score = computer_score + 1
-                    print("Computer wins round {}.".format(j+1))
-                if player_choice == "scissors": player_wins(player_score)
-            if computer_choice == "scissors":
-                if player_choice == "rock":       # Player wins
-                    print("Rock blocks scissors!")
-                    player_score = player_score + 1
-                    print("You win round {}.".format(j+1))
-                else:                              # Computer wins
-                    print("Scissors cut paper!")
-                    computer_score = computer_score + 1
-                    print("Computer wins round {}.".format(j+1))
-            
+    welcome()
+    num = get_num()
+    
+    for j in range(num):
+        computer_choice = choice(list_of_choices)
+        print() # blank line
+        print("Round {}".format(j+1))  # Round number
+        print("Player: {}\tComputer: {}".format(player_score, computer_score)) # Current score
+        player_choice = get_user_choice()
+    
+        print("\tComputer: {}".format(computer_choice))
+        print("\tPlayer: {}".format(player_choice))
+    
+        if player_choice not in list_of_choices:
+            print("That is not a valid game option!\nComputer gets the point!")
+            computer_score = computer_score + 1
+        else: # user input is valid
+            if computer_choice == player_choice: # tie scenario
+                print("\tIt is a tie, how boring!\n\tThis round was a tie")
+            else:
+                if computer_choice == "rock":
+                    if player_choice == "paper":       # Player wins
+                        print("Paper covers rock!")
+                        player_score = player_score + 1
+                        print("You win round {}.".format(j+1))
+                    else:                              # Computer wins
+                        print("Scissors block rock!")
+                        computer_score = computer_score + 1
+                        print("Computer wins round {}.".format(j+1))
+                if computer_choice == "paper":
+                    if player_choice == "scissors":       # Player wins
+                        print("Scissors cut paper!")
+                        player_score = player_score + 1
+                        print("You win round {}.".format(j+1))
+                    else:                              # Computer wins
+                        print("Paper covers rock!")
+                        computer_score = computer_score + 1
+                        print("Computer wins round {}.".format(j+1))
+                    if player_choice == "scissors": player_wins(player_score)
+                if computer_choice == "scissors":
+                    if player_choice == "rock":       # Player wins
+                        print("Rock blocks scissors!")
+                        player_score = player_score + 1
+                        print("You win round {}.".format(j+1))
+                    else:                              # Computer wins
+                        print("Scissors cut paper!")
+                        computer_score = computer_score + 1
+                        print("Computer wins round {}.".format(j+1))
+                
+if __name__ == "__main__":
+    main()
