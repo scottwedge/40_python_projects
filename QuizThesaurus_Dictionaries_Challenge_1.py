@@ -6,6 +6,9 @@
 # Have user select which word for a synonym
 # Then list all synonyms for all words in app
 
+# Imports 
+import random
+
 # Functions
 def welcome():
     print("Welcome to the Thesaurus App!")
@@ -21,12 +24,27 @@ def possible_words(list_of_words):
 
 def get_word():
     word = input("What word would you like a synonym for: ")
+    word = word.lower() # conver to lower case format
     return word
 
+def get_synonym(word):
+    syn = thesaurus[word]
+    return syn
+
+
 # Initialize variables
+thesaurus = {"happy":["merry", "joyful"]}
 list_of_words = ["hot", "cold", "happy", "sad"]
 
 # Main program
 welcome()
 possible_words(list_of_words)
 word = get_word()
+
+# Check that word is valid thesaurus entry
+if word not in list_of_words:
+    print("The word {} is not a valid choice!".format(word))
+else:
+    syn = get_synonym(word)
+    print("A synonym for {} is {}.".format(word, syn))
+
