@@ -16,9 +16,6 @@ import random
 
 # Functions
 
-def setup():
-    list_of_choices = ["rock", "paper", "scissors"]
-    return list_of_choices
 
 def welcome():
     print("Welcome to a game of Rock, Paper, Scissors")
@@ -38,14 +35,17 @@ def get_user_choice():
     choice = input("Time to pick...rock, paper, scissors:")
     choice = choice.lower() # convert to lower case
 
-def play_round():
-    computer_choice = choice(list_of_choices)
-    user_choice = get_user_choice()
     
+# Setup
+list_of_choices = ["rock", "paper", "scissors"]
+computer_wins = 0
+player_wins = 0
 
-list_of_choices = setup()
 welcome()
 num = get_num()
 
 for j in range(num):
-    play_round()
+    computer_choice = choice(list_of_choices)
+    user_choice = get_user_choice()
+    print("Round {}".format(j+1))
+    print("Player: {}\tComputer: {}".format(player_wins, computer_wins))
