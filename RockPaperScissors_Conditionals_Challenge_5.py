@@ -66,32 +66,32 @@ def main():
             else:
                 if computer_choice == "rock":
                     if player_choice == "paper":       # Player wins
-                        print("Paper covers rock!")
+                        print("\tPaper covers rock!")
                         player_score = player_score + 1
-                        print("You win round {}.".format(j+1))
+                        print("\tYou win round {}.".format(j+1))
                     else:                              # Computer wins
                         print("Scissors block rock!")
                         computer_score = computer_score + 1
                         print("Computer wins round {}.".format(j+1))
                 if computer_choice == "paper":
                     if player_choice == "scissors":       # Player wins
-                        print("Scissors cut paper!")
+                        print("\tScissors cut paper!")
                         player_score = player_score + 1
-                        print("You win round {}.".format(j+1))
+                        print("\tYou win round {}.".format(j+1))
                     else:                              # Computer wins
-                        print("Paper covers rock!")
+                        print("\tPaper covers rock!")
                         computer_score = computer_score + 1
-                        print("Computer wins round {}.".format(j+1))
+                        print("\tComputer wins round {}.".format(j+1))
                     if player_choice == "scissors": player_wins(player_score)
                 if computer_choice == "scissors":
                     if player_choice == "rock":       # Player wins
-                        print("Rock blocks scissors!")
+                        print("\tRock blocks scissors!")
                         player_score = player_score + 1
-                        print("You win round {}.".format(j+1))
+                        print("\tYou win round {}.".format(j+1))
                     else:                              # Computer wins
-                        print("Scissors cut paper!")
+                        print("\tScissors cut paper!")
                         computer_score = computer_score + 1
-                        print("Computer wins round {}.".format(j+1))
+                        print("\tComputer wins round {}.".format(j+1))
 
 # Game summary
     print() # blank line
