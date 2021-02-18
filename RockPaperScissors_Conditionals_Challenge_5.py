@@ -11,7 +11,14 @@
 # If tie then no change in score
 # If invalid choice then computer wins
 
+# Imports
+import random
+
 # Functions
+
+def setup():
+    list_of_choices = ["rock", "paper", "scissors"]
+    return list_of_choices
 
 def welcome():
     print("Welcome to a game of Rock, Paper, Scissors")
@@ -22,8 +29,23 @@ def get_num():
     num = int(num)
     return num
 
+def choice(list_of_choices):
+    r = random.randint(0,2) # random index into list of choices
+    choice = list_of_choices[r]
+    return choice
 
+def get_user_choice():
+    choice = input("Time to pick...rock, paper, scissors:")
+    choice = choice.lower() # convert to lower case
 
+def play_round():
+    computer_choice = choice()
+    user_choice = get_user_choice()
+    
+
+setup()
 welcome()
 get_num()
 
+for j in range(num):
+    play_round()
