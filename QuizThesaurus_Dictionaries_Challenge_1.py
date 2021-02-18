@@ -19,7 +19,14 @@ def possible_words(list_of_words):
         print("\t-{}".format(j))
     print() # blank line
 
+def get_word():
+    word = input("What word would you like a synonym for: ")
+    return word
 
+# Initialize variables
 list_of_words = ["hot", "cold", "happy", "sad"]
+
+# Main program
 welcome()
 possible_words(list_of_words)
+word = get_word()
