@@ -99,6 +99,14 @@ def main():
     print("\tRounds Played: {}".format(num))
     print("\tPlayer Score: {}".format(player_score))
     print("\tComputer Score: {}".format(computer_score))
+
+# determine last line of game summary
+    if player_score == computer_score:
+        print("\tThis is a tie!")
+    elif player_score > computer_score: # player wins
+        print("\tWinner: Player :-)")
+    else: # computer wins
+        print("\tWinner: Computer :-(")
                 
 if __name__ == "__main__":
     main()
