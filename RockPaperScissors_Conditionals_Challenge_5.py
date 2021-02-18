@@ -12,6 +12,7 @@
 # If invalid choice then computer wins
 # Print which object wins over other object
 # Print whether computer or player wins
+# Print game summary
 
 # Imports
 import random
@@ -91,6 +92,13 @@ def main():
                         print("Scissors cut paper!")
                         computer_score = computer_score + 1
                         print("Computer wins round {}.".format(j+1))
+
+# Game summary
+    print() # blank line
+    print("Final Game Results")
+    print("\tRounds Played: {}".format(num))
+    print("\tPlayer Score: {}".format(player_score))
+    print("\tComputer Score: {}".format(computer_score))
                 
 if __name__ == "__main__":
     main()
