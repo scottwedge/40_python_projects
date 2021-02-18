@@ -10,13 +10,13 @@
 # Then select pick and show results
 # If tie then no change in score
 # If invalid choice then computer wins
+# Print which object wins over other object
+# Print whether computer or player wins
 
 # Imports
 import random
 
 # Functions
-
-
 def welcome():
     print("Welcome to a game of Rock, Paper, Scissors")
     print() # blank line
@@ -36,12 +36,6 @@ def get_user_choice():
     choice = input("Time to pick...rock, paper, scissors: ")
     choice = choice.lower() # convert to lower case
     return choice
-
-def computer_wins(computer_score):
-    print("\tComputer wins!")
-    
-def player_winds(player_score):
-    print("\tYou win!")
 
     
 # Setup
