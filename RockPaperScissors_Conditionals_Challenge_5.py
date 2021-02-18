@@ -39,13 +39,13 @@ def get_user_choice():
     choice = choice.lower() # convert to lower case
 
 def play_round():
-    computer_choice = choice()
+    computer_choice = choice(list_of_choices)
     user_choice = get_user_choice()
     
 
-setup()
+list_of_choices = setup()
 welcome()
-get_num()
+num = get_num()
 
 for j in range(num):
     play_round()
