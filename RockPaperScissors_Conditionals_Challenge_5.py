@@ -32,7 +32,7 @@ def choice(list_of_choices):
     return choice
 
 def get_user_choice():
-    choice = input("Time to pick...rock, paper, scissors:")
+    choice = input("Time to pick...rock, paper, scissors: ")
     choice = choice.lower() # convert to lower case
 
     
@@ -46,6 +46,10 @@ num = get_num()
 
 for j in range(num):
     computer_choice = choice(list_of_choices)
-    user_choice = get_user_choice()
-    print("Round {}".format(j+1))
-    print("Player: {}\tComputer: {}".format(player_wins, computer_wins))
+    print() # blank line
+    print("Round {}".format(j+1))  # Round number
+    print("Player: {}\tComputer: {}".format(player_wins, computer_wins)) # Current score
+    player_choice = get_user_choice()
+
+    print("\tComputer: {}".format(computer_choice))
+    print("\tPlayer: {}".format(player_choice))
