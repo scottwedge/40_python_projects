@@ -56,7 +56,9 @@ thesaurus = {"hot":["balmy", "summery", "tropical", "boiling", "scorching"],\
 "happy":["content", "cheery", "merry", "jovial", "jocular"],\
 "sad": ["unhappy", "downcast", "miserable", "glum", "melancholy"]}
 
-list_of_words = ["hot", "cold", "happy", "sad"]
+list_of_words = []
+for key in thesaurus.keys():
+    list_of_words.append(key)
 
 # Main program
 welcome()
