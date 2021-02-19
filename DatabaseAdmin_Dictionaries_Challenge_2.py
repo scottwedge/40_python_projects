@@ -30,6 +30,13 @@ def change_password():
     else:
         return False
 
+def check_password(new_password):
+    if len(new_password) < 8:  # check password is at least 8 characters long
+        print("This password is not valid - too short")
+        return False
+    else:
+        return True
+
 # setup database
 database = {"user1" : "password1", "user2" : "password2"}
 
@@ -41,5 +48,7 @@ if (name, password) not in database.items():
     print("That is not a valid username/password combination")
 else:
     if change_password():
-       new_password = input("What would you like your new password to be: ")
-
+        new_password = input("What would you like your new password to be: ")
+        if check_password(new_password):
+            database[name] = new_password             
+            print(database.items())
