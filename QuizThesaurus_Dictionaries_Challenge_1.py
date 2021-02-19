@@ -42,7 +42,7 @@ def view_all():
     
 def print_thesaurus(thesaurus):
     for k,v in thesaurus.items():
-        print("{} synonyms are:".format(k))
+        print("{} synonyms are:".format(k.title()))
         for j in range(len(v)):
             print("\t- {}".format(thesaurus[k][j]))
 
