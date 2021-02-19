@@ -47,7 +47,11 @@ def print_thesaurus(thesaurus):
             print("\t- {}".format(thesaurus[k][j]))
 
 # Initialize variables
-thesaurus = {"happy":["merry", "joyful"], "sad":["unhappy", "morose"]}
+thesaurus = {"hot":["balmy", "summery", "tropical", "boiling", "scorching"],\
+"cold":["chilly", "cool", "freezing", "frigid", "polar"],\
+"happy":["content", "cheery", "merry", "jovial", "jocular"],\
+"sad": ["unhappy", "downcast", "miserable", "glum", "melancholy"]}
+
 list_of_words = ["hot", "cold", "happy", "sad"]
 
 # Main program
