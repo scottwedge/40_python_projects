@@ -42,7 +42,9 @@ def view_all():
     
 def print_thesaurus(thesaurus):
     for k,v in thesaurus.items():
-        print(thesaurus[k])
+        print("{} synonyms are:".format(k))
+        for j in range(len(v)):
+            print("\t- {}".format(thesaurus[k][j]))
 
 # Initialize variables
 thesaurus = {"happy":["merry", "joyful"], "sad":["unhappy", "morose"]}
