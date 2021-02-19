@@ -50,28 +50,31 @@ def print_thesaurus(thesaurus):
         for j in range(len(v)):
             print("\t- {}".format(thesaurus[k][j]))
 
-# Initialize variables
-thesaurus = {"hot":["balmy", "summery", "tropical", "boiling", "scorching"],\
-"cold":["chilly", "cool", "freezing", "frigid", "polar"],\
-"happy":["content", "cheery", "merry", "jovial", "jocular"],\
-"sad": ["unhappy", "downcast", "miserable", "glum", "melancholy"]}
+def main():
+    # Initialize variables
+    thesaurus = {"hot":["balmy", "summery", "tropical", "boiling", "scorching"],\
+    "cold":["chilly", "cool", "freezing", "frigid", "polar"],\
+    "happy":["content", "cheery", "merry", "jovial", "jocular"],\
+    "sad": ["unhappy", "downcast", "miserable", "glum", "melancholy"]}
+    
+    list_of_words = []
+    for key in thesaurus.keys():
+        list_of_words.append(key)
+    
+    welcome()
+    possible_words(list_of_words)
+    word = get_word()
+    
+    # Check that word is valid thesaurus entry
+    if word not in list_of_words:
+        print("The word {} is not a valid choice!".format(word))
+    else:
+        syn = get_random_synonym(word)
+        print("A synonym for {} is {}.".format(word, syn))
+    
+        res = view_all()
+    
+        if res: print_thesaurus(thesaurus)
 
-list_of_words = []
-for key in thesaurus.keys():
-    list_of_words.append(key)
-
-# Main program
-welcome()
-possible_words(list_of_words)
-word = get_word()
-
-# Check that word is valid thesaurus entry
-if word not in list_of_words:
-    print("The word {} is not a valid choice!".format(word))
-else:
-    syn = get_random_synonym(word)
-    print("A synonym for {} is {}.".format(word, syn))
-
-    res = view_all()
-
-    if res: print_thesaurus(thesaurus)
+if __name__ == "__main__":
+    main()
