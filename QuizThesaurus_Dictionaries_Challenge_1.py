@@ -27,7 +27,7 @@ def get_word():
     word = word.lower() # convert to lower case format
     return word
 
-def get_random_synonym(word):
+def get_random_synonym(word, thesaurus):
     l = len(thesaurus[word])
     random.seed()
     random_index = random.randint(0, l-1)
@@ -69,7 +69,7 @@ def main():
     if word not in list_of_words:
         print("The word {} is not a valid choice!".format(word))
     else:
-        syn = get_random_synonym(word)
+        syn = get_random_synonym(word, thesaurus)
         print("A synonym for {} is {}.".format(word, syn))
     
         res = view_all()
