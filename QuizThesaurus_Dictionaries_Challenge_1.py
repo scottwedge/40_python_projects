@@ -24,12 +24,15 @@ def possible_words(list_of_words):
 
 def get_word():
     word = input("What word would you like a synonym for: ")
-    word = word.lower() # conver to lower case format
+    word = word.lower() # convert to lower case format
     return word
 
-def get_synonym(word):
-    syn = thesaurus[word]
-    return syn
+def get_random_synonym(word):
+    l = len(thesaurus[word])
+    random.seed()
+    random_index = random.randint(0, l-1)
+    random_syn = thesaurus[word][random_index]
+    return random_syn
 
 def view_all():
     print() # blank line
@@ -42,6 +45,7 @@ def view_all():
     
 def print_thesaurus(thesaurus):
     for k,v in thesaurus.items():
+        print() # blank line
         print("{} synonyms are:".format(k.title()))
         for j in range(len(v)):
             print("\t- {}".format(thesaurus[k][j]))
@@ -63,7 +67,7 @@ word = get_word()
 if word not in list_of_words:
     print("The word {} is not a valid choice!".format(word))
 else:
-    syn = get_synonym(word)
+    syn = get_random_synonym(word)
     print("A synonym for {} is {}.".format(word, syn))
 
     res = view_all()
