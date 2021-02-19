@@ -9,3 +9,21 @@
 # If logged in user is an Admin, all the usernames and passwords will be displayed
 
 
+# Functions
+def welcome():
+    print("Welcome to the Database Admin Program")
+    print() # blank line
+
+def get_username():
+    name = input("Enter your username: ")
+    return name
+
+def get_password():
+    password = input("Enter your password: ")
+    return password
+
+
+
+welcome()
+name = get_username()
+password = get_password()
