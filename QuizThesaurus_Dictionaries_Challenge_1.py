@@ -31,9 +31,21 @@ def get_synonym(word):
     syn = thesaurus[word]
     return syn
 
+def view_all():
+    print() # blank line
+    result = input("Would you like to see the whole thesaurus (yes/no): ")
+    result = result.lower()
+    if result == "yes":
+        return True
+    else:
+        return False
+    
+def print_thesaurus(thesaurus):
+    for k,v in thesaurus.items():
+        print(thesaurus[k])
 
 # Initialize variables
-thesaurus = {"happy":["merry", "joyful"]}
+thesaurus = {"happy":["merry", "joyful"], "sad":["unhappy", "morose"]}
 list_of_words = ["hot", "cold", "happy", "sad"]
 
 # Main program
@@ -48,3 +60,6 @@ else:
     syn = get_synonym(word)
     print("A synonym for {} is {}.".format(word, syn))
 
+    res = view_all()
+
+    if res: print_thesaurus(thesaurus)
