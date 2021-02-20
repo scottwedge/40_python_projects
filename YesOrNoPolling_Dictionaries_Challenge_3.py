@@ -14,3 +14,18 @@
 # If correct password is used, each voter's name and vote are displayed
 
 
+# Functions
+def welcome():
+    print("Welcome to the Yes or No Issue Polling App")
+    print() # blank line
+
+def get_issue():
+    issue = get_issue("What is the yes or no issue you will be voting on today:"
+    return issue
+
+
+
+
+welcome()
+issue = get_issue()
+
