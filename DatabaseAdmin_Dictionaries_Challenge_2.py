@@ -43,8 +43,9 @@ def check_password(new_password):
 
 def print_database():
     print() # blank line
+    print("Here is the current user database:")
     for key in database.keys():
-        print("Username: {} \tPassword: {}".format(key, database[key]))
+        print("Username: {} \t\tPassword: {}".format(key, database[key]))
 
 # setup database
 database = {
