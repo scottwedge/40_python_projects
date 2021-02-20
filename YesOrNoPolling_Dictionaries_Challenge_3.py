@@ -20,7 +20,7 @@ def welcome():
     print() # blank line
 
 def get_issue():
-    issue = get_issue("What is the yes or no issue you will be voting on today:"
+    issue = input("What is the yes or no issue you will be voting on today: ")
     return issue
 
 def get_num():
@@ -32,8 +32,16 @@ def get_password():
     password = input("Enter a password for polling results: ")
     return password
 
+def get_name():
+    name = input("Enter your full name: ")
+    return name
+    
+
 welcome()
 issue = get_issue()
 num = get_num()
 password = get_password()
 
+for j in range(num):
+    name = get_name()
+    print(name)
