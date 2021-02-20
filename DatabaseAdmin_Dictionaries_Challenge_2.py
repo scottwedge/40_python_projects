@@ -42,15 +42,19 @@ def check_password(new_password):
         return True
 
 # setup database
-database = {"user1" : "password1", "user2" : "password2"}
+database = {
+	"user1" : "password1",
+	"user2" : "password2",
+	"admin00" : "admin1234"
+        }
 
 welcome()
 name = get_username()
-password = get_password()
 
-if (name, password) not in database.items():
+if name not in database.keys():
     print("Username not in database, goodbye.")
 else:
+    password = get_password()
     login(name)
     if change_password():
         new_password = input("What would you like your new password to be: ")
