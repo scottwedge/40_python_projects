@@ -23,6 +23,7 @@ def get_password():
     return password
 
 def login(name):
+    print() # blank line
     print("Hello {}! You are logged in!".format(name))
 
 def change_password():
@@ -35,7 +36,7 @@ def change_password():
 
 def check_password(new_password):
     if len(new_password) < 8:  # check password is at least 8 characters long
-        print("This password is not valid - too short")
+        print("{} not the minimum eight characters.".format(new_password))
         return False
     else:
         return True
@@ -56,4 +57,7 @@ else:
         if check_password(new_password):
             database[name] = new_password             
             print() # blank line
-            print("{} your password is {}".format(name, database[name]))
+
+    print() # blank line
+    print("{} your password is {}".format(name, database[name])) # print password whether changed or not
+
