@@ -35,7 +35,17 @@ def get_password():
 def get_name():
     name = input("Enter your full name: ")
     return name
+
+def show_issue(issue):
+    print("Here is our issue: {}".format(issue))
+
+def get_vote():
+    vote = input("What do you think...yes or no: ")
+    return vote
     
+# Initialize variables
+voting_db = {}
+
 
 welcome()
 issue = get_issue()
@@ -43,5 +53,9 @@ num = get_num()
 password = get_password()
 
 for j in range(num):
+    print() # blank line
     name = get_name()
     print(name)
+    show_issue(issue)
+    vote = get_vote()
+    voting_db[name] = vote # add vote to db
