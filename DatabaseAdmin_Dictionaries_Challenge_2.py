@@ -22,6 +22,9 @@ def get_password():
     password = input("Enter your password: ")
     return password
 
+def login(name):
+    print("Hello {}! You are logged in!".format(name))
+
 def change_password():
     change = input("Would you like to change your password (yes/no): ")
     change = change.lower() # convert to lower case
@@ -47,8 +50,10 @@ password = get_password()
 if (name, password) not in database.items():
     print("That is not a valid username/password combination")
 else:
+    login(name)
     if change_password():
         new_password = input("What would you like your new password to be: ")
         if check_password(new_password):
             database[name] = new_password             
-            print(database.items())
+            print() # blank line
+            print("{} your password is {}".format(name, database[name]))
