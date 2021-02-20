@@ -41,6 +41,7 @@ def show_issue(issue):
 
 def get_vote():
     vote = input("What do you think...yes or no: ")
+    vote = vote.lower() # convert to lower case
     return vote
     
 # Initialize variables
@@ -59,3 +60,4 @@ for j in range(num):
     show_issue(issue)
     vote = get_vote()
     voting_db[name] = vote # add vote to db
+    print("Thank you {}! Your vote of {} has been recorded.".format(name, vote))
