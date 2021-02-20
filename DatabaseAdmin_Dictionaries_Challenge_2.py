@@ -69,7 +69,6 @@ else:
             new_password = input("What would you like your new password to be: ")
             if check_password(new_password):
                 database[name] = new_password             
-                print() # blank line
     
         print() # blank line
         print("{} your password is {}".format(name, database[name])) # print password whether changed or not
