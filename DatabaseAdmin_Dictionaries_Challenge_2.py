@@ -41,6 +41,11 @@ def check_password(new_password):
     else:
         return True
 
+def print_database():
+    print() # blank line
+    for key in database.keys():
+        print("Username: {} \tPassword: {}".format(key, database[key]))
+
 # setup database
 database = {
 	"user1" : "password1",
@@ -56,12 +61,15 @@ if name not in database.keys():
 else:
     password = get_password()
     login(name)
-    if change_password():
-        new_password = input("What would you like your new password to be: ")
-        if check_password(new_password):
-            database[name] = new_password             
-            print() # blank line
-
-    print() # blank line
-    print("{} your password is {}".format(name, database[name])) # print password whether changed or not
-
+    if name == "admin00":
+        print_database()
+    else:
+        if change_password():
+            new_password = input("What would you like your new password to be: ")
+            if check_password(new_password):
+                database[name] = new_password             
+                print() # blank line
+    
+        print() # blank line
+        print("{} your password is {}".format(name, database[name])) # print password whether changed or not
+    
