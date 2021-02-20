@@ -23,9 +23,17 @@ def get_issue():
     issue = get_issue("What is the yes or no issue you will be voting on today:"
     return issue
 
+def get_num():
+    num = input("What is the number of voters you will allow on the issue: ")
+    num = int(num) # convert from string type to integer type
+    return num
 
-
+def get_password():
+    password = input("Enter a password for polling results: ")
+    return password
 
 welcome()
 issue = get_issue()
+num = get_num()
+password = get_password()
 
