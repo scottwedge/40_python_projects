@@ -49,7 +49,7 @@ name = get_username()
 password = get_password()
 
 if (name, password) not in database.items():
-    print("That is not a valid username/password combination")
+    print("Username not in database, goodbye.")
 else:
     login(name)
     if change_password():
