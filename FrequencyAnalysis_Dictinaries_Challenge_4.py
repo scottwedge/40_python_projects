@@ -26,7 +26,6 @@ text = get_text()
 alpha_count_db = {} # initialize blank alphabet dictionary
 text = text.lower() # convert to all lower case
 text_list = list(text) # convert text string to list of characters
-print(text_list)
 
 for j in range(len(text_list)):
     if text_list[j].isalpha():  # if alphanumeric
@@ -35,3 +34,10 @@ for j in range(len(text_list)):
         else:
             alpha_count_db[text_list[j]] = 1 # initialize counter
 
+# print results
+print() # blank line
+print("Here is the frequency analysis from key phrase 1:")
+print() # blank line
+print("\t{:<15} {:<15} {:<15}".format("Letter", "Occurrence", "Percentage"))
+for key in alpha_count_db.keys():
+    print("\t{:<15} {:<15} {:<15}".format(key, alpha_count_db[key], 0))
