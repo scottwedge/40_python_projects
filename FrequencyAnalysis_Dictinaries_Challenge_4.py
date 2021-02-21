@@ -39,5 +39,11 @@ print() # blank line
 print("Here is the frequency analysis from key phrase 1:")
 print() # blank line
 print("\t{:<15} {:<15} {:<15}".format("Letter", "Occurrence", "Percentage"))
+
+# Determine sum of letters for percentage calculation
+sum = 0
+for value in alpha_count_db.values():
+    sum = sum + value
+
 for key in alpha_count_db.keys():
-    print("\t{:<15} {:<15} {:<15}".format(key, alpha_count_db[key], 0))
+    print("\t{:<15} {:<15} {:<15}".format(key, alpha_count_db[key], alpha_count_db[key]/sum))
