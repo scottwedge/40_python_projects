@@ -46,4 +46,4 @@ for value in alpha_count_db.values():
     sum = sum + value
 
 for key in alpha_count_db.keys():
-    print("\t{:<15} {:<15} {:<15}".format(key, alpha_count_db[key], alpha_count_db[key]/sum))
+    print("\t{:<15} {:<15} {:.2f}%".format(key, alpha_count_db[key], alpha_count_db[key]/sum))
