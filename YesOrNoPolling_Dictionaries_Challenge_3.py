@@ -80,6 +80,9 @@ def print_vote_results(password, voting_db):
         for key in voting_db.keys():
             print("Voter: {:<40}  Vote: {}".format(key, voting_db[key]))
 
+def thank_you():
+    print() # blank line
+    print("Thank you for using the Yes or No Issue Polling App")
 
 
 # Initialize variables
@@ -103,7 +106,6 @@ for j in range(num):
         print("Thank you {}! Your vote of {} has been recorded.".format(name, vote))
 
 print_who_voted(voting_db)
-
 print_winner(issue, voting_db)
-
 print_vote_results(password, voting_db)
+thank_you()
