@@ -46,7 +46,7 @@ for value in alpha_count_db.values():
     sum = sum + value
 
 for key in alpha_count_db.keys():
-    print("\t{:<15} {:<15} {:.2f}%".format(key, alpha_count_db[key], alpha_count_db[key]/sum))
+    print("\t{:<15} {:<15} {:.2f}%".format(key, alpha_count_db[key], 100 * alpha_count_db[key]/sum))
 
 # To sort k,v dict in descending numerical order of v: 
 # create list of v,k tuples,
