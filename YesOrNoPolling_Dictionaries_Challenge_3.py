@@ -26,6 +26,7 @@ def get_issue():
 
 def get_num():
     num = input("What is the number of voters you will allow on the issue: ")
+    num = num.rstrip() # strip trailing white space
     num = int(num) # convert from string type to integer type
     return num
 
@@ -43,12 +44,37 @@ def show_issue(issue):
 def get_vote():
     vote = input("What do you think...yes or no: ")
     vote = vote.lower() # convert to lower case
+    vote = vote.rstrip() # strip trailing white space
     return vote
 
 def print_who_voted(voting_db):
     print("The following {} people voted:".format(len(voting_db.keys())))
     for key in voting_db.keys():
         print(key)
+
+def print_summary(issue, voting_db):
+    print() # blank line
+    print("On the following issue: {}".format(issue))
+    yes_count = 0
+    no_count = 0
+    other_count = 0
+    for j in voting_db.values():
+        if j == "no":
+            no_count = no_count + 1
+        elif j == "yes":
+            yes_count = yes_count + 1
+        else:
+            other_count = other_count + 1 # for something other that 'yes' or 'no'
+
+    if yes_count == no_count:
+        print("A tie! {} votes to {}.".format(yes_count, no_count))
+    elif yes_count > no_count:
+        print("Yes wins! {} votes to {}.".format(yes_count, no_count))
+    else:
+        print("No wins! {} votes to {}.".format(no_count, yes_count))
+
+
+
 
 
 # Initialize variables
@@ -73,3 +99,4 @@ for j in range(num):
 
 print_who_voted(voting_db)
 
+print_summary(issue, voting_db)
