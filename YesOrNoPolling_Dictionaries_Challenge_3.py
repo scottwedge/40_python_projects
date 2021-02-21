@@ -52,7 +52,7 @@ def print_who_voted(voting_db):
     for key in voting_db.keys():
         print(key)
 
-def print_summary(issue, voting_db):
+def print_winner(issue, voting_db):
     print() # blank line
     print("On the following issue: {}".format(issue))
     yes_count = 0
@@ -73,7 +73,12 @@ def print_summary(issue, voting_db):
     else:
         print("No wins! {} votes to {}.".format(no_count, yes_count))
 
-
+def print_vote_results(password, voting_db):
+    print() # blank line
+    passwd = input("To see the voting results enter the admin password: ")
+    if passwd == password:
+        for key in voting_db.keys():
+            print("Voter: {:<40}  Vote: {}".format(key, voting_db[key]))
 
 
 
@@ -99,4 +104,6 @@ for j in range(num):
 
 print_who_voted(voting_db)
 
-print_summary(issue, voting_db)
+print_winner(issue, voting_db)
+
+print_vote_results(password, voting_db)
