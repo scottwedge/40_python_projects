@@ -44,7 +44,13 @@ def get_vote():
     vote = input("What do you think...yes or no: ")
     vote = vote.lower() # convert to lower case
     return vote
-    
+
+def print_who_voted(voting_db):
+    print("The following {} people voted:".format(len(voting_db.keys())))
+    for key in voting_db.keys():
+        print(key)
+
+
 # Initialize variables
 voting_db = {}
 
@@ -64,4 +70,6 @@ for j in range(num):
         vote = get_vote()
         voting_db[name] = vote # add vote to db
         print("Thank you {}! Your vote of {} has been recorded.".format(name, vote))
+
+print_who_voted(voting_db)
 
