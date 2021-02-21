@@ -20,26 +20,7 @@ def get_text():
     text = input("Enter a word or phrase to count the occurrences of each letter: ")
     return text
 
-def main():
-    welcome()
-    
-    for round in range(NUM_LOOP):
-        
-        text = get_text()
-        
-        # Analyze text
-        alpha_count_db = {} # initialize blank alphabet dictionary
-        text = text.lower() # convert to all lower case
-        text_list = list(text) # convert text string to list of characters
-        
-        for j in range(len(text_list)):
-            if text_list[j].isalpha():  # if alphanumeric
-                if text_list[j] in alpha_count_db.keys(): # check if key already exists
-                    alpha_count_db[text_list[j]] = alpha_count_db[text_list[j]] + 1 # increment counter
-                else:
-                    alpha_count_db[text_list[j]] = 1 # initialize counter
-        
-        # print results
+def print_results(round, alpha_count_db):
         print() # blank line
         print("Here is the frequency analysis from key phrase {}:".format(round + 1))
         print() # blank line
@@ -74,6 +55,28 @@ def main():
         print() # blank line
         print("Letters ordered from highest occurrence to lowest:")
         print(most_to_least)
+
+def main():
+    welcome()
+    
+    for round in range(NUM_LOOP):
+        
+        text = get_text()
+        
+        # Analyze text
+        alpha_count_db = {} # initialize blank alphabet dictionary
+        text = text.lower() # convert to all lower case
+        text_list = list(text) # convert text string to list of characters
+        
+        for j in range(len(text_list)):
+            if text_list[j].isalpha():  # if alphanumeric
+                if text_list[j] in alpha_count_db.keys(): # check if key already exists
+                    alpha_count_db[text_list[j]] = alpha_count_db[text_list[j]] + 1 # increment counter
+                else:
+                    alpha_count_db[text_list[j]] = 1 # initialize counter
+        
+        # print results
+        print_results(round, alpha_count_db) 
 
 
 if __name__ == "__main__":
