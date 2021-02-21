@@ -8,20 +8,23 @@
 # Create a list of letters ordered from highest occurrence to lowest occurrence
 # For two different bodies of text
 
+# Constants
+NUM_LOOP = 2 # number of phrases to enter 
+
 # Functions
 
 def welcome():
     print("Welcome to the Frequency Analysis App")
-    print() # blank line
 
 def get_text():
+    print() # blank line
     text = input("Enter a word or phrase to count the occurrences of each letter: ")
     return text
 
 
 welcome()
 
-for round in range(2):
+for round in range(NUM_LOOP):
     
     text = get_text()
     
