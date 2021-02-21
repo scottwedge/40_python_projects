@@ -47,3 +47,25 @@ for value in alpha_count_db.values():
 
 for key in alpha_count_db.keys():
     print("\t{:<15} {:<15} {:.2f}%".format(key, alpha_count_db[key], alpha_count_db[key]/sum))
+
+# To sort k,v dict in descending numerical order of v: 
+# create list of v,k tuples,
+# then sort list numerically to get ascending order, 
+# Then reverse sort list to get descending numerical order
+
+alpha_list = []
+for k,v in alpha_count_db.items():
+    alpha_list.append((v,k))
+
+alpha_list.sort() # sort in ascending numerical order
+
+alpha_list.reverse() # sort in descending numerical order
+
+most_to_least = ""
+for j in range(len(alpha_list)):
+    (v,k) = alpha_list[j]
+    most_to_least = most_to_least + k
+
+print() # blank line
+print("Letters ordered from highest occurrence to lowest:")
+print(most_to_least)
