@@ -8,6 +8,9 @@
 # Create a list of letters ordered from highest occurrence to lowest occurrence
 # For two different bodies of text
 
+# Imports
+import string
+
 # Constants
 NUM_LOOP = 2 # number of phrases to enter 
 
@@ -56,6 +59,16 @@ def print_results(round, alpha_count_db):
         print("Letters ordered from highest occurrence to lowest:")
         print(most_to_least)
 
+def missing_letters(alpha_count_db): # determine what letters are missing from text string
+    missing_char = ""
+    a_to_z_string = string.ascii_lowercase  # create a through z string
+    a_to_z_list = list(a_to_z_string)
+    for j in range(len(a_to_z_list)):
+        if a_to_z_list[j] not in alpha_count_db.keys():
+            missing_char += a_to_z_list[j]
+    return missing_char 
+
+
 def main():
     welcome()
     
@@ -78,6 +91,9 @@ def main():
         # print results
         print_results(round, alpha_count_db) 
 
+        missed = missing_letters(alpha_count_db)
+        print() # blank line
+        print("The following letters are not listed: {}".format(missed))
 
 if __name__ == "__main__":
     main()
