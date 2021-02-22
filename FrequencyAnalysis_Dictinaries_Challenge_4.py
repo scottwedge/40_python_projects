@@ -16,7 +16,7 @@ NUM_LOOP = 2 # number of phrases to enter
 
 # Functions
 def welcome():
-    print("Welcome to the Frequency Analysis App")
+    return "Welcome to the Frequency Analysis App"
 
 def get_text():
     print() # blank line
@@ -68,7 +68,7 @@ def missing_letters(alpha_count_db): # determine what letters are missing from t
 
 
 def main():
-    welcome()
+    print(welcome())
     
     for round in range(NUM_LOOP):
         
