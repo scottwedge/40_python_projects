@@ -23,41 +23,39 @@ def get_text():
     text = input("Enter a word or phrase to count the occurrences of each letter: ")
     return text
 
-def print_results(round, alpha_count_db):
-        print() # blank line
-        print("Here is the frequency analysis from key phrase {}:".format(round + 1))
-        print() # blank line
-        print("\t{:<15} {:<15} {:<15}".format("Letter", "Occurrence", "Percentage"))
-        
-        # Determine sum of letters for percentage calculation
-        sum = 0
-        for value in alpha_count_db.values():
-            sum = sum + value
-        
-        for key in alpha_count_db.keys():
-            print("\t{:<15} {:<15} {:.2f}%".format(key, alpha_count_db[key], 100 * alpha_count_db[key]/sum))
-        
-        # To sort k,v dict in descending numerical order of v: 
-        # create list of v,k tuples,
-        # then sort list numerically to get ascending order, 
-        # Then reverse sort list to get descending numerical order
-        
-        alpha_list = []
-        for k,v in alpha_count_db.items():
-            alpha_list.append((v,k))
-        
-        alpha_list.sort() # sort in ascending numerical order
-        
-        alpha_list.reverse() # sort in descending numerical order
-        
-        most_to_least = ""
-        for j in range(len(alpha_list)):
-            (v,k) = alpha_list[j]
-            most_to_least = most_to_least + k
-        
-        print() # blank line
-        print("Letters ordered from highest occurrence to lowest:")
-        print(most_to_least)
+def get_results(round, alpha_count_db):
+    print() # blank line
+    print("Here is the frequency analysis from key phrase {}:".format(round + 1))
+    print() # blank line
+    print("\t{:<15} {:<15} {:<15}".format("Letter", "Occurrence", "Percentage"))
+       
+    # Determine sum of letters for percentage calculation
+    sum = 0
+    for value in alpha_count_db.values():
+        sum = sum + value
+       
+    for key in alpha_count_db.keys():
+        print("\t{:<15} {:<15} {:.2f}%".format(key, alpha_count_db[key], 100 * alpha_count_db[key]/sum))
+       
+    # To sort k,v dict in descending numerical order of v: 
+    # create list of v,k tuples,
+    # then sort list numerically to get ascending order, 
+    # Then reverse sort list to get descending numerical order
+       
+    alpha_list = []
+    for k,v in alpha_count_db.items():
+        alpha_list.append((v,k))
+       
+    alpha_list.sort() # sort in ascending numerical order
+       
+    alpha_list.reverse() # sort in descending numerical order
+       
+    most_to_least = ""
+    for j in range(len(alpha_list)):
+        (v,k) = alpha_list[j]
+        most_to_least = most_to_least + k
+    
+    return most_to_least
 
 def missing_letters(alpha_count_db): # determine what letters are missing from text string
     missing_char = ""
@@ -89,7 +87,10 @@ def main():
                     alpha_count_db[text_list[j]] = 1 # initialize counter
         
         # print results
-        print_results(round, alpha_count_db) 
+        results = get_results(round, alpha_count_db) 
+        print() # blank line
+        print("Letters ordered from highest occurrence to lowest:")
+        print(results)
 
         missed = missing_letters(alpha_count_db)
         print() # blank line
