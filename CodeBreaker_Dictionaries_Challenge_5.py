@@ -85,10 +85,34 @@ def get_phrase():
     phrase = input("What is the phrase: ")
     return phrase
 
-def make_cypher(db_0, db_1):
-    # Assume all 26 letters exist in both texts
-    cypher = 1
+def make_cypher(descend_0, descend_1):
+    # Assuming all 26 letters exist in both texts
+    # Map letter from first db to letter from second db
+    cypher = []
+    l = len(db_0)
+    for j in range(len):
+        cypher.append({list(descend_0)[j] : list(descend_1)[j]})
     return cypher
+
+def encode(secret_string, encode_cypher):
+    encoded_string = "" # initialize blank string
+    encoded_list = list(encoded_string) # convert string to list
+    for j in range(len(encoded_list)):
+        encoded_string += encode_cypher[encoded_list[j]]
+    return encoded_string
+
+def decode(encoded_string, encode_cypher):
+    decoded_string = "" # initialize blank string
+    decoded_list = list(decoded_string) # convert string to list
+
+    # must swap k,v encode to v,k to decode
+    decode_cypher = []
+    for k,v in encode_cypher.items():
+        decode_cypher.append((v,k))
+    for j in range(len(decoded_list)):
+        decoded_string += decode_cypher[encoded_list[j]]
+    return encoded_string
+
 
 # Main program
 print(welcome())
