@@ -115,9 +115,9 @@ def decode(encoded_string, encode_cypher):
     encoded_list = list(encoded_string) # convert string to list
 
     # must swap k,v encode to v,k to decode
-    decode_cypher = []
+    decode_cypher = {}
     for k,v in encode_cypher.items():
-        decode_cypher.append((v,k))
+        decode_cypher[v] = k
     for j in range(len(encoded_list)):
         decoded_string += decode_cypher[encoded_list[j]]
     return decoded_string
