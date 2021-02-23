@@ -83,15 +83,24 @@ def encode_or_decode():
 def get_phrase():
     print() # blank line
     phrase = input("What is the phrase: ")
-    return phrase
+    # Convert to all lower case and only alphabetic
+    phrase = phrase.lower() # convert to lowercase
+    phrase_list = list(phrase)
+    alpha_string = ""
+    for j in phrase_list:
+        if j.isalpha():
+            alpha_string += j
+    return alpha_string
 
 def make_cypher(descend_0, descend_1):
     # Assuming all 26 letters exist in both texts
-    # Map letter from first db to letter from second db
-    cypher = []
+    # In descending order, map letter from first db to letter from second db
+    cypher = {}
     l = len(descend_0)
     for j in range(l):
-        cypher.append({list(descend_0)[j] : list(descend_1)[j]})
+        a = (list(descend_0))[j] 
+        b = (list(descend_1))[j]
+        cypher[a] = b
     return cypher
 
 def encode(secret_string, encode_cypher):
@@ -148,10 +157,12 @@ code = encode_or_decode()
 
 # Get phrase to encode or decode
 phrase = get_phrase()
+print("Entered phrase is: {}".format(phrase))
+print("String with only alphabetic characters is: {}". format(phrase))
  
 # Create cypher
-cypher = make_cypher(db[0], db[1])
-print(cypher)
+cypher = make_cypher(descending_string[0], descending_string[1])
+print("Cypher is: {}". format(cypher))
 
 if code == "encode":
     encoded_string = encode(phrase, cypher)
