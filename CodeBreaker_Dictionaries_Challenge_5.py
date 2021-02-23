@@ -83,49 +83,53 @@ def decode(encoded_string, encode_cypher):
 
 
 # Main program
-print(welcome())
-
-db = [] # initialize list of db dictionaries
-missing = [] # init list of missing characters
-descending_string = [] # init list of descending strings
-text_string = [TEXT1.IPSUM_TEXT_1, TEXT2.SHERLOCK_HOLMES_2] # init text strings
-
-for j in range(NUM):
-    # analyze the text of phrase 
-    db.append(fa.make_db(text_string[j]))
+def main():
+    print(welcome())
     
-    # display occurrences of each letter
-    print() # blank line
-    print("Here is the frequency analysis of string #{}: ".format(j+1))
-    fa.show_occurrence(db[j])
+    db = [] # initialize list of db dictionaries
+    missing = [] # init list of missing characters
+    descending_string = [] # init list of descending strings
+    text_string = [TEXT1.IPSUM_TEXT_1, TEXT2.SHERLOCK_HOLMES_2] # init text strings
     
-    # List missing characters missing from analyzed text
-    missing.append(fa.missing_letters(db[j]))
-    print() # blank line
-    print("The following letters are missing: {}".format(missing[j]))
+    for j in range(NUM):
+        # analyze the text of phrase 
+        db.append(fa.make_db(text_string[j]))
+        
+        # display occurrences of each letter
+        print() # blank line
+        print("Here is the frequency analysis of string #{}: ".format(j+1))
+        fa.show_occurrence(db[j])
+        
+        # List missing characters missing from analyzed text
+        missing.append(fa.missing_letters(db[j]))
+        print() # blank line
+        print("The following letters are missing: {}".format(missing[j]))
+        
+        # List characters in descending order of occurrence
+        descending_string.append(fa.descending_order(db[j]))
+        print() # blank line
+        print("Characters in descending order are: {}".format(descending_string[j]))
+        
+    # Determine if user wants to code or decode
+    code = encode_or_decode()
     
-    # List characters in descending order of occurrence
-    descending_string.append(fa.descending_order(db[j]))
-    print() # blank line
-    print("Characters in descending order are: {}".format(descending_string[j]))
+    # Get phrase to encode or decode
+    phrase = get_phrase()
+    print("Entered phrase is: {}".format(phrase))
+    print("String with only alphabetic characters is: {}". format(phrase))
+     
+    # Create cypher
+    cypher = make_cypher(descending_string[0], descending_string[1])
+    print("Cypher is: {}". format(cypher))
     
-# Determine if user wants to code or decode
-code = encode_or_decode()
+    if code == "encode":
+        encoded_string = encode(phrase, cypher)
+        print("Encoded string is: {}".format(encoded_string))
+    elif code == "decode":
+        decoded_string = decode(phrase, cypher)
+        print("Decoded string is: {}".format(decoded_string))
+    else:
+        print("ERROR OCCURRED")
 
-# Get phrase to encode or decode
-phrase = get_phrase()
-print("Entered phrase is: {}".format(phrase))
-print("String with only alphabetic characters is: {}". format(phrase))
- 
-# Create cypher
-cypher = make_cypher(descending_string[0], descending_string[1])
-print("Cypher is: {}". format(cypher))
-
-if code == "encode":
-    encoded_string = encode(phrase, cypher)
-    print("Encoded string is: {}".format(encoded_string))
-elif code == "decode":
-    decoded_string = decode(phrase, cypher)
-    print("Decoded string is: {}".format(decoded_string))
-else:
-    print("ERROR OCCURRED")
+if __name__ == "__main__":
+    main()
