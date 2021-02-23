@@ -17,10 +17,13 @@
 # Then rerun program and select decode and decode that message
 # Verify that it matches original message
 
+
 # Import
 import FrequencyAnalysis_Dictinaries_Challenge_4 as fa
 
-ipsum_text_1 = """
+
+# Constants
+ISPSUM_TEXT_1 = """
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum orci venenatis est faucibus venenatis. Mauris euismod quam quis neque rutrum cursus. Vivamus at diam massa. Nullam sit amet accumsan purus. Nullam metus turpis, aliquet id pharetra suscipit, fringilla in ex. Aliquam condimentum non lectus non aliquet. Nunc est tellus, vestibulum et ipsum non, mattis varius velit. Integer lobortis turpis in eros ornare lacinia.
 
 Sed mollis, nibh non pellentesque porttitor, dui felis ornare magna, ac elementum erat sapien vitae ante. Ut quis magna mi. Integer quis bibendum sem. Morbi ac purus lorem. Morbi a sem rhoncus, varius metus in, consequat neque. Nulla nisi turpis, bibendum a ante vitae, ornare dictum quam. Integer quis nulla mi. Vivamus varius cursus est, a auctor mi aliquam quis.
@@ -30,8 +33,19 @@ Sed augue quam, aliquam at nunc at, sodales sagittis nunc. Sed vel arcu ac mauri
 Maecenas non ipsum id nunc sollicitudin ullamcorper. Nam vehicula lacinia turpis in fringilla. Nullam vel nisl sed eros pharetra ultrices ut sit amet nunc. Quisque vestibulum elementum nulla nec vulputate. Maecenas quam leo, posuere vel congue sed, dictum et lacus. Donec non aliquam lorem. Nam tempus lacinia nisi nec elementum. Donec sit amet tortor vitae augue pulvinar consectetur vitae non ante. Curabitur condimentum convallis lectus, id pharetra ex ultricies sed. Integer vitae aliquam lacus. In ultrices nisi ac ipsum imperdiet, vel mattis dui hendrerit.
 """
 
+
+# Functions
+def welcome()
+    return "Welcome to the Code Breakers App"
+
+
+# Main program
+print(welcome())
+
 # analyze the text
-sorted_db = fa.make_db(ipsum_text_1)
+sorted_db = fa.make_db(ISPUM_TEXT_1)
 
 # display occurrences of each letter
+print() # blank line
+print("Here is the frequency analysis: ")
 fa.show_occurrence(sorted_db)
