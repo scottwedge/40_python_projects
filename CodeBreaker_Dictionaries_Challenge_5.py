@@ -45,6 +45,9 @@ def encode_or_decode(code_input):
 def test_encode_or_decode1():
     assert encode_or_decode("ENcode  ") == "encode"
 
+def test_encode_or_decode2():
+    assert encode_or_decode("deCODE ") == "decode"
+
 
 def get_phrase():
     print() # blank line
