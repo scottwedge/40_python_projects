@@ -42,6 +42,10 @@ def encode_or_decode(code_input):
     code_input = code_input.rstrip()
     return code_input
 
+def test_encode_or_decode1():
+    assert encode_or_decode("ENcode  ") == "encode"
+
+
 def get_phrase():
     print() # blank line
     phrase = input("What is the phrase: ")
