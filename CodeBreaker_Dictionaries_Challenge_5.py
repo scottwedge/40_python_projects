@@ -87,6 +87,10 @@ def decode(encoded_string, encode_cypher):
         decoded_string += decode_cypher[encoded_list[j]]
     return decoded_string
 
+def test_decode():
+    assert decode("efghhgfe", {"a":"e", "b":"f", "c":"g", "d":"h"}) == "abcddcba"
+
+
 
 # Main program
 def main():
