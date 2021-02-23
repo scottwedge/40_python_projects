@@ -29,3 +29,9 @@ Sed augue quam, aliquam at nunc at, sodales sagittis nunc. Sed vel arcu ac mauri
 
 Maecenas non ipsum id nunc sollicitudin ullamcorper. Nam vehicula lacinia turpis in fringilla. Nullam vel nisl sed eros pharetra ultrices ut sit amet nunc. Quisque vestibulum elementum nulla nec vulputate. Maecenas quam leo, posuere vel congue sed, dictum et lacus. Donec non aliquam lorem. Nam tempus lacinia nisi nec elementum. Donec sit amet tortor vitae augue pulvinar consectetur vitae non ante. Curabitur condimentum convallis lectus, id pharetra ex ultricies sed. Integer vitae aliquam lacus. In ultrices nisi ac ipsum imperdiet, vel mattis dui hendrerit.
 """
+
+# analyze the text
+sorted_db = fa.make_db(ipsum_text_1)
+
+# display occurrences of each letter
+fa.show_occurrence(sorted_db)
