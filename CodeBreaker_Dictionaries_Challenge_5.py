@@ -130,10 +130,8 @@ db = [] # initialize list of db dictionaries
 missing = [] # init list of missing characters
 descending_string = [] # init list of descending strings
 text_string = [IPSUM_TEXT_1, SHERLOCK_HOLMES_2] # init text strings
-print(text_string)
 
 for j in range(NUM):
-    print("Index is : ",j)
     # analyze the text of phrase 
     db.append(fa.make_db(text_string[j]))
     
