@@ -23,6 +23,8 @@ import FrequencyAnalysis_Dictinaries_Challenge_4 as fa
 
 
 # Constants
+NUM = 2 #number of phrases to analyze
+
 IPSUM_TEXT_1 = """
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum orci venenatis est faucibus venenatis. Mauris euismod quam quis neque rutrum cursus. Vivamus at diam massa. Nullam sit amet accumsan purus. Nullam metus turpis, aliquet id pharetra suscipit, fringilla in ex. Aliquam condimentum non lectus non aliquet. Nunc est tellus, vestibulum et ipsum non, mattis varius velit. Integer lobortis turpis in eros ornare lacinia.
 
@@ -83,48 +85,45 @@ def get_phrase():
     phrase = input("What is the phrase: ")
     return phrase
 
+def make_cypher(db_0, db_1):
+    # Assume all 26 letters exist in both texts
+    cypher = 1
+    return cypher
+
 # Main program
 print(welcome())
 
-# analyze the text of phrase #1
-db_1 = fa.make_db(IPSUM_TEXT_1)
+db = [] # initialize list of db dictionaries
+missing = [] # init list of missing characters
+descending_string = [] # init list of descending strings
+text_string = [IPSUM_TEXT_1, SHERLOCK_HOLMES_2] # init text strings
+print(text_string)
 
-# display occurrences of each letter
-print() # blank line
-print("Here is the frequency analysis of string #1: ")
-fa.show_occurrence(db_1)
-
-# List missing characters missing from analyzed text
-missing = fa.missing_letters(db_1)
-print() # blank line
-print("The following letters are missing: {}".format(missing))
-
-# List characters in descending order of occurrence
-descending_string = fa.descending_order(db_1)
-print() # blank line
-print("Characters in descending order are: {}".format(descending_string))
-
-# analyze the text of phrase #2
-db_2 = fa.make_db(SHERLOCK_HOLMES_2)
-
-# display occurrences of each letter
-print() # blank line
-print("Here is the frequency analysis of string #2: ")
-fa.show_occurrence(db_2)
-
-# List missing characters missing from analyzed text
-missing = fa.missing_letters(db_2)
-print() # blank line
-print("The following letters are missing: {}".format(missing))
-
-# List characters in descending order of occurrence
-descending_string = fa.descending_order(db_2)
-print() # blank line
-print("Characters in descending order are: {}".format(descending_string))
-
+for j in range(NUM):
+    print("Index is : ",j)
+    # analyze the text of phrase 
+    db.append(fa.make_db(text_string[j]))
+    
+    # display occurrences of each letter
+    print() # blank line
+    print("Here is the frequency analysis of string #{}: ".format(j+1))
+    fa.show_occurrence(db[j])
+    
+    # List missing characters missing from analyzed text
+    missing.append(fa.missing_letters(db[j]))
+    print() # blank line
+    print("The following letters are missing: {}".format(missing[j]))
+    
+    # List characters in descending order of occurrence
+    descending_string.append(fa.descending_order(db[j]))
+    print() # blank line
+    print("Characters in descending order are: {}".format(descending_string[j]))
+    
 # Determine if user wants to code or decode
 code = encode_or_decode()
 
 # Get phrase to encode or decode
 phrase = get_phrase()
  
+# Create cypher
+cypher = make_cypher(db[0], db[1])
