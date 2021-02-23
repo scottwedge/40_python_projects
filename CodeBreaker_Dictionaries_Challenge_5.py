@@ -89,29 +89,29 @@ def make_cypher(descend_0, descend_1):
     # Assuming all 26 letters exist in both texts
     # Map letter from first db to letter from second db
     cypher = []
-    l = len(db_0)
-    for j in range(len):
+    l = len(descend_0)
+    for j in range(l):
         cypher.append({list(descend_0)[j] : list(descend_1)[j]})
     return cypher
 
 def encode(secret_string, encode_cypher):
     encoded_string = "" # initialize blank string
-    encoded_list = list(encoded_string) # convert string to list
-    for j in range(len(encoded_list)):
-        encoded_string += encode_cypher[encoded_list[j]]
+    secret_list = list(secret_string) # convert string to list
+    for j in range(len(secret_list)):
+        encoded_string += encode_cypher[secret_list[j]]
     return encoded_string
 
 def decode(encoded_string, encode_cypher):
     decoded_string = "" # initialize blank string
-    decoded_list = list(decoded_string) # convert string to list
+    encoded_list = list(encoded_string) # convert string to list
 
     # must swap k,v encode to v,k to decode
     decode_cypher = []
     for k,v in encode_cypher.items():
         decode_cypher.append((v,k))
-    for j in range(len(decoded_list)):
+    for j in range(len(encoded_list)):
         decoded_string += decode_cypher[encoded_list[j]]
-    return encoded_string
+    return decoded_string
 
 
 # Main program
@@ -151,3 +151,13 @@ phrase = get_phrase()
  
 # Create cypher
 cypher = make_cypher(db[0], db[1])
+print(cypher)
+
+if code == "encode":
+    encoded_string = encode(phrase, cypher)
+    print("Encoded string is: {}".format(encoded_string))
+elif code == "decode":
+    decoded_string = decode(phrase, cypher)
+    print("Decoded string is: {}".format(decoded_string))
+else:
+    print("ERROR OCCURRED")
