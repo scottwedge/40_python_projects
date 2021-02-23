@@ -32,12 +32,15 @@ NUM = 2 #number of phrases to analyze
 def welcome():
     return "Welcome to the Code Breakers App"
 
-def encode_or_decode():
+def get_encode_or_decode_input():
+    code_input = input("Would you like to encode or decode a message: ")
+    return code_input
+    
+def encode_or_decode(code_input):
     print() # blank line
-    code = input("Would you like to encode or decode a message: ")
-    code = code.lower()
-    code = code.rstrip()
-    return code
+    code_input = code_input.lower()
+    code_input = code_input.rstrip()
+    return code_input
 
 def get_phrase():
     print() # blank line
@@ -121,7 +124,8 @@ def main():
         print("Characters in descending order are: {}".format(descending_string[j]))
         
     # Determine if user wants to code or decode
-    code = encode_or_decode()
+    code_input = get_encode_or_decode_input()
+    code = encode_or_decode(code_input)
     
     # Get phrase to encode or decode
     phrase = get_phrase()
