@@ -62,6 +62,9 @@ def make_cypher(descend_0, descend_1):
         cypher[a] = b
     return cypher
 
+def test_make_cypher():
+    assert make_cypher("abcd", "efgh") == {"a":"e", "b":"f", "c":"g", "d":"h"}
+
 def encode(secret_string, encode_cypher):
     encoded_string = "" # initialize blank string
     secret_list = list(secret_string) # convert string to list
