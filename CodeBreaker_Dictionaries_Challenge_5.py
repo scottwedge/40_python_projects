@@ -72,6 +72,9 @@ def encode(secret_string, encode_cypher):
         encoded_string += encode_cypher[secret_list[j]]
     return encoded_string
 
+def test_encode():
+    assert encode("abcddcba", {"a":"e", "b":"f", "c":"g", "d":"h"}) == "efghhgfe"
+
 def decode(encoded_string, encode_cypher):
     decoded_string = "" # initialize blank string
     encoded_list = list(encoded_string) # convert string to list
