@@ -12,12 +12,6 @@ import math
 
 # Constants
 
-# Variables
-main_loop = True # main while loop
-factor_loop = True # loop that lists factors
-factor_list = []
-
-
 # Functions
 def welcome():
     return ("Welcome to the Factor Generator App")
@@ -29,6 +23,7 @@ def get_number():
     return num
 
 def list_factors(num):
+    factor_list = []
     print() # blank line
     print("Factors of {} are:".format(num))
     for j in range(1, num+1):
@@ -37,7 +32,7 @@ def list_factors(num):
             factor_list.append(j)
     return factor_list
     
-def summary(factor_list):
+def summary(factor_list, num):
     print() # blank line
     print("In summary:")
     for j in factor_list:
@@ -60,11 +55,19 @@ def run_again():
         return False
 
 # Main code
-print(welcome())
+def main():
+    main_loop = True 
+    factor_loop = True 
+    factor_list = []
 
-while main_loop:
-    factor_list = [] # initialize list for each number
-    num = get_number()
-    factor_list = list_factors(num)
-    summary(factor_list)
-    main_loop = run_again()
+    print(welcome())
+    
+    while main_loop:
+        factor_list = [] # initialize list for each number
+        num = get_number()
+        factor_list = list_factors(num)
+        summary(factor_list, num)
+        main_loop = run_again()
+
+if __name__ == "__main__":
+    main()
