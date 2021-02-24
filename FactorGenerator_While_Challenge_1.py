@@ -49,9 +49,9 @@ def run_again():
     y_n = input("Run again (y/n): ")
     y_n = y_n.lower() # convert from upper case 
     y_n = y_n.rstrip() # remove trailing white space
-    if y_n == "y" or "yes":
+    if y_n == "y" or y_n == "yes":
         return True
-    elif y_n == "n" or "no":
+    elif y_n == "n" or y_n == "no":
         return False
     else:
         print("That is not a valid response ... exiting")
