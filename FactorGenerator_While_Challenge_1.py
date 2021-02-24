@@ -33,10 +33,16 @@ def list_factors(num):
     for j in range(1, num+1):
         if num % j == 0:
             print(j)
+            factor_list.append(j)
+    return factor_list
     
+def summary():
+    pass
+
 # Main code
 print(welcome())
 
 while main_loop:
     num = get_number()
-    list_factors(num)
+    factor_list = list_factors(num)
+    summary()
