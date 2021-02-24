@@ -7,6 +7,9 @@
 # Show all factors
 # Ask if user wants to factor another number
 
+# Imports
+import math
+
 # Constants
 
 # Variables
@@ -14,8 +17,6 @@ main_loop = True # main while loop
 factor_loop = True # loop that lists factors
 factor_list = []
 
-
-# Imports
 
 # Functions
 def welcome():
@@ -40,7 +41,8 @@ def summary(factor_list):
     print() # blank line
     print("In summary:")
     for j in factor_list:
-        print("{} * {} = {}".format(j, int(num/j), num))
+        if j <= math.sqrt(num): # Not repeat factor in demo example
+            print("{} * {} = {}".format(j, int(num/j), num))
 
 # Main code
 print(welcome())
