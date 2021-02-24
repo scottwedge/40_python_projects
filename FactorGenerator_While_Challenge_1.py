@@ -52,6 +52,8 @@ def run_again():
     if y_n == "y" or y_n == "yes":
         return True
     elif y_n == "n" or y_n == "no":
+        print() # blank line
+        print("Thank you for using the program. Have a great day.")
         return False
     else:
         print("That is not a valid response ... exiting")
