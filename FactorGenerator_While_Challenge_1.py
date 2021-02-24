@@ -44,10 +44,25 @@ def summary(factor_list):
         if j <= math.sqrt(num): # Not repeat factor in demo example
             print("{} * {} = {}".format(j, int(num/j), num))
 
+def run_again():
+    print() # blank line
+    y_n = input("Run again (y/n): ")
+    y_n = y_n.lower() # convert from upper case 
+    y_n = y_n.rstrip() # remove trailing white space
+    if y_n == "y" or "yes":
+        return True
+    elif y_n == "n" or "no":
+        return False
+    else:
+        print("That is not a valid response ... exiting")
+        return False
+
 # Main code
 print(welcome())
 
 while main_loop:
+    factor_list = [] # initialize list for each number
     num = get_number()
     factor_list = list_factors(num)
     summary(factor_list)
+    main_loop = run_again()
