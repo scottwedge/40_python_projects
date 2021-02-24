@@ -36,8 +36,11 @@ def list_factors(num):
             factor_list.append(j)
     return factor_list
     
-def summary():
-    pass
+def summary(factor_list):
+    print() # blank line
+    print("In summary:")
+    for j in factor_list:
+        print("{} * {} = {}".format(j, int(num/j), num))
 
 # Main code
 print(welcome())
@@ -45,4 +48,4 @@ print(welcome())
 while main_loop:
     num = get_number()
     factor_list = list_factors(num)
-    summary()
+    summary(factor_list)
