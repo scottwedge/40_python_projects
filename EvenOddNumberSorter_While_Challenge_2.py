@@ -7,3 +7,22 @@
 # Then list all odd numbers
 # Then ask if user wants to do this again
 # If no, thank user
+
+# Functions
+def welcome():
+    return "Welcome to the Even Odd Number Sorter App"
+
+def get_numbers():
+    num_string = input(Enter in a string of numbers separated by a comma (,) : ")
+    return num_string
+
+def extract_num(num_string):
+    numbers = num_string.split(sep = ",") # convert string into list of numbers
+    return numbers 
+
+# Main program
+print(welcome())
+
+num_string = get_numbers()
+
+numbers = extract_num(num_string)
