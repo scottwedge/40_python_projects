@@ -38,6 +38,16 @@ def summary(numbers):
     for j in numbers:
         print("\t{} is {}!".format(j, even_odd(j)))
 
+def make_even_odd_lists(numbers):
+    even_list = []
+    odd_list = []
+    for j in numbers:
+        if j % 2 == 0:
+            even_list.append(j)
+        else:
+            odd_list.append(j)
+    return (even_list, odd_list)
+
 # Main program
 print(welcome())
 
@@ -46,4 +56,6 @@ num_string = get_numbers()
 numbers = extract_num(num_string)
 
 summary(numbers)
+
+(even_list, odd_list) = make_even_odd_lists(numbers)
 
