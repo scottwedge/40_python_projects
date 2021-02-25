@@ -48,6 +48,20 @@ def make_even_odd_lists(numbers):
             odd_list.append(j)
     return (even_list, odd_list)
 
+def print_even_list(even_list):
+    print() # blank line
+    print("The following {} numbers are even:".format(len(even_list)))
+    even_list.sort() # put in ascending order
+    for j in even_list: 
+        print("\t{}".format(j))
+
+def print_odd_list(odd_list):
+    print() # blank line
+    print("The following {} numbers are odd:".format(len(odd_list)))
+    odd_list.sort() # put in ascending order
+    for j in odd_list: 
+        print("\t{}".format(j))
+
 # Main program
 print(welcome())
 
@@ -59,3 +73,5 @@ summary(numbers)
 
 (even_list, odd_list) = make_even_odd_lists(numbers)
 
+print_even_list(even_list)
+print_odd_list(odd_list)
