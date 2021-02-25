@@ -62,16 +62,34 @@ def print_odd_list(odd_list):
     for j in odd_list: 
         print("\t{}".format(j))
 
+def run_again():
+    print() # blank line
+    result = input("Would you like to run the program again? (y/n): ")
+    result = result.lower() # convert to lower case
+    result = result.rstrip() # remove any trailing whitespace
+    if result == "n" or result == "no":
+        return False
+    elif result == "y" or result == "yes":
+        return True
+    else:
+        print("ERROR")
+        return False
+
 # Main program
+run_again_bool = True
+
 print(welcome())
 
-num_string = get_numbers()
-
-numbers = extract_num(num_string)
-
-summary(numbers)
-
-(even_list, odd_list) = make_even_odd_lists(numbers)
-
-print_even_list(even_list)
-print_odd_list(odd_list)
+while run_again_bool:
+    num_string = get_numbers()
+    
+    numbers = extract_num(num_string)
+    
+    summary(numbers)
+    
+    (even_list, odd_list) = make_even_odd_lists(numbers)
+    
+    print_even_list(even_list)
+    print_odd_list(odd_list)
+    
+    run_again_bool = run_again()
