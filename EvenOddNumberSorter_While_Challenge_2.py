@@ -18,13 +18,25 @@ def get_numbers():
     return num_string
 
 def extract_num(num_string):
-    numbers = num_string.split(sep = ",") # convert string into list of numbers
+    num_list = num_string.split(sep = ",") # convert string into list of characters
+    numbers = []
+    for j in num_list:
+        numbers.append(int(j))    # convert numbers from string type to integer type
     return numbers 
 
+def even_odd(n):
+    if n % 2 == 0:
+        return "even"
+    elif n % 2 == 1: 
+        return "odd"
+    else:
+        return "ERROR"
+
 def summary(numbers):
+    print() # blank line
     print("------ Result Summary ------")
     for j in numbers:
-        print("\t{} is !".format(j))
+        print("\t{} is {}!".format(j, even_odd(j)))
 
 # Main program
 print(welcome())
