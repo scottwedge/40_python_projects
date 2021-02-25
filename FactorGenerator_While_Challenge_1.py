@@ -31,6 +31,9 @@ def list_factors(num):
             print(j)
             factor_list.append(j)
     return factor_list
+
+def test_list_factors():
+    assert list_factors(100) == [1,2,4,5,10,20,25,50,100]
     
 def summary(factor_list, num):
     print() # blank line
