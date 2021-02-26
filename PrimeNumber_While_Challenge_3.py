@@ -68,13 +68,17 @@ while main_loop_boolean:
         lower_bound = int(lower_bound) # convert input string type to integer type
         upper_bound = input("Enter the lower bound of your range: ")
         upper_bound = int(upper_bound) # convert input string type to integer type
+        start = time.time() # start of time to calculate primes
         list_of_primes = [] #initialize blank list
         for j in range(lower_bound, upper_bound +1):
             if check_if_prime(j):
                 list_of_primes.append(j)
+        end = time.time() # end of time to calculate primes
         
-        duration = 1 
-        print("Calculations took a total of {} seconds.".format(duration))
+        duration = end - start
+
+        print() # blank line
+        print("Calculations took a total of {:.3f} seconds.".format(duration))
         print("The following numbers between {} and {} are prime:".format(lower_bound, upper_bound))
         res = input("Press enter to continue.")
         for j in list_of_primes:
