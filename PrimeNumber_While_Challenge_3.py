@@ -84,7 +84,7 @@ while main_loop_boolean:
             print("{} is not prime!".format(user_num))
     elif option == "2":
         list_of_primes = calculate_primes_duration()
-        res = input("Press enter to continue.")
+        res = input("Press enter to continue and show {} primes.".format(len(list_of_primes)))
         for j in list_of_primes:
             print(j)
     else:
