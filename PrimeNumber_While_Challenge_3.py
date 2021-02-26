@@ -63,7 +63,21 @@ while main_loop_boolean:
         else:
             print("{} is not prime!".format(user_num))
     elif option == "2":
-        pass
+        print() # blank line
+        lower_bound = input("Enter the lower bound of your range: ")
+        lower_bound = int(lower_bound) # convert input string type to integer type
+        upper_bound = input("Enter the lower bound of your range: ")
+        upper_bound = int(upper_bound) # convert input string type to integer type
+        list_of_primes = [] #initialize blank list
+        for j in range(lower_bound, upper_bound +1):
+            if check_if_prime(j):
+                list_of_primes.append(j)
+        
+        duration = 1 
+        print("Calculations took a total of {} seconds.".format(duration))
+        print("The following numbers between {} and {} are prime:".format(lower_bound, upper_bound))
+        res = input("Press enter to continue.")
+        print(list_of_primes)
 
     else:
         print() # blank line
