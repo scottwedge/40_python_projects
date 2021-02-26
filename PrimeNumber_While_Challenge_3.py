@@ -16,7 +16,7 @@ import time
 
 # Functions
 def welcome():
-    return "Welcome to the Prime Number App"
+    print("Welcome to the Prime Number App")
 
 def give_options():
     print() # blank line
