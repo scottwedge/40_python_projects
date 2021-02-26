@@ -33,6 +33,7 @@ def check_if_prime(user_num):
     for j in range(2, user_num):
         if user_num % j == 0: # check if number is divisible
             is_prime = False
+            break
     return is_prime
 
 def run_again():
@@ -86,7 +87,6 @@ while main_loop_boolean:
         res = input("Press enter to continue.")
         for j in list_of_primes:
             print(j)
-
     else:
         print() # blank line
         print("That is not a valid option.")
