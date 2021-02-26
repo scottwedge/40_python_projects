@@ -75,6 +75,9 @@ def run_again():
         print("ERROR")
         return False
 
+def goodbye():
+    print("Thank you for using the program.  Goodbye.")
+
 # Main program
 run_again_bool = True
 
@@ -93,3 +96,5 @@ while run_again_bool:
     print_odd_list(odd_list)
     
     run_again_bool = run_again()
+
+goodbye()
