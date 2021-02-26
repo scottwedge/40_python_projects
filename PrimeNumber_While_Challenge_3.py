@@ -35,19 +35,32 @@ def check_if_prime(user_num):
             is_prime = False
     return is_prime
 
+def run_again():
+    res = input("Would you like to run again? (y/n): ")
+    res = res.lower()
+    res = res.rstrip()
+    if res == "y" or res == "yes":
+        return True
+    else:
+        return False
+
 # Main code
 welcome()
-give_options()
-option = get_option()
+main_loop_boolean = True
 
-if option == "1":
-    print() # blank line
-    user_num = input("Enter a number to determine if it is prime or not: ")
-    user_num = int(user_num)
-    is_prime = check_if_prime(user_num)
-
-if is_prime:
-    print("{} is prime!".format(user_num))
-else:
-    print("{} is not prime!".format(user_num))
-
+while main_loop_boolean:
+    give_options()
+    option = get_option()
+    
+    if option == "1":
+        print() # blank line
+        user_num = input("Enter a number to determine if it is prime or not: ")
+        user_num = int(user_num)
+        is_prime = check_if_prime(user_num)
+    
+    if is_prime:
+        print("{} is prime!".format(user_num))
+    else:
+        print("{} is not prime!".format(user_num))
+    
+    main_loop_boolean = run_again()
