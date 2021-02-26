@@ -77,7 +77,8 @@ while main_loop_boolean:
         print("Calculations took a total of {} seconds.".format(duration))
         print("The following numbers between {} and {} are prime:".format(lower_bound, upper_bound))
         res = input("Press enter to continue.")
-        print(list_of_primes)
+        for j in list_of_primes:
+            print(j)
 
     else:
         print() # blank line
