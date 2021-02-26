@@ -79,22 +79,27 @@ def goodbye():
     print("Thank you for using the program.  Goodbye.")
 
 # Main program
-run_again_bool = True
+def main():
+    run_again_bool = True
+    
+    print(welcome())
+    
+    while run_again_bool:
+        num_string = get_numbers()
+        
+        numbers = extract_num(num_string)
+        
+        summary(numbers)
+        
+        (even_list, odd_list) = make_even_odd_lists(numbers)
+        
+        print_even_list(even_list)
+        print_odd_list(odd_list)
+        
+        run_again_bool = run_again()
+    
+    goodbye()
 
-print(welcome())
 
-while run_again_bool:
-    num_string = get_numbers()
-    
-    numbers = extract_num(num_string)
-    
-    summary(numbers)
-    
-    (even_list, odd_list) = make_even_odd_lists(numbers)
-    
-    print_even_list(even_list)
-    print_odd_list(odd_list)
-    
-    run_again_bool = run_again()
-
-goodbye()
+if __name__ == "__main__":
+    main()
