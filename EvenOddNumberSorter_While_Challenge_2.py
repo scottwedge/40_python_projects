@@ -24,6 +24,9 @@ def extract_num(num_string):
         numbers.append(int(j))    # convert numbers from string type to integer type
     return numbers 
 
+def test_extract_num():
+    assert extract_num("6,3,2,88,11") == [6,3,2,88,11]
+
 def even_odd(n):
     if n % 2 == 0:
         return "even"
@@ -31,6 +34,12 @@ def even_odd(n):
         return "odd"
     else:
         return "ERROR"
+
+def test_even():
+    assert even_odd(44) == "even"
+
+def test_odd():
+    assert even_odd(5) == "odd"
 
 def summary(numbers):
     print() # blank line
@@ -47,6 +56,9 @@ def make_even_odd_lists(numbers):
         else:
             odd_list.append(j)
     return (even_list, odd_list)
+   
+def test_make_even_odd_lists():
+    assert make_even_odd_lists([66,4,33,898,90,11]) == (([66,4,898,90], [33,11]))
 
 def print_even_list(even_list):
     print() # blank line
