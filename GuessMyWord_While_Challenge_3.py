@@ -30,6 +30,7 @@ def get_category(d):
     return category_list 
 
 def get_random_category(list_of_categories):
+    random.seed()
     random_index = random.randint(0, len(list_of_categories) - 1)
     random_category = list_of_categories[random_index]
     return random_category
@@ -54,27 +55,31 @@ def display_current_clue(clue):
     print("Guess a {} letter word from the following category: {}.".format(len(word), category))
     print(clue)
 
-def update_clue(clue):
+def list_to_string(l):    	# convert list 'l' to string 's' and return string
+    s = ""
+    s = s.join(l)
+    return s
+
+def update_clue(word, clue):
     clue_list = list(clue)   # convert string to list
     just_dashes_list = []   # initialize list of remaining dash indexes in clue list
     for j in range(len(clue_list)):
         if clue_list[j] == "-":
             just_dashes_list.append(j)
 
-    random_index = random.randint(0, len(just_dashes_list) -1) # choose random index
+    random_index = random.randint(0, len(just_dashes_list) -1) # create random index
+    index = just_dashes_list[random_index]   # get index into word
+    word_list = list(word)
+    clue_list = list(clue)
+    clue_list[index] = word_list[index]    # switch another "-" to correct character
+    clue = list_to_string(clue_list)
+    return clue
 
-
-def take_guess(word, clue, guess_count):
+def get_guess():
     print() # blank line
-    guess_count += 1
     g = input("Enter your guess: ")
-    if g == word:
-        print("CORRECT guess in {} tries".format(guess_count))
-    else:
-        print("That is not correct. Let us reveal a letter to help you!")
-        clue = update_clue(clue)               
-        print(clue)
-    return (clue, guess_count)
+    return g
+
 
 # Main code
 print(welcome())
@@ -88,8 +93,19 @@ word = get_random_word(d, category)
 print(word)     	#DEBUG 
 
 guess_count = 0  	# initialize counter
-
 clue = init_clue(word) # Initial word will be correct length but all dashes
-display_current_clue(clue)
 
-(clue, guess_count) = take_guess(word, clue, guess_count)
+main_loop_boolean = True
+
+while main_loop_boolean:
+    display_current_clue(clue)		# display current clue
+    guess = get_guess()    		# get guess from user
+    guess_count = guess_count + 1
+
+    if guess == word:
+        print("CORRECT guess in {} tries".format(guess_count))
+        main_loop_boolean = False
+    else:
+        print("That is not correct. Let us reveal a letter to help you!")
+        clue = update_clue(word, clue)               
+
