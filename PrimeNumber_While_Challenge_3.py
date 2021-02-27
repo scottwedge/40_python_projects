@@ -51,12 +51,17 @@ def run_again():
     else:
         return False
 
-def calculate_primes_duration():
+def get_bounds():
     print() # blank line
     lower_bound = input("Enter the lower bound of your range: ")
     lower_bound = int(lower_bound) # convert input string type to integer type
     upper_bound = input("Enter the lower bound of your range: ")
     upper_bound = int(upper_bound) # convert input string type to integer type
+    return (lower_bound, upper_bound)
+
+
+def calculate_primes_duration():
+    (lower_bound, upper_bound) = get_bounds()
     start = time.time() # start of time to calculate primes
     list_of_primes = [] #initialize blank list
     for j in range(lower_bound, upper_bound +1):
