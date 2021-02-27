@@ -36,10 +36,10 @@ def check_if_prime(user_num):
             break
     return is_prime
 
-def test_true_check_if_prime():
+def test_check_if_prime_true():
     assert check_if_prime(11) == True
 
-def test_false_check_if_prime():
+def test_check_if_prime_false():
     assert check_if_prime(100) == False
 
 def run_again():
@@ -59,21 +59,28 @@ def get_bounds():
     upper_bound = int(upper_bound) # convert input string type to integer type
     return (lower_bound, upper_bound)
 
-
-def calculate_primes_duration():
-    (lower_bound, upper_bound) = get_bounds()
+def calculate_duration(lower_bound, upper_bound):
     start = time.time() # start of time to calculate primes
     list_of_primes = [] #initialize blank list
     for j in range(lower_bound, upper_bound +1):
         if check_if_prime(j):
             list_of_primes.append(j)
     end = time.time() # end of time to calculate primes
-    
     duration = end - start
+    return (list_of_primes, duration)
+
+def calculate_primes():
+    (lower_bound, upper_bound) = get_bounds()
+    (list_of_primes, duration) = calculate_duration(lower_bound, upper_bound)
     print() # blank line
     print("Calculations took a total of {:.3f} seconds.".format(duration))
     print("The following numbers between {} and {} are prime:".format(lower_bound, upper_bound))
     return list_of_primes
+
+def test_calculate_primes(mocker):
+    mocker.patch("PrimeNumber_While_Challenge_3.get_bounds", return_value = (11,21))
+    assert calculate_primes_duration() == [11,13,17,19]
+
 
 def main():
     welcome()
@@ -94,7 +101,7 @@ def main():
             else:
                 print("{} is not prime!".format(user_num))
         elif option == "2":
-            list_of_primes = calculate_primes_duration()
+            list_of_primes = calculate_primes()
             res = input("Press enter to continue and show {} primes.".format(len(list_of_primes)))
             for j in list_of_primes:
                 print(j)
