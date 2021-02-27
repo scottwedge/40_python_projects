@@ -36,6 +36,12 @@ def check_if_prime(user_num):
             break
     return is_prime
 
+def test_true_check_if_prime():
+    assert check_if_prime(11) == True
+
+def test_false_check_if_prime():
+    assert check_if_prime(100) == False
+
 def run_again():
     res = input("Would you like to run the program again? (y/n): ")
     res = res.lower()
@@ -64,31 +70,35 @@ def calculate_primes_duration():
     print("The following numbers between {} and {} are prime:".format(lower_bound, upper_bound))
     return list_of_primes
 
-# Main code
-welcome()
-main_loop_boolean = True
-
-while main_loop_boolean:
-    give_options()
-    option = get_option()
+def main():
+    welcome()
+    main_loop_boolean = True
     
-    if option == "1":
-        print() # blank line
-        user_num = input("Enter a number to determine if it is prime or not: ")
-        user_num = int(user_num)
-        is_prime = check_if_prime(user_num)
-    
-        if is_prime:
-            print("{} is prime!".format(user_num))
+    while main_loop_boolean:
+        give_options()
+        option = get_option()
+        
+        if option == "1":
+            print() # blank line
+            user_num = input("Enter a number to determine if it is prime or not: ")
+            user_num = int(user_num)
+            is_prime = check_if_prime(user_num)
+        
+            if is_prime:
+                print("{} is prime!".format(user_num))
+            else:
+                print("{} is not prime!".format(user_num))
+        elif option == "2":
+            list_of_primes = calculate_primes_duration()
+            res = input("Press enter to continue and show {} primes.".format(len(list_of_primes)))
+            for j in list_of_primes:
+                print(j)
         else:
-            print("{} is not prime!".format(user_num))
-    elif option == "2":
-        list_of_primes = calculate_primes_duration()
-        res = input("Press enter to continue and show {} primes.".format(len(list_of_primes)))
-        for j in list_of_primes:
-            print(j)
-    else:
-        print() # blank line
-        print("That is not a valid option.")
-    
-    main_loop_boolean = run_again()
+            print() # blank line
+            print("That is not a valid option.")
+        
+        main_loop_boolean = run_again()
+
+# Main code
+if __name__ == "__main__":
+    main()
