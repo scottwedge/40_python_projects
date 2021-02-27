@@ -79,7 +79,7 @@ def calculate_primes():
 
 def test_calculate_primes(mocker):
     mocker.patch("PrimeNumber_While_Challenge_3.get_bounds", return_value = (11,21))
-    assert calculate_primes_duration() == [11,13,17,19]
+    assert calculate_primes() == [11,13,17,19]
 
 
 def main():
