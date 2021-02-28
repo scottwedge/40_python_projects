@@ -27,6 +27,7 @@ def get_categories(d):
     category_list = [] # init blank list
     for j in d.keys():
         category_list.append(j)
+    category_list.sort()	# sort alphabetically to simplify testing
     return category_list 
 
 def get_random_category(list_of_categories):
@@ -50,9 +51,9 @@ def init_clue(word):
     clue = list_to_string(clue_list)
     return clue
 
-def display_category(word, category):
+def display_category(length, category):
     print() # blank line
-    print("Guess a {} letter word from the following category: {}.".format(len(word), category))
+    print("Guess a {} letter word from the following category: {}.".format(length, category))
 
 def list_to_string(l):    	# convert list 'l' to string 's' and return string
     s = ""
@@ -106,7 +107,7 @@ def main():
         guess_count = 0  	# initialize counter
         clue = init_clue(word) # Initial word will be correct length but all dashes
         guess = ""
-        display_category(word, category)
+        display_category(len(word), category)
         print(clue)
     
         while guess != word and clue != word: 	# loop until guess word or clue reveals word
