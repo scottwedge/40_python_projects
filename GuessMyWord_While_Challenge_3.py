@@ -92,6 +92,11 @@ def update_clue(word, clue):
     clue = list_to_string(clue_list)
     return clue
 
+def test_update_word(mocker):
+    mocker.patch("random.randint", return_value = 0)
+    assert update_clue("January", "--nu--y") == "J-nu--y"
+   
+
 def get_guess():
     print() # blank line
     g = input("Enter your guess: ")
