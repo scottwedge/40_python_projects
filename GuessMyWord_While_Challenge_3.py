@@ -81,32 +81,38 @@ def get_guess():
     g = input("Enter your guess: ")
     return g
 
+def play_again():
+    y_n = input("Would you like to play again (y/n): ")
+    y_n = y_n.lower()   # convert to lower case
+    y_n = y_n.rstrip()  # strip trailing white space
+    if y_n == "y" or y_n == "yes":
+        return True
+    else: 
+        return False 
 
 # Main code
 print(welcome())
 d = guess_dict()
 list_of_categories = get_category(d)
 
-category = get_random_category(list_of_categories)
-print(category)   	#DEBUG
-
-word = get_random_word(d, category)
-print(word)     	#DEBUG 
-
-guess_count = 0  	# initialize counter
-clue = init_clue(word) # Initial word will be correct length but all dashes
 
 main_loop_boolean = True
 
 while main_loop_boolean:
+    category = get_random_category(list_of_categories)
+    word = get_random_word(d, category)
+    guess_count = 0  	# initialize counter
+    clue = init_clue(word) # Initial word will be correct length but all dashes
+
     display_current_clue(clue)		# display current clue
     guess = get_guess()    		# get guess from user
     guess_count = guess_count + 1
 
     if guess == word:
-        print("CORRECT guess in {} tries".format(guess_count))
+        print("Correct! You guessed the word in {} guesses".format(guess_count))
         main_loop_boolean = False
     else:
         print("That is not correct. Let us reveal a letter to help you!")
         clue = update_clue(word, clue)               
 
+    main_loop_boolean = play_again()
