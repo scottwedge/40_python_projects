@@ -50,10 +50,9 @@ def init_clue(word):
     clue = list_to_string(clue_list)
     return clue
 
-def display_empty_clue(clue):
+def display_category(word, category):
     print() # blank line
     print("Guess a {} letter word from the following category: {}.".format(len(word), category))
-    print(clue)
 
 def list_to_string(l):    	# convert list 'l' to string 's' and return string
     s = ""
@@ -90,37 +89,43 @@ def play_again():
     else: 
         return False 	# exit program
 
+def main():
+    print(welcome())
+    
+    # initialize variables
+    d = guess_dict()
+    list_of_categories = get_categories(d)
+    
+    main_loop_boolean = True
+    
+    while main_loop_boolean:
+    
+        # start game
+        category = get_random_category(list_of_categories)
+        word = get_random_word(d, category)
+        guess_count = 0  	# initialize counter
+        clue = init_clue(word) # Initial word will be correct length but all dashes
+        guess = ""
+        display_category(word, category)
+        print(clue)
+    
+        while guess != word and clue != word: 	# loop until guess word or clue reveals word
+            guess = get_guess()    		# get guess from user
+            guess_count = guess_count + 1
+        
+            if guess == word:
+                print("Correct! You guessed the word in {} guesses".format(guess_count))
+            else:
+                print("That is not correct. Let us reveal a letter to help you!")
+                clue = update_clue(word, clue)               
+                print(clue)
+        
+        main_loop_boolean = play_again()
+    
+    print() # blank line
+    print("Thank you for playing. Goodbye.")
+
+
 # Main code
-print(welcome())
-
-# initialize variables
-d = guess_dict()
-list_of_categories = get_categories(d)
-
-main_loop_boolean = True
-
-while main_loop_boolean:
-
-    # start game
-    category = get_random_category(list_of_categories)
-    word = get_random_word(d, category)
-    guess_count = 0  	# initialize counter
-    clue = init_clue(word) # Initial word will be correct length but all dashes
-    guess = ""
-    display_empty_clue(clue)
-
-    while guess != word and clue != word: 	# loop until guess word or clue reveals word
-        guess = get_guess()    		# get guess from user
-        guess_count = guess_count + 1
-    
-        if guess == word:
-            print("Correct! You guessed the word in {} guesses".format(guess_count))
-        else:
-            print("That is not correct. Let us reveal a letter to help you!")
-            clue = update_clue(word, clue)               
-            print(clue)
-    
-    main_loop_boolean = play_again()
-
-print() # blank line
-print("Thank you for playing. Goodbye.")
+if __name__ == "__main__":
+    main()
