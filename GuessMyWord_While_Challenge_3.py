@@ -81,6 +81,7 @@ def get_guess():
     return g
 
 def play_again():
+    print() # blank line
     y_n = input("Would you like to play again (y/n): ")
     y_n = y_n.lower()   # convert to lower case
     y_n = y_n.rstrip()  # strip trailing white space
@@ -109,7 +110,6 @@ while main_loop_boolean:
     display_empty_clue(clue)
 
     while guess != word and clue != word: 	# loop until guess word or clue reveals word
-        #display_clue(clue)		# display current clue
         guess = get_guess()    		# get guess from user
         guess_count = guess_count + 1
     
@@ -121,3 +121,6 @@ while main_loop_boolean:
             print(clue)
     
     main_loop_boolean = play_again()
+
+print() # blank line
+print("Thank you for playing. Goodbye.")
