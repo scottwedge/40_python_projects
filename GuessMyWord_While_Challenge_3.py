@@ -48,10 +48,9 @@ def init_clue(word):
     for j in range(len(word)):   # all "-"
         clue_list.append("-")
     clue = list_to_string(clue_list)
-    print("DEBUG clue is ",clue) #DEBUG
     return clue
 
-def display_current_clue(clue):
+def display_empty_clue(clue):
     print() # blank line
     print("Guess a {} letter word from the following category: {}.".format(len(word), category))
     print(clue)
@@ -107,9 +106,10 @@ while main_loop_boolean:
     guess_count = 0  	# initialize counter
     clue = init_clue(word) # Initial word will be correct length but all dashes
     guess = ""
+    display_empty_clue(clue)
 
-    while guess != word: 	# loop until guess word
-        display_current_clue(clue)		# display current clue
+    while guess != word and clue != word: 	# loop until guess word or clue reveals word
+        #display_clue(clue)		# display current clue
         guess = get_guess()    		# get guess from user
         guess_count = guess_count + 1
     
@@ -118,5 +118,6 @@ while main_loop_boolean:
         else:
             print("That is not correct. Let us reveal a letter to help you!")
             clue = update_clue(word, clue)               
+            print(clue)
     
     main_loop_boolean = play_again()
