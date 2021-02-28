@@ -51,6 +51,10 @@ def get_random_word(d, category):
     word = list_of_words[random_index]
     return word
 
+def test_get_random_word(mocker):
+    mocker.patch("random.randint", return_value = 1)
+    assert get_random_word({"a1":["b1","c1"],"a2":["b2", "c2"]}, "a2") == "c2"
+
 def init_clue(word):
     clue_list = []                    # initialize list
     for j in range(len(word)):   # all "-"
