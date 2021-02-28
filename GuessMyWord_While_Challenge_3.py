@@ -62,6 +62,9 @@ def init_clue(word):
     clue = list_to_string(clue_list)
     return clue
 
+def test_init_clue():
+    assert init_clue("Saturday") == "--------"
+
 def display_category(length, category):
     print() # blank line
     print("Guess a {} letter word from the following category: {}.".format(length, category))
