@@ -30,11 +30,18 @@ def get_categories(d):
     category_list.sort()	# sort alphabetically to simplify testing
     return category_list 
 
+def test_get_categories():
+    assert get_categories({"a1":["b1","c1"],"a2":["b2", "c2"]}) == ["a1", "a2"]
+
 def get_random_category(list_of_categories):
     random.seed()
     random_index = random.randint(0, len(list_of_categories) - 1)
     random_category = list_of_categories[random_index]
     return random_category
+
+def test_get_random_category(mocker):
+    mocker.patch("random.randint",return_value = 1)
+    assert get_random_category(["a1", "a2", "a3"]) == "a2"
 
 def get_random_word(d, category):
     list_of_words = []              # initialize list
