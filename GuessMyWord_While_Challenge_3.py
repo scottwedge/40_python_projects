@@ -44,9 +44,10 @@ def get_random_word(d, category):
     return word
 
 def init_clue(word):
-    clue = []                    # initialize list
+    clue_list = []                    # initialize list
     for j in range(len(word)):   # all "-"
-        clue.append("-")
+        clue_list.append("-")
+    clue = list_to_string(clue_list)
     print("DEBUG clue is ",clue) #DEBUG
     return clue
 
