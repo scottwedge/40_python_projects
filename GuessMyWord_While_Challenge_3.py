@@ -74,6 +74,9 @@ def list_to_string(l):    	# convert list 'l' to string 's' and return string
     s = s.join(l)
     return s
 
+def test_list_to_string():
+    assert list_to_string(["-", "-", "n", "d", "-", "-"]) == "--nd--"
+
 def update_clue(word, clue):
     clue_list = list(clue)   # convert string to list
     just_dashes_list = []   # initialize list of remaining dash indexes in clue list
