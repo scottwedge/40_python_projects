@@ -26,6 +26,15 @@ def get_roster(positions):
         player = input("Who is your {}: ".format(j))
         roster[j] = player.title()  # convert name to title format
     return roster
+
+def display_roster(positions, roster):
+    title = "Your starting 5 for the upcoming basketball season"
+    print() # blank line
+    print("{:^80}".format(title))
+    
+    for k in positions:
+        print("          {:20s} {:20s}".format(k.title(), roster[k]))
+    
     
 def main():
     # Welcome user
@@ -37,12 +46,7 @@ def main():
     roster = get_roster(positions)
     
     # Display roster
-    title = "Your starting 5 for the upcoming basketball season"
-    print() # blank line
-    print("{:^80}".format(title))
-    
-    for k in positions:
-        print("          {:20s} {:20s}".format(k.title(), roster[k]))
+    display_roster(positions, roster)
     
     # Simulate random injury
     inj_pos = random.randint(0,4)
@@ -54,11 +58,7 @@ def main():
     roster[positions[inj_pos]] = player.title()  # convert to title format
     
     # Display roster again
-    print() # blank line
-    print("Your starting 5 for the upcoming basketball season")
-    
-    for k in positions:
-        print("          {:20s} {:20s}".format(k.title(), roster[k]))
+    display_roster(positions, roster)
     
     # Wish new player best
     print() # blank line
