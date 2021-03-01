@@ -26,6 +26,15 @@ def calc_math_fact(fact_num):
 def test_calc_math_fact():
     assert calc_math_fact(6) == 720
 
+def make_f_string(fact_num):
+    f_string = "1"
+    for j in range(2, fact_num + 1): 
+        f_string = f_string + "*" + str(j)   # create string of 1*2*3*...* 
+    return f_string
+
+def test_make_f_string():
+    assert make_f_string(10) == "1*2*3*4*5*6*7*8*9*10"
+
 def main():
     print("Welcome to the Factorial Calculator App.")
     print() # blank line
@@ -34,10 +43,7 @@ def main():
     fact_num = int(fact_str) # convert input string type to integer type
     
     # Create factorial string then print it
-    f_string = ""
-    for j in range(1, fact_num): 
-        f_string = f_string + str(j) + "*"  # create string of 1*2*3*...* 
-    f_string = f_string + str(fact_num)   # add final value of fact_num to string
+    f_string = make_f_string(fact_num)
     print("{}! = {}".format(fact_str, f_string))
     
     # Use math library to calculate factorial
