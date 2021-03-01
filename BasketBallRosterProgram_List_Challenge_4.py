@@ -14,50 +14,55 @@ def header():
     print("Welcome to the Basketball Roster program.")
     print() # blank line
 
+def get_positions():
+    return ["point guard", "shooting guard","small forward","power forward","center"]
+
+def get_roster(positions):
+    # Initialize roster as a dictionary
+    roster = {}
+    
+    # Prompt for each position (point guard, shooting guard, small forward, power forward, center)
+    for j in positions:
+        player = input("Who is your {}: ".format(j))
+        roster[j] = player.title()  # convert name to title format
+    return roster
+    
 def main():
     # Welcome user
     header()
     
     # List roster positions
-    position = ["point guard", "shooting guard","small forward","power forward","center"]
+    positions = get_positions()
     
-    # Initialize roster as a dictionary
-    roster = {}
-    
-    # Prompt for each position (point guard, shooting guard, small forward
-    # power forward, center)
-    
-    for j in position:
-        player = input("Who is your {}: ".format(j))
-        roster[j] = player.title()  # convert name to title format
+    roster = get_roster(positions)
     
     # Display roster
     title = "Your starting 5 for the upcoming basketball season"
     print() # blank line
     print("{:^80}".format(title))
     
-    for k in position:
+    for k in positions:
         print("          {:20s} {:20s}".format(k.title(), roster[k]))
     
     # Simulate random injury
     inj_pos = random.randint(0,4)
 
     print() # blank line
-    print("Oh no, {} the {} is injured.".format(roster[position[inj_pos]], position[inj_pos])) # print name and position
+    print("Oh no, {} the {} is injured.".format(roster[positions[inj_pos]], positions[inj_pos])) # print name and position
     print("Your roster only has 4 players.")
-    player = input("Who will take {}'s spot: ".format(roster[position[inj_pos]]))
-    roster[position[inj_pos]] = player.title()  # convert to title format
+    player = input("Who will take {}'s spot: ".format(roster[positions[inj_pos]]))
+    roster[positions[inj_pos]] = player.title()  # convert to title format
     
     # Display roster again
     print() # blank line
     print("Your starting 5 for the upcoming basketball season")
     
-    for k in position:
+    for k in positions:
         print("          {:20s} {:20s}".format(k.title(), roster[k]))
     
     # Wish new player best
     print() # blank line
-    print("Good luck {} you will do great!".format(roster[position[0]]))
+    print("Good luck {} you will do great!".format(roster[positions[0]]))
     print("Your roster now has 5 players.")
     
 if __name__ == "__main__":
