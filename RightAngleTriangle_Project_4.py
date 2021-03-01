@@ -18,6 +18,16 @@ def calc_area(a, b):
     area = 0.5 * a * b
     return area
 
+def get_two_sides():
+    # Prompt for first side length.
+    user_side_1 = input("What is the first leg of the triangle: ")
+    side1 = float(user_side_1)
+
+    # Prompt for second side length.
+    user_side_2 = input("What is the second leg of the triangle: ")
+    side2 = float(user_side_2)
+    return (side1, side2)
+
 # Tests
 def test_calc_hyp():
     assert calc_hyp(3, 4) == 5
@@ -29,13 +39,7 @@ def main():
     # Welcome user and state purpose of application.
     header()
 
-    # Prompt for first side length.
-    user_side_1 = input("What is the first leg of the triangle: ")
-    side1 = float(user_side_1)
-
-    # Prompt for second side length.
-    user_side_2 = input("What is the second leg of the triangle: ")
-    side2 = float(user_side_2)
+    (side1, side2) = get_two_sides()
 
     # Calculate hypotenuse (square root of sum of square of other two sides)
     hypotenuse = calc_hyp(side1, side2)
