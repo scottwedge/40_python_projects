@@ -41,35 +41,47 @@ def check_password(new_password):
     else:
         return True
 
+def test_password_ok():
+    assert check_password("notshort") == True
+
+def test_password_fails():
+    assert check_password("short") == False
+
 def print_database():
     print() # blank line
     print("Here is the current user database:")
     for key in database.keys():
         print("Username: {} \t\tPassword: {}".format(key, database[key]))
 
-# setup database
-database = {
+def get_db():
+    # setup database
+    database = {
 	"user1" : "password1",
 	"user2" : "password2",
 	"admin00" : "admin1234"
         }
+    return database
 
-welcome()
-name = get_username()
-
-if name not in database.keys():
-    print("Username not in database, goodbye.")
-else:
-    password = get_password()
-    login(name)
-    if name == "admin00":
-        print_database()
+def main():
+    welcome()
+    database = get_db()
+    name = get_username()
+    
+    if name not in database.keys():
+        print("Username not in database, goodbye.")
     else:
-        if change_password():
-            new_password = input("What would you like your new password to be: ")
-            if check_password(new_password):
-                database[name] = new_password             
-    
-        print() # blank line
-        print("{} your password is {}".format(name, database[name])) # print password whether changed or not
-    
+        password = get_password()
+        login(name)
+        if name == "admin00":
+            print_database()
+        else:
+            if change_password():
+                new_password = input("What would you like your new password to be: ")
+                if check_password(new_password):
+                    database[name] = new_password             
+        
+            print() # blank line
+            print("{} your password is {}".format(name, database[name])) # print password whether changed or not
+        
+if __name__ == "__main__":
+    main()
