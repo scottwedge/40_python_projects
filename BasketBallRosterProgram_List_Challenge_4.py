@@ -62,7 +62,7 @@ def main():
     
     # Wish new player best
     print() # blank line
-    print("Good luck {} you will do great!".format(roster[positions[0]]))
+    print("Good luck {} you will do great!".format(roster[positions[inj_pos]]))
     print("Your roster now has 5 players.")
     
 if __name__ == "__main__":
