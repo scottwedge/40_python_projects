@@ -85,15 +85,29 @@ def buy_tickets(white_bc, red_bc, interval, winner, chosen_tickets):
             chosen_tickets.append(ticket)
             interval = interval - 1 
         else:
-            print(ticket, "Ticket previously chosen") # ticket previously selected so skip
+            print(ticket, "Losing ticket generated; disregard...") # skip this repeat
     return (chosen_tickets, game_over_boolean)
 
-def l_to_s(l): # convert list to string with separator of " "
+def l_to_s(l): # convert list of integers to string with separator of " "
     s = ""
     for j in range(len(l) - 1):
         s = s + str(l[j]) + " "
     s = s + str(l[-1])  # add last digit in list
     return s
+
+def play_again(chosen_tickets, winner): 
+    if winner not in chosen_tickets:
+        print("{} tickets purchased so far with no winners...".format(len(chosen_tickets)))
+        print() # blank line
+        reply = input("Keep purchasing tickets (y/n): ")
+        reply = reply.lower()  # convert to lower case
+        reply = reply.rstrip() # remove all trailing white space
+        if reply == "y" or reply == "yes":
+            return True
+        else:
+            return False
+    else:
+        pass
 
 def main():
     print(intro())
@@ -112,9 +126,10 @@ def main():
     start = input("Press 'Enter' to bein purchasing tickets!!!")
     chosen_tickets = [] # initialize list of chosen tickets
     game_over_boolean = False
-    while not game_over_boolean:
+    keep_playing = True
+    while not game_over_boolean and keep_playing:
         (chosen_tickets, game_over_boolean) = buy_tickets(white_bc, red_bc, interval, winner, chosen_tickets)
-
+        keep_playing = play_again(chosen_tickets, winner)
 
 
 # Main code
