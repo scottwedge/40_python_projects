@@ -52,9 +52,7 @@ def print_who_voted(voting_db):
     for key in voting_db.keys():
         print(key)
 
-def print_winner(issue, voting_db):
-    print() # blank line
-    print("On the following issue: {}".format(issue))
+def count_votes(issue, voting_db):
     yes_count = 0
     no_count = 0
     other_count = 0
@@ -65,6 +63,11 @@ def print_winner(issue, voting_db):
             yes_count = yes_count + 1
         else:
             other_count = other_count + 1 # for something other that 'yes' or 'no'
+    return (yes_count, no_count)
+
+def display_winner(issue, yes_count, no_count):
+    print() # blank line
+    print("On the following issue: {}".format(issue))
 
     if yes_count == no_count:
         print("A tie! {} votes to {}.".format(yes_count, no_count))
@@ -73,7 +76,7 @@ def print_winner(issue, voting_db):
     else:
         print("No wins! {} votes to {}.".format(no_count, yes_count))
 
-def print_vote_results(password, voting_db):
+def display_vote_results(password, voting_db):
     print() # blank line
     passwd = input("To see the voting results enter the admin password: ")
     if passwd == password:
@@ -106,6 +109,7 @@ for j in range(num):
         print("Thank you {}! Your vote of {} has been recorded.".format(name, vote))
 
 print_who_voted(voting_db)
-print_winner(issue, voting_db)
-print_vote_results(password, voting_db)
+(yes_count, no_count) = count_votes(issue, voting_db)
+display_winner(issue, yes_count, no_count)
+display_vote_results(password, voting_db)
 thank_you()
