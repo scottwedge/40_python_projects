@@ -35,6 +35,12 @@ def calculate_odds(white_bc, red_bc):
     product = red_bc * fact(white_bc) / fact(white_bc - 5) / fact(5)
     return product
 
+def test_calculate_odds_10_1():
+    assert calculate_odds(10, 1) == 252
+
+def test_calculate_odds_69_26():
+    assert calculate_odds(69, 26) == 292201338 
+
 def get_ticket_purchase_interval():
     interval = int(input("Purchase tickets in what interval: "))
     return interval
