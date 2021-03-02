@@ -67,8 +67,33 @@ def pick_winning_white_and_red_combo(white_bc, red_bc):
     winner = pick_winning_white(white_bc)
     winner_red = pick_winning_red(red_bc)
     winner.append(winner_red)  # combine white and red winners
-    return winner
+    return l_to_s(winner)  # convert to string
 
+def buy_tickets(white_bc, red_bc, interval, winner, chosen_tickets):
+    game_over_boolean = False
+    while interval > 0:
+        ticket = pick_winning_white_and_red_combo(white_bc, red_bc)
+        if ticket == winner:
+            l = len(chosen_tickets)
+            game_over_boolean = True
+            print("Congrats on picking winning ticket",ticket)
+            print("Purchased a total of {} tickets.".format(l))
+            chosen_tickets.append(ticket)
+            break
+        elif ticket not in chosen_tickets:
+            print(ticket)
+            chosen_tickets.append(ticket)
+            interval = interval - 1 
+        else:
+            print(ticket, "Ticket previously chosen") # ticket previously selected so skip
+    return (chosen_tickets, game_over_boolean)
+
+def l_to_s(l): # convert list to string with separator of " "
+    s = ""
+    for j in range(len(l) - 1):
+        s = s + str(l[j]) + " "
+    s = s + str(l[-1])  # add last digit in list
+    return s
 
 def main():
     print(intro())
@@ -84,7 +109,11 @@ def main():
     print("Tonight's winning numbers are:",winner)
 
     # Start buying unique tickets
-
+    start = input("Press 'Enter' to bein purchasing tickets!!!")
+    chosen_tickets = [] # initialize list of chosen tickets
+    game_over_boolean = False
+    while not game_over_boolean:
+        (chosen_tickets, game_over_boolean) = buy_tickets(white_bc, red_bc, interval, winner, chosen_tickets)
 
 
 
