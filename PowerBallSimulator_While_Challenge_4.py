@@ -69,6 +69,13 @@ def pick_winning_white_and_red_combo(white_bc, red_bc):
     winner.append(winner_red)  # combine white and red winners
     return l_to_s(winner)  # convert to string
 
+def l_to_s(l): # convert list of integers to string with separator of " "
+    s = ""
+    for j in range(len(l) - 1):
+        s = s + str(l[j]) + " "
+    s = s + str(l[-1])  # add last digit in list
+    return s
+
 def buy_tickets(white_bc, red_bc, interval, winner, chosen_tickets):
     game_over_boolean = False
     while interval > 0:
@@ -76,6 +83,7 @@ def buy_tickets(white_bc, red_bc, interval, winner, chosen_tickets):
         if ticket == winner:
             l = len(chosen_tickets)
             game_over_boolean = True
+            print() # blank line
             print("Congrats on picking winning ticket",ticket)
             print("Purchased a total of {} tickets.".format(l))
             chosen_tickets.append(ticket)
@@ -88,13 +96,6 @@ def buy_tickets(white_bc, red_bc, interval, winner, chosen_tickets):
             print(ticket, "Losing ticket generated; disregard...") # skip this repeat
     return (chosen_tickets, game_over_boolean)
 
-def l_to_s(l): # convert list of integers to string with separator of " "
-    s = ""
-    for j in range(len(l) - 1):
-        s = s + str(l[j]) + " "
-    s = s + str(l[-1])  # add last digit in list
-    return s
-
 def play_again(chosen_tickets, winner): 
     if winner not in chosen_tickets:
         print("{} tickets purchased so far with no winners...".format(len(chosen_tickets)))
@@ -105,9 +106,16 @@ def play_again(chosen_tickets, winner):
         if reply == "y" or reply == "yes":
             return True
         else:
+            goodbye(chosen_tickets)
             return False
     else:
         pass
+
+def goodbye(chosen_tickets):
+    print() # blank line
+    print("You bought {} tickets and still lost!".format(len(chosen_tickets)))
+    print("Better luck next time!")
+    
 
 def main():
     print(intro())
@@ -123,7 +131,7 @@ def main():
     print("Tonight's winning numbers are:",winner)
 
     # Start buying unique tickets
-    start = input("Press 'Enter' to bein purchasing tickets!!!")
+    start = input("Press 'Enter' to begin purchasing tickets!!!")
     chosen_tickets = [] # initialize list of chosen tickets
     game_over_boolean = False
     keep_playing = True
