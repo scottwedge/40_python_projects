@@ -36,6 +36,10 @@ def roll_dice(num_sides, num_dice):
     print("You rolled {} {} sided dice.".format(num_dice, num_sides))
     return results
 
+def test_roll_dice(mocker):
+    mocker.patch("random.randint", return_value = 7)
+    assert roll_dice(7,1) == [7]
+
 def display_results(results):
     print() # blank line
     print("----- Results are as follows -----")
@@ -61,15 +65,20 @@ def roll_again():
 def thankyou():
     print("Thank you for using the Python Dice App.")
 
-# Main code
-welcome()
-loop_forever = True
+def main():
+    welcome()
+    loop_forever = True
+    
+    while loop_forever:
+        num_sides = get_dice_sides()
+        num_dice = get_number_of_dice()
+        results = roll_dice(num_sides, num_dice)
+        display_results(results)
+        sum_results(results)
+        loop_forever = roll_again()
+    thankyou()
 
-while loop_forever:
-    num_sides = get_dice_sides()
-    num_dice = get_number_of_dice()
-    results = roll_dice(num_sides, num_dice)
-    display_results(results)
-    sum_results(results)
-    loop_forever = roll_again()
-thankyou()
+
+# Main code
+if __name__ == "__main__":
+    main()
