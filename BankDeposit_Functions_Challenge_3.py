@@ -44,7 +44,7 @@ def get_account():
     return account
 
 def get_trans():
-    trans = input("What type of transaction would you like to make (Deposit or Withdrawl): ")
+    trans = input("What type of transaction would you like to make (Deposit or Withdrawal): ")
     trans = trans.lower()
     trans = trans.rstrip()
     return trans
@@ -54,24 +54,35 @@ def get_amount():
     amount = float(amount) # convert from string type to float type
     return amount
 
+def another_transaction():
+    reply = input("Would you like to make another transaction (y/n): ")
+    if reply == "y" or reply == "yes":
+        return True
+    else:
+        return False
+
 # Main code
 welcome()
 name = get_name()
 savings = get_savings_balance()
 checking = get_checking_balance()
-current_info(name, savings, checking)
 
-# Perform transaction
-account = get_account()
-trans = get_trans()
-amount = get_amount()
-
-if trans == "deposit":
-    print() # blank line
-    print("Deposited ${} into {}'s {} account.".format(amount, name.title(), trans))
-elif:
-    trans == "withdrawl":
-    print() # blank line
-    print("Withdrew ${} from {}'s {} account.".format(amount, name.title(), trans))
-
-
+loop_forever = True
+while loop_forever:
+    current_info(name, savings, checking)
+    
+    # Perform transaction
+    account = get_account()
+    trans = get_trans()
+    amount = get_amount()
+    
+    if trans == "deposit":
+        print() # blank line
+        print("Deposited ${} into {}'s {} account.".format(amount, name.title(), account))
+    elif trans == "withdrawal":
+        print() # blank line
+        print("Withdrew ${} from {}'s {} account.".format(amount, name.title(), account))
+    else:
+        print("ERROR")
+    
+    loop_forever = another_transaction()
