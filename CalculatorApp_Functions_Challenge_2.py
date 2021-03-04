@@ -7,6 +7,7 @@
 # Ask for operation - accept either first letter or full word
 # Print lexical (?) of operation
 # Ask if want to repeat
+# If not, list all calculations
 
 # Functions
 def welcome():
@@ -24,22 +25,33 @@ def get_operation():
     op = op.rstrip()
     return op
 
+def play_again():
+    reply = input("Would you like to run the program again (y/n): ")
+    if reply == "y" or reply == "yes":
+        return True
+    else:
+        return False
 
 # Main code
 welcome()
-first = get_number()
-second = get_number()
-op = get_operation()
+main_loop_boolean = True
 
-if op == "addition" or op == "a":
-    print("The sum of {} and {} is {}.".format(first, second, first + second))
-elif op == "subtraction" or op == "s":
-    print("The result of {} minus {} is {}.".format(first, second, first - second))
-elif op == "multiplication" or op == "m":
-    print("The product of {} and {} is {}.".format(first, second, first * second))
-elif op == "division" or op == "d":
-    print("The result of {} divied by {} is {}.".format(first, second, first / second))
-elif op == "exponentiation" or op == "e":
-    print("The result of {} to power of {} is {}.".format(first, second, first ** second))
-else:
-    print("ERROR")
+while main_loop_boolean:
+    first = get_number()
+    second = get_number()
+    op = get_operation()
+    
+    if op == "addition" or op == "a":
+        print("The sum of {} and {} is {}.".format(first, second, first + second))
+    elif op == "subtraction" or op == "s":
+        print("The result of {} minus {} is {}.".format(first, second, first - second))
+    elif op == "multiplication" or op == "m":
+        print("The product of {} and {} is {}.".format(first, second, first * second))
+    elif op == "division" or op == "d":
+        print("The result of {} divided by {} is {}.".format(first, second, first / second))
+    elif op == "exponentiation" or op == "e":
+        print("The result of {} raised to the power of {} is {}.".format(first, second, first ** second))
+    else:
+        print("ERROR")
+    
+    main_loop_boolean = play_again()
