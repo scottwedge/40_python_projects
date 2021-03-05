@@ -67,26 +67,29 @@ def update_account(account, trans, savings, checking):
     # trans = "Deposit" or "Withdrawl"
     # savings = balance of savings account
     # checking = balance of checking account
-    if trans == "deposit":
-        print() # blank line
-        print("Deposited ${} into {}'s {} account.".format(amount, name.title(), account))
-        if account == "Savings":
-            savings = savings + amount
-        else:
-            checking = checking + amount
-    elif trans == "withdrawal":
-        if amount <= balance(account, savings, checking):
-            print() # blank line
-            print("Withdrew ${} from {}'s {} account.".format(amount, name.title(), account))
-            if account == "Savings":
-                savings = savings - amount
-            else:
-                checking = checking - amount
-        else:
-            print("Sorry, by withdrawing {} you will have a negative balance.".format(amount))
+    if account != "Savings" and account != "Checking": # check if invalid account type selected
+        print("I'm sorry. We cannot do that for you today.")  
     else:
-        print("ERROR. Neither Deposit nor Withdrawal selected")
-    
+        if trans == "deposit":
+            print() # blank line
+            print("Deposited ${} into {}'s {} account.".format(amount, name.title(), account))
+            if account == "Savings":
+                savings = savings + amount
+            else:          # account == "Checking":
+                checking = checking + amount
+        elif trans == "withdrawal":
+            if amount <= balance(account, savings, checking):
+                print() # blank line
+                print("Withdrew ${} from {}'s {} account.".format(amount, name.title(), account))
+                if account == "Savings":
+                    savings = savings - amount
+                else:
+                    checking = checking - amount
+            else:
+                print("Sorry, by withdrawing {} you will have a negative balance.".format(amount))
+        else:
+            print("ERROR. Neither Deposit nor Withdrawal selected")
+        
     return (savings, checking)
 
 def another_transaction():
@@ -95,6 +98,10 @@ def another_transaction():
         return True
     else:
         return False
+
+def goodbye():
+print() # blank line
+print("Thank you. Have a great day!")
 
 # Main code
 welcome()
@@ -114,3 +121,6 @@ while loop_forever:
     (savings, checking) = update_account(account, trans, savings, checking)
     
     loop_forever = another_transaction()
+
+summary() # print summary if select 'n' to another transaction
+goodbye()
