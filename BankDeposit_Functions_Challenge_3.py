@@ -54,6 +54,14 @@ def get_amount():
     amount = float(amount) # convert from string type to float type
     return amount
 
+def balance(account, savings, checking):
+    print(account)
+    if account == "Savings":
+        return savings
+    else:
+        return checking
+
+
 def another_transaction():
     reply = input("Would you like to make another transaction (y/n): ")
     if reply == "y" or reply == "yes":
@@ -80,9 +88,12 @@ while loop_forever:
         print() # blank line
         print("Deposited ${} into {}'s {} account.".format(amount, name.title(), account))
     elif trans == "withdrawal":
-        print() # blank line
-        print("Withdrew ${} from {}'s {} account.".format(amount, name.title(), account))
+        if amount <= balance(account, savings, checking):
+            print() # blank line
+            print("Withdrew ${} from {}'s {} account.".format(amount, name.title(), account))
+        else:
+            print("Sorry, by withdrawing {} you will have a negative balance.".format(amount))
     else:
-        print("ERROR")
+        print("ERROR. Neither Deposit nor Withdrawal selected")
     
     loop_forever = another_transaction()
