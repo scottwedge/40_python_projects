@@ -56,13 +56,17 @@ def place_piece(side_X, guesses):
     while loop_again:
         position = input("{}: Where would you like to place your piece (1-9): ".format(side(side_X)))
         position = int(position)     # convert input string type to integer type
-        # check if position was taken already
-        if guesses[position - 1] == "_": 
-            guesses[position - 1] = side(side_X)
-            loop_again = False
-        else:
-            print("That spot has already been chosen.  Try again.")
+        if position not in range(1,10):  # check if input is 1, 2 .... 9
+            print("That is not a spot on the board. Try again.")
             loop_again = True
+        else:
+            # check if position was taken already
+            if guesses[position - 1] == "_": 
+                guesses[position - 1] = side(side_X)
+                loop_again = False
+            else:
+                print("That spot has already been chosen.  Try again.")
+                loop_again = True
     return guesses
 
 def three_in_a_row(g):  # determine if anyone has three in a row (and therefore wins)
