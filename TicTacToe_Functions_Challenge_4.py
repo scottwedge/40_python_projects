@@ -41,12 +41,21 @@ def side(side_X):
     else:
         return "O"
 
+def switch_sides(side_X):
+    return not side_X
+
 def place_piece(side_X, guesses):
-    position = input("{}: Where would you like to place your piece (1-9): ".format(side(side_X)))
-    position = int(position)     # convert input string type to integer type
-    # check if position was taken already
-    if guesses[position - 1] == "_": 
-        guesses[position - 1] = side(side_X)
+    loop_again = True
+    while loop_again:
+        position = input("{}: Where would you like to place your piece (1-9): ".format(side(side_X)))
+        position = int(position)     # convert input string type to integer type
+        # check if position was taken already
+        if guesses[position - 1] == "_": 
+            guesses[position - 1] = side(side_X)
+            loop_again = False
+        else:
+            print("Position already taken - guess again!")
+            loop_again = True
     return guesses
 
 # Main code
@@ -58,4 +67,5 @@ run_forever = True  # while loop boolean
 while run_forever:
     position_board()
     game_board(guesses)
+    side_X = switch_sides(side_X)
     guesses = place_piece(side_X, guesses)
