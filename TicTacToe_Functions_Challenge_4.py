@@ -74,8 +74,8 @@ def three_in_a_row(g):  # determine if anyone has three in a row (and wins)
     g[2] == g[5] == g[8] == "O" or \
     g[0] == g[4] == g[8] == "O" or \
     g[6] == g[4] == g[2] == "O":
-       return True
-    if g[0] == g[1] == g[2] == "X" or \
+        return (True, "O")
+    elif g[0] == g[1] == g[2] == "X" or \
     g[3] == g[4] == g[5] == "X" or \
     g[6] == g[7] == g[8] == "X" or \
     g[0] == g[3] == g[6] == "X" or \
@@ -83,8 +83,9 @@ def three_in_a_row(g):  # determine if anyone has three in a row (and wins)
     g[2] == g[5] == g[8] == "X" or \
     g[0] == g[4] == g[8] == "X" or \
     g[6] == g[4] == g[2] == "X":
-       return True
-        
+        return (True, "X")
+    else:
+        return (False, "F")
 
 # Main code
 # Init variables
@@ -99,9 +100,9 @@ while run_forever:
     game_board(guesses)
     if all_spots_taken(guesses):
         break
-    winner = three_in_a_row(guesses)
+    (winner, who_wins) = three_in_a_row(guesses)
     if winner:
-        print(" someone WINS!!")
+        print(who_wins,"WINS!!")
         break    
     side_X = switch_sides(side_X)
     guesses = place_piece(side_X, guesses)
