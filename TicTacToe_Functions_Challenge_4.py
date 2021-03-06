@@ -44,6 +44,13 @@ def side(side_X):
 def switch_sides(side_X):
     return not side_X
 
+def all_spots_taken(guesses):
+    if "_" not in guesses:
+        print("All spots taken")
+        return True
+    else:
+        return False
+        
 def place_piece(side_X, guesses):
     loop_again = True
     while loop_again:
@@ -63,9 +70,13 @@ def place_piece(side_X, guesses):
 guesses = init_guesses()
 side_X = True
 run_forever = True  # while loop boolean
+game_over = False  # set to True when all spots taken 
+winner = False # set to True when player wins with three in a row
 
 while run_forever:
     position_board()
     game_board(guesses)
+    if all_spots_taken(guesses):
+        break
     side_X = switch_sides(side_X)
     guesses = place_piece(side_X, guesses)
