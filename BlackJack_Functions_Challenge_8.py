@@ -25,6 +25,7 @@ def welcome():
     print("The minimum bet at this table is #20.")
 
 def get_starting_balance():
+    print() # blank line
     balance = input("How much money are you willing to play with today: ")
     balance = int(balance)
     return balance
@@ -72,6 +73,7 @@ dealer_cards.append(card)  # first card for dealer
 current_money(balance, bet)
 dealer_showing(dealer_cards)
 
+print() # blank line
 print("Player's Hand:")
 (card, deck) = get_card(deck)
 player_cards.append(card)     # first player card
@@ -81,19 +83,27 @@ for j in range(len(player_cards)):
     (value, suit) = player_cards[j]
     print("{} of {}".format(value, suit))
 
-# Print value of player's hand
-sum = 0
-for j in range(len(player_cards)):
-    (card, suit) = player_cards[j]
-    if card in ["J", "Q", "K"]:
-        sum = sum + 10
-    elif card in "A":
-        sum = sum + 11   # Need to handle case of Ace = 1 
+continue_player_hand = True
+while continue_player_hand:
+    # Print value of player's hand
+    sum = 0
+    for j in range(len(player_cards)):
+        (card, suit) = player_cards[j]
+        if card in ["J", "Q", "K"]:
+            sum = sum + 10
+        elif card in "A":
+            sum = sum + 11   # Need to handle case of Ace = 1 
+        else:
+            sum = sum + int(card)   # convert string type 2..9 to integer type
+    
+    print("Total value: {}".format(sum))
+    print() # blank line
+    hit = input("Would you like to hit (y/n): ")
+    print() # blank line
+    
+    if hit == "y" or hit == "yes":
+        (card, deck) = get_card(deck)
+        player_cards.append(card) 
+        continue_player_hand = True
     else:
-        sum = sum + int(card)   # convert string type 2..9 to integer type
-print("Total value: {}".format(sum))
-print() # blank line
-hit = input("Would you like to hit (y/n): ")
-print() # blank line
-
-
+        continue_player_hand = False
