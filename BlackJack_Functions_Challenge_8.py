@@ -43,7 +43,6 @@ def init_deck():  # create deck of cards
     for j in card:
         for k in suit:
             deck.append((j, k)) # append tuple
-    print(deck)   #DEBUG
     return deck
 
 def get_card(deck):
@@ -82,5 +81,19 @@ for j in range(len(player_cards)):
     (value, suit) = player_cards[j]
     print("{} of {}".format(value, suit))
 
+# Print value of player's hand
+sum = 0
+for j in range(len(player_cards)):
+    (card, suit) = player_cards[j]
+    if card in ["J", "Q", "K"]:
+        sum = sum + 10
+    elif card in "A":
+        sum = sum + 11   # Need to handle case of Ace = 1 
+    else:
+        sum = sum + int(card)   # convert string type 2..9 to integer type
+print("Total value: {}".format(sum))
+print() # blank line
+hit = input("Would you like to hit (y/n): ")
+print() # blank line
 
 
