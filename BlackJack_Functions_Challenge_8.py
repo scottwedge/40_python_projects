@@ -42,7 +42,8 @@ def init_deck():  # create deck of cards
     card = ["2", "3", "4","5","6","7","8","9","J", "Q","K", "A"]
     for j in card:
         for k in suit:
-            deck.append((card, suit)) # append tuple
+            deck.append((j, k)) # append tuple
+    print(deck)   #DEBUG
     return deck
 
 def get_card(deck):
@@ -54,6 +55,12 @@ def current_money(balance, bet):
     print() # blank line
     print("Current Money: ${}\t\tCurrent Bet: ${}".format(balance, bet))
 
+def dealer_showing(dealer_cards):
+    (card, suit) = dealer_cards[0]
+    print("The dealer is showing a {} of {}.".format(card, suit))
+
+    
+
 # Main code
 welcome()
 balance = get_starting_balance()
@@ -64,4 +71,16 @@ player_cards = []
 (card, deck) = get_card(deck)
 dealer_cards.append(card)  # first card for dealer
 current_money(balance, bet)
+dealer_showing(dealer_cards)
+
+print("Player's Hand:")
+(card, deck) = get_card(deck)
+player_cards.append(card)     # first player card
+(card, deck) = get_card(deck)
+player_cards.append(card)     # second player card
+for j in range(len(player_cards)):
+    (value, suit) = player_cards[j]
+    print("{} of {}".format(value, suit))
+
+
 
