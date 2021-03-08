@@ -48,6 +48,7 @@ def init_deck():  # create deck of cards
 
 def get_card(deck):
     index = random.randint(1,len(deck))
+#DEBUG    print("INDEX is ",index)
     card = deck.pop(index)
     return(card, deck)
 
@@ -73,22 +74,18 @@ dealer_cards = []
 player_cards = []
 
 # Determine dealer's hand
-(card, deck) = get_card(deck)
-dealer_cards.append(card)  # first card for dealer
-(card, deck) = get_card(deck)
-dealer_cards.append(card)  # second card for dealer
 while dealer_sum <= DEALER_MAX:
+    (card, deck) = get_card(deck)
+    dealer_cards.append(card)  # card for dealer
     # Print value of player's hand
-    for j in range(len(dealer_cards)):
-        (card, suit) = dealer_cards[j]
+    for j in dealer_cards:
+        (card, suit) = j
         if card in ["J", "Q", "K"]:
             dealer_sum = dealer_sum + 10
-        elif card in "A":
+        elif card in ["A"]:
             dealer_sum = dealer_sum + 11   # Need to handle case of Ace = 1 
         else:
             dealer_sum = dealer_sum + int(card)   # convert to integer type
-    (card, deck) = get_card(deck)
-    dealer_cards.append(card)  # get another card for dealer
 
 current_money(balance, bet)
 dealer_showing(dealer_cards)
@@ -99,31 +96,45 @@ print("Player's Hand:")
 player_cards.append(card)     # first player card
 (card, deck) = get_card(deck)
 player_cards.append(card)     # second player card
-for j in range(len(player_cards)):
-    (value, suit) = player_cards[j]
+for j in player_cards:
+    (value, suit) = j
     print("{} of {}".format(value, suit))
 
 continue_player_hand = True
 while continue_player_hand:
     # Print value of player's hand
     player_sum = 0
-    for j in range(len(player_cards)):
-        (card, suit) = player_cards[j]
+    for j in player_cards:
+        (card, suit) = j
         if card in ["J", "Q", "K"]:
             player_sum = player_sum + 10
-        elif card in "A":
+        elif card in ["A"]:
             player_sum = player_sum + 11   # Need to handle case of Ace = 1 
         else:
             player_sum = player_sum + int(card)   # convert string type 2..9 to integer type
     
     print("Total value: {}".format(player_sum))
-    print() # blank line
-    hit = input("Would you like to hit (y/n): ")
-    print() # blank line
-    
-    if hit == "y" or hit == "yes":
-        (card, deck) = get_card(deck)
-        player_cards.append(card) 
-        continue_player_hand = True
-    else:
+    if player_sum > 21:
         continue_player_hand = False
+    else:
+        hit = input("Would you like to hit (y/n): ")
+        print() # blank line
+    
+        if hit == "y" or hit == "yes":
+            (card, deck) = get_card(deck)
+            player_cards.append(card) 
+            continue_player_hand = True
+        else:
+            continue_player_hand = False
+
+print("Dealer is set with a total of {} cards.".format(len(dealer_cards)))
+print() # blank line
+result = input("Press enter to reveal the dealer's hand.")
+for j in dealer_cards:
+    (card, suit) = j
+    print("{} of {}".format(card, suit))
+if dealer_sum > 21:
+    print("Dealer went over 21. You win!")
+else:
+    print("Dealer total of {}".format(dealer_sum))
+
