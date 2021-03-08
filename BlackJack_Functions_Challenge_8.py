@@ -62,14 +62,34 @@ def dealer_showing(dealer_cards):
     
 
 # Main code
+DEALER_MAX = 17
+dealer_sum = 0
+player_sum = 0
 welcome()
 balance = get_starting_balance()
 bet = get_bet()
 deck = init_deck()
 dealer_cards = []
 player_cards = []
+
+# Determine dealer's hand
 (card, deck) = get_card(deck)
 dealer_cards.append(card)  # first card for dealer
+(card, deck) = get_card(deck)
+dealer_cards.append(card)  # second card for dealer
+while dealer_sum <= DEALER_MAX:
+    # Print value of player's hand
+    for j in range(len(dealer_cards)):
+        (card, suit) = dealer_cards[j]
+        if card in ["J", "Q", "K"]:
+            dealer_sum = dealer_sum + 10
+        elif card in "A":
+            dealer_sum = dealer_sum + 11   # Need to handle case of Ace = 1 
+        else:
+            dealer_sum = dealer_sum + int(card)   # convert to integer type
+    (card, deck) = get_card(deck)
+    dealer_cards.append(card)  # get another card for dealer
+
 current_money(balance, bet)
 dealer_showing(dealer_cards)
 
@@ -86,17 +106,17 @@ for j in range(len(player_cards)):
 continue_player_hand = True
 while continue_player_hand:
     # Print value of player's hand
-    sum = 0
+    player_sum = 0
     for j in range(len(player_cards)):
         (card, suit) = player_cards[j]
         if card in ["J", "Q", "K"]:
-            sum = sum + 10
+            player_sum = player_sum + 10
         elif card in "A":
-            sum = sum + 11   # Need to handle case of Ace = 1 
+            player_sum = player_sum + 11   # Need to handle case of Ace = 1 
         else:
-            sum = sum + int(card)   # convert string type 2..9 to integer type
+            player_sum = player_sum + int(card)   # convert string type 2..9 to integer type
     
-    print("Total value: {}".format(sum))
+    print("Total value: {}".format(player_sum))
     print() # blank line
     hit = input("Would you like to hit (y/n): ")
     print() # blank line
