@@ -40,16 +40,15 @@ def get_bet():
 def init_deck():  # create deck of cards
     deck = []
     suit = ["Hearts", "Diamonds", "Clubs", "Spades"]
-    card = ["2", "3", "4","5","6","7","8","9","J", "Q","K", "A"]
+    card = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q","K", "A"]
     for j in card:
         for k in suit:
             deck.append((j, k)) # append tuple
     return deck
 
 def get_card(deck):
-    index = random.randint(1,len(deck))
+    index = random.randint(0,len(deck) - 1)
     card = deck.pop(index)
-    print("DEBUG card is", card)  #DEBUG
     return(card, deck)
 
 def current_money(balance, bet):
