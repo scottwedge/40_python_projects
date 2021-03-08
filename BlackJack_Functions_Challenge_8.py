@@ -48,8 +48,8 @@ def init_deck():  # create deck of cards
 
 def get_card(deck):
     index = random.randint(1,len(deck))
-#DEBUG    print("INDEX is ",index)
     card = deck.pop(index)
+    print("DEBUG card is", card)  #DEBUG
     return(card, deck)
 
 def current_money(balance, bet):
@@ -78,6 +78,7 @@ while dealer_sum <= DEALER_MAX:
     (card, deck) = get_card(deck)
     dealer_cards.append(card)  # card for dealer
     # Print value of player's hand
+    dealer_sum = 0
     for j in dealer_cards:
         (card, suit) = j
         if card in ["J", "Q", "K"]:
@@ -87,6 +88,7 @@ while dealer_sum <= DEALER_MAX:
         else:
             dealer_sum = dealer_sum + int(card)   # convert to integer type
 
+print("DEALER CARDS are: ",dealer_cards) # DEBUG
 current_money(balance, bet)
 dealer_showing(dealer_cards)
 
@@ -134,7 +136,7 @@ for j in dealer_cards:
     (card, suit) = j
     print("{} of {}".format(card, suit))
 if dealer_sum > 21:
-    print("Dealer went over 21. You win!")
+    print("Dealer sum of {} - Dealer went over 21. You win!".format(dealer_sum))
 else:
     print("Dealer total of {}".format(dealer_sum))
 
