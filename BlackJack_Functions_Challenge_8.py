@@ -59,7 +59,31 @@ def dealer_showing(dealer_cards):
     (card, suit) = dealer_cards[0]
     print("The dealer is showing a {} of {}.".format(card, suit))
 
+def card_sum(cards):
+    sum = 0
+    for j in cards:
+        (card, suit) = j
+        if card in ["J", "Q", "K"]:
+            sum = sum + 10
+        elif card in ["2", "3", "4", "5", "6", "7", "8", "9", "10"]:
+            sum = sum + int(card)   # convert to integer type
+        else:   # card is Ace
+            if sum <= 10:
+                sum = sum + 11 # treat Ace as 11
+            else:
+                sum = sum + 1 # treat Ace as 1 
+    return sum
     
+
+def get_dealer_cards(deck):    
+    DEALER_MAX = 17
+    dealer_sum = 0
+    dealer_cards = []
+    while dealer_sum <= DEALER_MAX:
+        (card, deck) = get_card(deck)
+        dealer_cards.append(card)  # card for dealer
+        dealer_sum = card_sum(dealer_cards)
+    return (dealer_cards, dealer_sum, deck)
 
 # Main code
 DEALER_MAX = 17
@@ -73,21 +97,8 @@ dealer_cards = []
 player_cards = []
 
 # Determine dealer's hand
-while dealer_sum <= DEALER_MAX:
-    (card, deck) = get_card(deck)
-    dealer_cards.append(card)  # card for dealer
-    # Print value of player's hand
-    dealer_sum = 0
-    for j in dealer_cards:
-        (card, suit) = j
-        if card in ["J", "Q", "K"]:
-            dealer_sum = dealer_sum + 10
-        elif card in ["A"]:
-            dealer_sum = dealer_sum + 11   # Need to handle case of Ace = 1 
-        else:
-            dealer_sum = dealer_sum + int(card)   # convert to integer type
-
-print("DEALER CARDS are: ",dealer_cards) # DEBUG
+(dealer_cards, dealer_sum, deck) = get_dealer_cards(deck)
+print("DEBUG..  DEALER CARDS are: ",dealer_cards) # DEBUG
 current_money(balance, bet)
 dealer_showing(dealer_cards)
 
