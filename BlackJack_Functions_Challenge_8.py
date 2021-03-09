@@ -94,6 +94,17 @@ def get_dealer_cards(deck, DEALER_MAX):
         print("DEBUG DEALER SUM ...", dealer_sum)
     return (dealer_cards, dealer_sum, deck)
 
+def dealer_wins(balance, bet):
+    balance = balance - bet
+    print("New balance is", balance)
+    return balance
+
+def player_wins(balance, bet):
+    balance = balance + bet
+    print("New balance is", balance)
+    return balance
+
+
 # Main code
 #DEBUG card = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q","K", "A"]
 card = ["2", "3", "4", "5", "A"]  # force lots of cards
@@ -156,3 +167,12 @@ if dealer_sum > HAND_MAX:
 else:
     print("Dealer total of {}".format(dealer_sum))
 
+# Determine winner
+if player_sum > HAND_MAX:
+    balance = dealer_wins(balance, bet)
+elif dealer_sum > HAND_MAX:
+    balance = player_wins(balance, bet)
+elif player_sum > dealer_sum:
+    balance = player_wins(balance, bet)
+else:
+    balance = dealer_wins(balance, bet)
