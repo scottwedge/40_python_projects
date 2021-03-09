@@ -37,16 +37,15 @@ def get_bet():
         bet = 20
     return bet
 
-def init_deck():  # create deck of cards
+def init_deck(card, suit):  # create deck of cards
     deck = []
-    suit = ["Hearts", "Diamonds", "Clubs", "Spades"]
-    card = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q","K", "A"]
     for j in card:
         for k in suit:
             deck.append((j, k)) # append tuple
     return deck
 
 def get_card(deck):
+    random.seed()
     index = random.randint(0,len(deck) - 1)
     card = deck.pop(index)
     return(card, deck)
@@ -60,10 +59,13 @@ def dealer_showing(dealer_cards):
     print("The dealer is showing a {} of {}.".format(card, suit))
 
 def sort_cards(cards): # put Ace at end of list of cards
-    if "A" in cards:
-        cards.remove("A")
-        cards.append("A")
-    return cards
+    for j in suit:
+        if (("A", j)) in cards:
+            print("DEBUG ('A', j) in cards")
+            cards.remove(("A", j))
+            cards.append(("A", j))
+            print("DEBUG NEW ORDER ...", cards)  #DEBUG
+        return cards
 
 def card_sum(cards):
     cards = sort_cards(cards)
@@ -81,29 +83,34 @@ def card_sum(cards):
                 sum = sum + 1 # treat Ace as 1 
     return sum
     
-def get_dealer_cards(deck):    
-    DEALER_MAX = 17
+def get_dealer_cards(deck, DEALER_MAX):    
     dealer_sum = 0
     dealer_cards = []
     while dealer_sum <= DEALER_MAX:
         (card, deck) = get_card(deck)
         dealer_cards.append(card)  # card for dealer
+        dealer_cards = sort_cards(dealer_cards)
         dealer_sum = card_sum(dealer_cards)
+        print("DEBUG DEALER SUM ...", dealer_sum)
     return (dealer_cards, dealer_sum, deck)
 
 # Main code
+#DEBUG card = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q","K", "A"]
+card = ["2", "3", "4", "5", "A"]  # force lots of cards
+suit = ["Hearts", "Diamonds", "Clubs", "Spades"]
 DEALER_MAX = 17
+HAND_MAX = 21
 dealer_sum = 0
 player_sum = 0
 welcome()
 balance = get_starting_balance()
 bet = get_bet()
-deck = init_deck()
+deck = init_deck(card, suit)
 dealer_cards = []
 player_cards = []
 
 # Determine dealer's hand but only show first card
-(dealer_cards, dealer_sum, deck) = get_dealer_cards(deck)
+(dealer_cards, dealer_sum, deck) = get_dealer_cards(deck, DEALER_MAX)
 print("DEBUG..  DEALER CARDS are: ",dealer_cards) # DEBUG
 current_money(balance, bet)
 dealer_showing(dealer_cards)
@@ -121,18 +128,10 @@ for j in player_cards:
 continue_player_hand = True
 while continue_player_hand:
     # Print value of player's hand
-    player_sum = 0
-    for j in player_cards:
-        (card, suit) = j
-        if card in ["J", "Q", "K"]:
-            player_sum = player_sum + 10
-        elif card in ["A"]:
-            player_sum = player_sum + 11   # Need to handle case of Ace = 1 
-        else:
-            player_sum = player_sum + int(card)   # convert string type 2..9 to integer type
+    player_sum = card_sum(player_cards)
     
     print("Total value: {}".format(player_sum))
-    if player_sum > 21:
+    if player_sum > HAND_MAX:
         continue_player_hand = False
     else:
         hit = input("Would you like to hit (y/n): ")
@@ -141,6 +140,7 @@ while continue_player_hand:
         if hit == "y" or hit == "yes":
             (card, deck) = get_card(deck)
             player_cards.append(card) 
+            player_cards = sort_cards(player_cards)
             continue_player_hand = True
         else:
             continue_player_hand = False
@@ -151,7 +151,7 @@ result = input("Press enter to reveal the dealer's hand.")
 for j in dealer_cards:
     (card, suit) = j
     print("{} of {}".format(card, suit))
-if dealer_sum > 21:
+if dealer_sum > HAND_MAX:
     print("Dealer sum of {} - Dealer went over 21. You win!".format(dealer_sum))
 else:
     print("Dealer total of {}".format(dealer_sum))
