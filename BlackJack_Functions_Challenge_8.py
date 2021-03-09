@@ -61,10 +61,8 @@ def dealer_showing(dealer_cards):
 def sort_cards(cards): # put Ace at end of list of cards
     for j in suit:
         if (("A", j)) in cards:
-            print("DEBUG ('A', j) in cards")
             cards.remove(("A", j))
             cards.append(("A", j))
-            print("DEBUG NEW ORDER ...", cards)  #DEBUG
         return cards
 
 def card_sum(cards):
@@ -91,7 +89,6 @@ def get_dealer_cards(deck, DEALER_MAX):
         dealer_cards.append(card)  # card for dealer
         dealer_cards = sort_cards(dealer_cards)
         dealer_sum = card_sum(dealer_cards)
-        print("DEBUG DEALER SUM ...", dealer_sum)
     return (dealer_cards, dealer_sum, deck)
 
 def dealer_wins(balance, bet):
@@ -122,7 +119,6 @@ player_cards = []
 
 # Determine dealer's hand but only show first card
 (dealer_cards, dealer_sum, deck) = get_dealer_cards(deck, DEALER_MAX)
-print("DEBUG..  DEALER CARDS are: ",dealer_cards) # DEBUG
 current_money(balance, bet)
 dealer_showing(dealer_cards)
 
