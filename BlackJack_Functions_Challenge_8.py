@@ -22,7 +22,7 @@ import random
 # Functions
 def welcome():
     print("Welcome to the Blackjack App.")
-    print("The minimum bet at this table is #20.")
+    print("The minimum bet at this table is $20.")
 
 def get_starting_balance():
     print() # blank line
@@ -59,7 +59,14 @@ def dealer_showing(dealer_cards):
     (card, suit) = dealer_cards[0]
     print("The dealer is showing a {} of {}.".format(card, suit))
 
+def sort_cards(cards): # put Ace at end of list of cards
+    if "A" in cards:
+        cards.remove("A")
+        cards.append("A")
+    return cards
+
 def card_sum(cards):
+    cards = sort_cards(cards)
     sum = 0
     for j in cards:
         (card, suit) = j
@@ -74,7 +81,6 @@ def card_sum(cards):
                 sum = sum + 1 # treat Ace as 1 
     return sum
     
-
 def get_dealer_cards(deck):    
     DEALER_MAX = 17
     dealer_sum = 0
@@ -96,7 +102,7 @@ deck = init_deck()
 dealer_cards = []
 player_cards = []
 
-# Determine dealer's hand
+# Determine dealer's hand but only show first card
 (dealer_cards, dealer_sum, deck) = get_dealer_cards(deck)
 print("DEBUG..  DEALER CARDS are: ",dealer_cards) # DEBUG
 current_money(balance, bet)
