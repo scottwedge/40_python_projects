@@ -101,6 +101,20 @@ def player_wins(balance, bet):
     print("New balance is", balance)
     return balance
 
+def determine_winner(balance, player_sum, dealer_sum, HAND_MAX):
+    if player_sum > HAND_MAX:
+        print("Player went over {}...you lose!".format(HAND_MAX))
+        balance = dealer_wins(balance, bet)
+    elif dealer_sum > HAND_MAX:
+        print("Dealer went over {}...you win!".format(HAND_MAX))
+        balance = player_wins(balance, bet)
+    elif player_sum > dealer_sum:
+        print("Player wins with {} points. Dealer had {}.".format(player_sum, dealer_sum))
+        balance = player_wins(balance, bet)
+    else:
+        print("Dealer wins with {} points. Player had {}.".format(dealer_sum, player_sum))
+        balance = dealer_wins(balance, bet)
+    return balance
 
 # Main code
 card = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q","K", "A"]
@@ -163,15 +177,4 @@ else:
     print("Dealer total of {}".format(dealer_sum))
 
 # Determine winner
-if player_sum > HAND_MAX:
-    print("Player went over {}. Dealer wins!".format(HAND_MAX))
-    balance = dealer_wins(balance, bet)
-elif dealer_sum > HAND_MAX:
-    print("Dealer went over {}. Player wins!".format(HAND_MAX))
-    balance = player_wins(balance, bet)
-elif player_sum > dealer_sum:
-    print("Player wins with {} points. Dealer had {}.".format(player_sum, dealer_sum))
-    balance = player_wins(balance, bet)
-else:
-    print("Dealer wins with {} points. Player had {}.".format(dealer_sum, player_sum))
-    balance = dealer_wins(balance, bet)
+balance = determine_winner(balance, player_sum, dealer_sum, HAND_MAX)
