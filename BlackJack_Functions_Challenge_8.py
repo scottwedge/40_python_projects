@@ -3,7 +3,7 @@
 # Black Jack application
 
 # Welcome user
-# State miniumum bet
+# State minimum bet
 # Ask how much money to play with
 # State current balance
 # Ask what the bet is (minimum of $20)
@@ -103,8 +103,7 @@ def player_wins(balance, bet):
 
 
 # Main code
-#DEBUG card = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q","K", "A"]
-card = ["2", "3", "4", "5", "A"]  # force lots of cards
+card = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q","K", "A"]
 suit = ["Hearts", "Diamonds", "Clubs", "Spades"]
 DEALER_MAX = 17
 HAND_MAX = 21
@@ -165,10 +164,14 @@ else:
 
 # Determine winner
 if player_sum > HAND_MAX:
+    print("Player went over {}. Dealer wins!".format(HAND_MAX))
     balance = dealer_wins(balance, bet)
 elif dealer_sum > HAND_MAX:
+    print("Dealer went over {}. Player wins!".format(HAND_MAX))
     balance = player_wins(balance, bet)
 elif player_sum > dealer_sum:
+    print("Player wins with {} points. Dealer had {}.".format(player_sum, dealer_sum))
     balance = player_wins(balance, bet)
 else:
+    print("Dealer wins with {} points. Player had {}.".format(dealer_sum, player_sum))
     balance = dealer_wins(balance, bet)
