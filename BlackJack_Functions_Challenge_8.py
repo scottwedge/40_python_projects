@@ -20,9 +20,9 @@ import random
 
 
 # Functions
-def welcome():
+def welcome(MIN_BET):
     print("Welcome to the Blackjack App.")
-    print("The minimum bet at this table is $20.")
+    print("The minimum bet at this table is ${}.".format(MIN_BET))
 
 def get_starting_balance():
     print() # blank line
@@ -97,12 +97,12 @@ def get_dealer_cards(deck, DEALER_MAX):
 
 def dealer_wins(balance, bet):
     balance = balance - bet
-    print("New balance is", balance)
+#    print("New balance is", balance)
     return balance
 
 def player_wins(balance, bet):
     balance = balance + bet
-    print("New balance is", balance)
+#    print("New balance is", balance)
     return balance
 
 def determine_winner(balance, player_sum, dealer_sum, HAND_MAX):
@@ -125,7 +125,8 @@ card_list = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q","K", "A"]
 suit_list = ["Hearts", "Diamonds", "Clubs", "Spades"]
 DEALER_MAX = 17
 HAND_MAX = 21
-welcome()
+MIN_BET = 20
+welcome(MIN_BET)
 balance = get_starting_balance()
 run_forever = True
 
@@ -186,3 +187,6 @@ while run_forever:
     
     # Determine winner
     balance = determine_winner(balance, player_sum, dealer_sum, HAND_MAX)
+    if balance < MIN_BET:
+        print("Sorry, you ran out of money. Please play again.")
+        run_forever = False
