@@ -14,6 +14,8 @@
 # If no, state how many cards dealer has
 # Press enter to show dealer cards
 # List dealers total and who won
+# Then automatically play again
+# If balance < bet then quit game
 
 # Imports
 import random
