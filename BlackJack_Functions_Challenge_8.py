@@ -50,7 +50,11 @@ def get_card(deck):
     card = deck.pop(index)
     return(card, deck)
 
-def current_money(balance, bet):
+def current_balance(balance):
+    print() # blank line
+    print("Current Money: ${}".format(balance))
+
+def current_money_bet(balance, bet):
     print() # blank line
     print("Current Money: ${}\t\tCurrent Bet: ${}".format(balance, bet))
 
@@ -58,15 +62,15 @@ def dealer_showing(dealer_cards):
     (card, suit) = dealer_cards[0]
     print("The dealer is showing a {} of {}.".format(card, suit))
 
-def sort_cards(cards): # put Ace at end of list of cards
-    for j in suit:
+def sort_cards(suit_list, cards): # put Ace at end of list of cards
+    for j in suit_list:
         if (("A", j)) in cards:
             cards.remove(("A", j))
             cards.append(("A", j))
         return cards
 
-def card_sum(cards):
-    cards = sort_cards(cards)
+def card_sum(suit_list, cards):
+    cards = sort_cards(suit_list, cards)
     sum = 0
     for j in cards:
         (card, suit) = j
@@ -87,8 +91,8 @@ def get_dealer_cards(deck, DEALER_MAX):
     while dealer_sum <= DEALER_MAX:
         (card, deck) = get_card(deck)
         dealer_cards.append(card)  # card for dealer
-        dealer_cards = sort_cards(dealer_cards)
-        dealer_sum = card_sum(dealer_cards)
+        dealer_cards = sort_cards(suit_list, dealer_cards)
+        dealer_sum = card_sum(suit_list, dealer_cards)
     return (dealer_cards, dealer_sum, deck)
 
 def dealer_wins(balance, bet):
@@ -117,64 +121,68 @@ def determine_winner(balance, player_sum, dealer_sum, HAND_MAX):
     return balance
 
 # Main code
-card = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q","K", "A"]
-suit = ["Hearts", "Diamonds", "Clubs", "Spades"]
+card_list = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q","K", "A"]
+suit_list = ["Hearts", "Diamonds", "Clubs", "Spades"]
 DEALER_MAX = 17
 HAND_MAX = 21
-dealer_sum = 0
-player_sum = 0
 welcome()
 balance = get_starting_balance()
-bet = get_bet()
-deck = init_deck(card, suit)
-dealer_cards = []
-player_cards = []
+run_forever = True
 
-# Determine dealer's hand but only show first card
-(dealer_cards, dealer_sum, deck) = get_dealer_cards(deck, DEALER_MAX)
-current_money(balance, bet)
-dealer_showing(dealer_cards)
-
-print() # blank line
-print("Player's Hand:")
-(card, deck) = get_card(deck)
-player_cards.append(card)     # first player card
-(card, deck) = get_card(deck)
-player_cards.append(card)     # second player card
-for j in player_cards:
-    (value, suit) = j
-    print("{} of {}".format(value, suit))
-
-continue_player_hand = True
-while continue_player_hand:
-    # Print value of player's hand
-    player_sum = card_sum(player_cards)
+while run_forever:
+    dealer_sum = 0
+    player_sum = 0
+    current_balance(balance)
+    bet = get_bet()
+    deck = init_deck(card_list, suit_list)
+    dealer_cards = []
+    player_cards = []
     
-    print("Total value: {}".format(player_sum))
-    if player_sum > HAND_MAX:
-        continue_player_hand = False
-    else:
-        hit = input("Would you like to hit (y/n): ")
-        print() # blank line
+    # Determine dealer's hand but only show first card
+    (dealer_cards, dealer_sum, deck) = get_dealer_cards(deck, DEALER_MAX)
+    current_money_bet(balance, bet)
+    dealer_showing(dealer_cards)
     
-        if hit == "y" or hit == "yes":
-            (card, deck) = get_card(deck)
-            player_cards.append(card) 
-            player_cards = sort_cards(player_cards)
-            continue_player_hand = True
-        else:
+    print() # blank line
+    print("Player's Hand:")
+    (card, deck) = get_card(deck)
+    player_cards.append(card)     # first player card
+    (card, deck) = get_card(deck)
+    player_cards.append(card)     # second player card
+    for j in player_cards:
+        (value, suit) = j
+        print("{} of {}".format(value, suit))
+    
+    continue_player_hand = True
+    while continue_player_hand:
+        # Print value of player's hand
+        player_sum = card_sum(suit_list, player_cards)
+        
+        print("Total value: {}".format(player_sum))
+        if player_sum > HAND_MAX:
             continue_player_hand = False
-
-print("Dealer is set with a total of {} cards.".format(len(dealer_cards)))
-print() # blank line
-result = input("Press enter to reveal the dealer's hand.")
-for j in dealer_cards:
-    (card, suit) = j
-    print("{} of {}".format(card, suit))
-if dealer_sum > HAND_MAX:
-    print("Dealer sum of {} - Dealer went over 21. You win!".format(dealer_sum))
-else:
-    print("Dealer total of {}".format(dealer_sum))
-
-# Determine winner
-balance = determine_winner(balance, player_sum, dealer_sum, HAND_MAX)
+        else:
+            hit = input("Would you like to hit (y/n): ")
+            print() # blank line
+        
+            if hit == "y" or hit == "yes":
+                (card, deck) = get_card(deck)
+                player_cards.append(card) 
+                player_cards = sort_cards(suit_list, player_cards)
+                continue_player_hand = True
+            else:
+                continue_player_hand = False
+    
+    print("Dealer is set with a total of {} cards.".format(len(dealer_cards)))
+    print() # blank line
+    result = input("Press enter to reveal the dealer's hand.")
+    for j in dealer_cards:
+        (card, suit) = j
+        print("{} of {}".format(card, suit))
+    if dealer_sum > HAND_MAX:
+        print("Dealer sum of {} - Dealer went over 21. You win!".format(dealer_sum))
+    else:
+        print("Dealer total of {}".format(dealer_sum))
+    
+    # Determine winner
+    balance = determine_winner(balance, player_sum, dealer_sum, HAND_MAX)
