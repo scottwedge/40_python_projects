@@ -7,8 +7,12 @@
 # Steps:
 # Welcome user
 # Display settings for three potential choices
+# Show Name, Element Type, Health, Speed  and Moves for each pykemon
+# List three pykemon by name
 # Choose one pykemon
 
+# Imports
+import random
 
 # Functions
 def welcome():
@@ -21,8 +25,22 @@ def welcome():
 
 def get_enter():
     result = input("Press Enter to choose your Pykemon!")
+
+def create_pykemon():
+    tuple_of_settings = random.randint(1,10)
+    return  tuple_of_settings
     
+def choose_pykemon(list_of_pykemon):
+    print("Profressor Eramo presents you with the three Pykemon:")
+    for j in list_of_pykemon:
+        print("({}) - {}".format(j, list_of_pykemon[j][name]))
 
 # Main code
 welcome()
 get_enter()
+
+list_of_pykemon = []
+for j in range(3):
+    new_pykemon = create_pykemon()
+    list_of_pykemon.append(new_pykemon)
+
