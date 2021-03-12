@@ -23,6 +23,9 @@ HEALTHY = "O"
 DEAD = "X"
 SPACER = "-"
 STATUS_SIZE = 2 # number of status entries for each person
+HEALTH_INDEX = 0
+DAYS_INFECTED_INDEX = 1
+
 
 
 # Functions
@@ -36,14 +39,14 @@ def get_pop_pc():
     print()   # blank line
     print("We must first state by infecting a portion of the population.")
     pop_pc = input("--Enter the percentage (0-100) of the population to initially infect: ")
-    pop_pc = float(pop_pc)/100  # convert to integer type
+    pop_pc = int(pop_pc)  # convert to integer type
     return pop_pc
 
 def get_exposure_pc():
     print()   # blank line
     print("We must know the risk a person has to contract the disease when exposed.")
     exposure_pc = input("--Enter the probability (0-100) that a person gets infected when exposed:  ")
-    exposure_pc = float(exposure_pc)/100  # convert to integer type
+    exposure_pc = int(exposure_pc)  # convert to integer type
     return exposure_pc
 
 def get_duration():
@@ -57,7 +60,7 @@ def get_mort_pc():
     print()   # blank line
     print("We must know the mortality rate of those infected.")
     mort_pc = input("--Enter the mortality rate (0-100) of the infection: ")
-    mort_pc = float(mort_pc)/100
+    mort_pc = int(mort_pc)
     return mort_pc
 
 def get_num_days():
@@ -85,4 +88,25 @@ num_days = get_num_days()
 
 # Initialize all users to be healthy 
 pop_status = init_config(pop, STATUS_SIZE)
-print(pop_status)
+
+day = 1
+# Initial infection count
+infect_count = pop * pop_pc / 100
+infect_count = int(infect_count)   # convert to integer (by rounding down)
+for k in range(infect_count):
+    # create list of all healthy population
+    healthy_list = []
+    for j in range(pop): # evaluate every user
+        if pop[j][HEALTH_INDEX] == HEALTHY:
+            healthy_list.append(j)
+        healthy_list.append   # create list of healthy pop
+                              # randomly infect from healthy pop list
+    infected_index = random.randint(1, len(healthy_list))
+    pop[infected_index][HEALTH_INDEX] = INFECTED
+print(pop)    
+    
+
+#while day <= num_days:
+    
+# Daily status updates
+# 
