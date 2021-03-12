@@ -9,8 +9,20 @@
 # Get mortality rate of the infection
 # Get how long to run the simulation
 
+# For each person status we need to track
+# index 0: (health_index) health (O or I or X or ???)
+# index 1: (days_infected_index) if infected, how many days being infected
+# index 2: TBD ???
+
 # Imports
 import random
+
+# Constants
+INFECTED = "I"
+HEALTHY = "O"
+DEAD = "X"
+SPACER = "-"
+STATUS_SIZE = 2 # number of status entries for each person
 
 
 # Functions
@@ -51,15 +63,26 @@ def get_mort_pc():
 def get_num_days():
     print()  # blank line
     print("We must know how long to run the simulation.")
-    num_days = input("--Enterthe number of days to simulate: ")
+    num_days = input("--Enter the number of days to simulate: ")
     num_days = int(num_days)  # convert to integer type
 
+def init_config(pop, STATUS_SIZE):
+    pop_status = []
+    default_state = [HEALTHY, 0]
+    for j in range(pop):
+        pop_status.append(default_state)
+    return pop_status
 
 
 # Main code
+# Get all inputs from user
 pop = get_pop()
 pop_pc = get_pop_pc()
 expose_pc = get_exposure_pc()
 duration = get_duration()
 mort_pc = get_mort_pc()
 num_days = get_num_days()
+
+# Initialize all users to be healthy 
+pop_status = init_config(pop, STATUS_SIZE)
+print(pop_status)
