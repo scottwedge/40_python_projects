@@ -90,24 +90,24 @@ num_days = get_num_days()
 pop = init_config(pop_count, STATUS_SIZE)
 
 day = 1
-# Initial infection count
+# Calculate number of infections on day 1
 infect_count = pop_count * pop_pc / 100
 infect_count = int(infect_count)   # convert to integer (by rounding down)
-for k in range(infect_count):
-    # create list of all healthy population
-    healthy_list = []
-    for j in range(pop_count): # evaluate every user
-        if pop[j][HEALTH_INDEX] == HEALTHY:
-            healthy_list.append(j)
-        healthy_list.append   # create list of healthy pop
-                              # randomly infect from healthy pop list
-    print("DEBUG len healthy_list = ", len(healthy_list))
-    infected_index = random.randint(1, len(healthy_list))
-    pop[infected_index][HEALTH_INDEX] = INFECTED
-print(pop)    
+print("DEBUG infect_count =", infect_count)
+
+# choose randomly who gets infected
+while  infect_count > 0:
+    print("DEBUG infect_count = ", infect_count)
+    random.seed()
+    infected_index = random.randint(0, pop_count - 1)
+    status = pop[infected_index][HEALTH_INDEX]
+    print("DEBUG health status ...", status)
+    if status == HEALTHY:
+        pop[infected_index][HEALTH_INDEX] = INFECTED  # mark user as infected
+        infect_count -= 1
+    else:
+        pass
+        print("pass because STATUS =", status)
+#print(pop)         #DEBUG
     
 
-#while day <= num_days:
-    
-# Daily status updates
-# 
