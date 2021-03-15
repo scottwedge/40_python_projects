@@ -29,11 +29,11 @@ DAYS_INFECTED_INDEX = 1
 
 
 # Functions
-def get_pop():
+def get_pop_count():
     print("To simulate an epidemic outbreak, we must know the population size.")
-    pop = input("--Enter the population size: ")
-    pop = int(pop)  # convert from input string type to integer type
-    return pop
+    pop_count = input("--Enter the population size: ")
+    pop_count = int(pop_count)  # convert from input string type to integer type
+    return pop_count
 
 def get_pop_pc():
     print()   # blank line
@@ -79,7 +79,7 @@ def init_config(pop, STATUS_SIZE):
 
 # Main code
 # Get all inputs from user
-pop = get_pop()
+pop_count = get_pop_count()
 pop_pc = get_pop_pc()
 expose_pc = get_exposure_pc()
 duration = get_duration()
@@ -87,20 +87,21 @@ mort_pc = get_mort_pc()
 num_days = get_num_days()
 
 # Initialize all users to be healthy 
-pop_status = init_config(pop, STATUS_SIZE)
+pop = init_config(pop_count, STATUS_SIZE)
 
 day = 1
 # Initial infection count
-infect_count = pop * pop_pc / 100
+infect_count = pop_count * pop_pc / 100
 infect_count = int(infect_count)   # convert to integer (by rounding down)
 for k in range(infect_count):
     # create list of all healthy population
     healthy_list = []
-    for j in range(pop): # evaluate every user
+    for j in range(pop_count): # evaluate every user
         if pop[j][HEALTH_INDEX] == HEALTHY:
             healthy_list.append(j)
         healthy_list.append   # create list of healthy pop
                               # randomly infect from healthy pop list
+    print("DEBUG len healthy_list = ", len(healthy_list))
     infected_index = random.randint(1, len(healthy_list))
     pop[infected_index][HEALTH_INDEX] = INFECTED
 print(pop)    
