@@ -10,9 +10,9 @@
 # Get how long to run the simulation
 
 # For each person status we need to track
-# index 0: (health_index) health (O or I or X or ???)
-# index 1: (days_infected_index) if infected, how many days being infected
-# index 2: TBD ???
+# pop  health (O or I or X or ???)
+# days_sick  how many days being infected
+# 
 
 # Imports
 import random
@@ -69,12 +69,17 @@ def get_num_days():
     num_days = input("--Enter the number of days to simulate: ")
     num_days = int(num_days)  # convert to integer type
 
-def init_config(pop, STATUS_SIZE):
-    pop_status = []
-    default_state = [HEALTHY, 0]
-    for j in range(pop):
-        pop_status.append(default_state)
-    return pop_status
+def init_pop(pop_count, HEALTHY):
+    pop = []    # initialize empty list
+    for j in range(pop_count):
+        pop.append(HEALTHY)
+    return pop
+
+def init_days_sick(pop_count):
+    days_sick = []  # initialize empty list
+    for j in range(pop_count):
+        days_sick.append(0)
+    return days_sick
 
 
 # Main code
@@ -86,28 +91,29 @@ duration = get_duration()
 mort_pc = get_mort_pc()
 num_days = get_num_days()
 
-# Initialize all users to be healthy 
-pop = init_config(pop_count, STATUS_SIZE)
+# Initialize all users to be healthy with zero days sick
+pop = init_pop(pop_count, HEALTHY)
+days_sick = init_days_sick(pop_count)
+print("DEBUG pop=", pop)   # DEBUG
+print("DEBUG days sick =", days_sick)  #DEBUG
+j = input("input")
 
 day = 1
 # Calculate number of infections on day 1
-infect_count = pop_count * pop_pc / 100
-infect_count = int(infect_count)   # convert to integer (by rounding down)
-print("DEBUG infect_count =", infect_count)
+infected_count = pop_count * pop_pc / 100
+infected_count = int(infected_count)   # convert to integer (by rounding down)
+print("DEBUG infect_counted =", infected_count)
 
 # choose randomly who gets infected
-while  infect_count > 0:
-    print("DEBUG infect_count = ", infect_count)
+while infected_count > 0:
     random.seed()
-    infected_index = random.randint(0, pop_count - 1)
-    status = pop[infected_index][HEALTH_INDEX]
-    print("DEBUG health status ...", status)
-    if status == HEALTHY:
-        pop[infected_index][HEALTH_INDEX] = INFECTED  # mark user as infected
-        infect_count -= 1
+    infected_index = random.randint(0, pop_count - 1)  # select random person
+    if pop[infected_index]  == HEALTHY:
+        pop[infected_index] = INFECTED  # mark person as infected
+        days_sick[infected_index] += 1
+        infected_count = infected_count - 1
     else:
-        pass
-        print("pass because STATUS =", status)
-#print(pop)         #DEBUG
-    
-
+        print("Ignore this user since they are already =", pop[infected_index])
+ 
+print("DEBUG pop=", pop)   # DEBUG
+print("DEBUG days sick =", days_sick)  #DEBUG
