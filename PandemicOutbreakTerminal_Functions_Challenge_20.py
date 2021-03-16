@@ -98,15 +98,11 @@ num_days = get_num_days()
 # Initialize all users to be healthy with zero days sick
 pop = init_pop(pop_count, HEALTHY)
 days_sick = init_days_sick(pop_count)
-print("DEBUG pop=", pop)   # DEBUG
-print("DEBUG days sick =", days_sick)  #DEBUG
-j = input("input")
 
 day = 1
 # Calculate number of infections on day 1
 infected_count = pop_count * pop_pc / 100
 infected_count = int(infected_count)   # convert to integer (by rounding down)
-print("DEBUG infect_counted =", infected_count)
 
 # choose randomly who gets infected
 while infected_count > 0:
@@ -119,11 +115,10 @@ while infected_count > 0:
     else:
         print("Ignore this user since they are already =", pop[infected_index])
  
-print("DEBUG pop=", pop)   # DEBUG
-print("DEBUG days sick =", days_sick)  #DEBUG
 
 status = daily_status(pop)
-print("daily status: ", status)
+print("DAILY STATUS #{:2d}: {}".format(day, status))
+#print("daily status: ", status)
 
 # Now update status of everyone for day 2 until end of simulation
 # use new list to avoid new updates affecting later updates
@@ -157,7 +152,7 @@ while day <= num_days:
     if pop[0] == HEALTHY:   # special case for first person in row
         if pop[1] == INFECTED:    # check upper neighbour
             random.seed()
-            if random.randint(0,100) <= exposure_pc:
+            if random.randint(0,100) <= expose_pc:
                 new_pop[0] = INFECTED
                 new_days_sick = 1
             else:
@@ -176,4 +171,6 @@ while day <= num_days:
                 new_days_sick = 0
 
 
+    status = daily_status(pop)
+    print("DAILY STATUS #{:2d}: {}".format(day, status))
     day = day + 1     
