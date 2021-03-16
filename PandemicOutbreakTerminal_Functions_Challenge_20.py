@@ -10,9 +10,10 @@
 # Get how long to run the simulation
 
 # For each person status we need to track
-# pop  health (O or I or X or ???)
-# days_sick  how many days being infected
+# pop:  health (O or I or X or ???)
+# days_sick:  how many days being infected
 # 
+# Print daily status of population (healthy, infected or dead)
 
 # Imports
 import random
@@ -81,6 +82,12 @@ def init_days_sick(pop_count):
         days_sick.append(0)
     return days_sick
 
+def daily_status(pop):
+    status = str(pop[0])   # first character of status
+    for j in range(1, len(pop)):
+        status = status + SPACER + str(pop[j])
+    return status      
+
 
 # Main code
 # Get all inputs from user
@@ -117,3 +124,6 @@ while infected_count > 0:
  
 print("DEBUG pop=", pop)   # DEBUG
 print("DEBUG days sick =", days_sick)  #DEBUG
+
+status = daily_status(pop)
+print("daily status: ", status)
