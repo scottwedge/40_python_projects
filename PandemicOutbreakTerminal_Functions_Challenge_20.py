@@ -23,10 +23,6 @@ INFECTED = "I"
 HEALTHY = "O"
 DEAD = "X"
 SPACER = "-"
-STATUS_SIZE = 2 # number of status entries for each person
-HEALTH_INDEX = 0
-DAYS_INFECTED_INDEX = 1
-
 
 
 # Functions
@@ -127,3 +123,52 @@ print("DEBUG days sick =", days_sick)  #DEBUG
 
 status = daily_status(pop)
 print("daily status: ", status)
+
+# Now update status of everyone for day 2 until end of simulation
+# use new list to avoid new updates affecting later updates
+day = day + 1
+new_pop = []
+while day <= num_days: 
+    # check status of user themself
+    # if user dead then remains dead
+    if pop[0] == DEAD:
+        new_pop[0] = DEAD
+    # if user infected, determine if dies, has recovered/healthy or is still infected
+    elif pop[0] == INFECTED:
+        random.seed()
+        if random.randint(0,100) <= mortality_pc/duration:  # spread mortality over duration of illness (??)
+            new_pop[0] = DEAD
+        elif days_sick[0] >= duration:
+            new_pop[0] = HEALTHY   # patient has recovered and is healthy
+            new_days_sick[0] = 0
+        else:                  #  days_sick[0] < duration:
+            new_pop[0] = INFECTED    # still infected
+            new_days_sick[0] = days_sick[0] + 1
+    else:   # was HEALTHY
+        if new_pop[0] != DEAD and new_pop[0] != INFECTED:
+            new_pop[0] = HEALTHY    # still healthy
+
+    # if healthy, determine if upper neighbour is infected so might infect this user
+    if pop[0] == HEALTHY:   # special case for first person in row
+        if pop[1] == INFECTED:    # check upper neighbour
+            random.seed()
+            if random.randint(0,100) <= exposure_pc:
+                new_pop[0] = INFECTED
+                new_days_sick = 1
+            else:
+                new_pop[0] = HEALTHY    # still healthy
+                new_days_sick = 0
+
+    # if healthy, determine if lower neighbour is infected so might infect this user
+    if pop[0] == HEALTHY:   # special case for first person in row
+        if pop[-1] == INFECTED:    # check lower neighbour
+            random.seed()
+            if random.randint(0,100) <= exposure_pc:
+                new_pop[0] = INFECTED
+                new_days_sick = 1
+            else:
+                new_pop[0] = HEALTHY    # still healthy
+                new_days_sick = 0
+
+
+    day = day + 1     
