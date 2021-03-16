@@ -65,6 +65,7 @@ def get_num_days():
     print("We must know how long to run the simulation.")
     num_days = input("--Enter the number of days to simulate: ")
     num_days = int(num_days)  # convert to integer type
+    return num_days
 
 def init_pop(pop_count, HEALTHY):
     pop = []    # initialize empty list
@@ -128,6 +129,10 @@ print("daily status: ", status)
 # use new list to avoid new updates affecting later updates
 day = day + 1
 new_pop = []
+new_days_sick = []
+new_pop = init_pop(pop_count, HEALTHY)
+new_days_sick = init_days_sick(pop_count)
+
 while day <= num_days: 
     # check status of user themself
     # if user dead then remains dead
@@ -136,7 +141,7 @@ while day <= num_days:
     # if user infected, determine if dies, has recovered/healthy or is still infected
     elif pop[0] == INFECTED:
         random.seed()
-        if random.randint(0,100) <= mortality_pc/duration:  # spread mortality over duration of illness (??)
+        if random.randint(0,100) <= mort_pc/duration:  # spread mortality over duration of illness (??)
             new_pop[0] = DEAD
         elif days_sick[0] >= duration:
             new_pop[0] = HEALTHY   # patient has recovered and is healthy
