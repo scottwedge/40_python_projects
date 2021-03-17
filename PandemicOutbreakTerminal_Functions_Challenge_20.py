@@ -86,22 +86,23 @@ def format_daily_status(pop):
     return status      
 
 def update_user(pop):
-    # check status of user themself
-    if pop[0] == DEAD:    # if user was dead then remains dead
-        new_pop[0] = DEAD
-    elif pop[0] == INFECTED:   # if user was infected, determine if dies, has recovered/healthy or is still infected
-        random.seed()
-        if random.randint(0,100) <= mort_pc/duration:  # spread mortality over duration of illness (??)
-            new_pop[0] = DEAD
-        elif days_sick[0] >= duration:
-            new_pop[0] = HEALTHY   # patient has recovered and is healthy
-            new_days_sick[0] = 0
-        else:                  #  days_sick[0] < duration:
-            new_pop[0] = INFECTED    # still infected
-            new_days_sick[0] = days_sick[0] + 1
-    else:   # was HEALTHY
-        if new_pop[0] != DEAD and new_pop[0] != INFECTED:
-            new_pop[0] = HEALTHY    # still healthy
+    for j in range(len(pop)):
+        # check status of user themself
+        if pop[j] == DEAD:    # if user was dead then remains dead
+            new_pop[j] = DEAD
+        elif pop[j] == INFECTED:   # if user was infected, determine if dies, has recovered/healthy or is still infected
+            random.seed()
+            if random.randint(0,100) <= mort_pc/duration:  # spread mortality over duration of illness (??)
+                new_pop[j] = DEAD
+            elif days_sick[j] >= duration:
+                new_pop[j] = HEALTHY   # patient has recovered and is healthy
+                new_days_sick[j] = 0
+            else:                  #  days_sick[0] < duration:
+                new_pop[j] = INFECTED    # still infected
+                new_days_sick[j] = days_sick[j] + 1
+        else:   # was HEALTHY
+            if new_pop[j] != DEAD and new_pop[j] != INFECTED:
+                new_pop[j] = HEALTHY    # still healthy
     return new_pop
 
 def check_neighbour(pop, new_pop, offset):
@@ -146,28 +147,32 @@ while infected_count > 0:
         infected_count = infected_count - 1
     else:
         print("Ignoring index {} since they are already {}".format(infected_index, pop[infected_index]))
- 
 
 status = format_daily_status(pop)
 
-# Now update status of everyone for day 2 until end of simulation
-# use new list to avoid new updates affecting later updates
 
 while day <= num_days: 
-    print("DAILY STATUS #{:2d}: {}".format(day, status))
-    new_pop = init_pop(pop_count, HEALTHY)
-    new_days_sick = init_days_sick(pop_count)
-    new_pop = update_user(pop)
+    print("                DAILY STATUS #{:2d}: {}".format(day, status))   # print current day's health status
+
+    new_pop = init_pop(pop_count, HEALTHY)     # set all of next day's status to HEALTHY by default
+    new_days_sick = init_days_sick(pop_count)   # set all of next day's sick day count to zero
+
+    new_pop = update_user(pop)   # update user based on previous health setting
+    status = format_daily_status(new_pop)
+    print("   UPDATED USER DAILY STATUS #{:2d}: {}".format(day, status))
 
     # if user healthy, determine if lower neighbour is infected so might infect this user
     offset = -1    # check lower neighbour
     new_pop = check_neighbour(pop, new_pop, offset)
+    status = format_daily_status(new_pop)
+    print("LOWER NEIGHBOUR DAILY STATUS #{:2d}: {}".format(day, status))
 
     # if user healthy, determine if upper neighbour is infected so might infect this user
     offset = 1    # check upper neighbour
     new_pop = check_neighbour(pop, new_pop, offset)
+    status = format_daily_status(new_pop)
+    print("UPPER NEIGHBOUR DAILY STATUS #{:2d}: {}".format(day, status))
 
 
     pop = new_pop.copy()  # overwrite old results with latest results
-    status = format_daily_status(pop)
     day = day + 1     
