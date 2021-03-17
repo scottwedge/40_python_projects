@@ -34,7 +34,7 @@ def get_pop_count():
 
 def get_pop_pc():
     print()   # blank line
-    print("We must first state by infecting a portion of the population.")
+    print("We must first start by infecting a portion of the population.")
     pop_pc = input("--Enter the percentage (0-100) of the population to initially infect: ")
     pop_pc = int(pop_pc)  # convert to integer type
     return pop_pc
@@ -105,19 +105,23 @@ def update_user(pop, days_sick):
             new_pop[j] = pop[j]    # still healthy
     return (new_pop, new_days_sick)
 
-def check_neighbour(pop, new_pop, offset):
+def check_neighbour(pop, new_pop, days_sick, new_days_sick, offset):
 # if offset = -1 then check if lower neighbour infected
 # if offset = 1 then check if upper neighbour infected
-    if pop[0] == HEALTHY:   # special case for first person in row
-        if pop[1] == INFECTED:    # check upper neighbour
-            random.seed()
-            if random.randint(0,100) <= expose_pc:
-                new_pop[0] = INFECTED
-                new_days_sick = 1
-            else:
-                new_pop[0] = HEALTHY    # still healthy
-                new_days_sick = 0
-    return new_pop
+    for j in range(len(pop)):
+        if (j == 0 and offset == -1) or (j == len(pop) - 1 and offset == 1): # special end cases
+            pass
+        else: 
+            if pop[j] == HEALTHY and new_pop == HEALTHY:         # if user now and next day is healthy
+                if pop[j + offset] == INFECTED:    # check neighbour
+                    random.seed()
+                    if random.randint(0,100) <= expose_pcxxxx:
+                        new_pop[j] = INFECTED
+                        new_days_sick[j] = 1
+                    else:
+                        new_pop[j] = HEALTHY    # still healthy
+                        new_days_sick[j] = 0
+    return (new_pop, new_days_sick)
 
 # Main code
 # Get all inputs from user
@@ -163,13 +167,13 @@ while day <= num_days:
 
     # if user healthy, determine if lower neighbour is infected so might infect this user
     offset = -1    # check lower neighbour
-    new_pop = check_neighbour(pop, new_pop, offset)
+    (new_pop, new_days_sick) = check_neighbour(pop, new_pop, days_sick, new_days_sick, offset)
     status = format_daily_status(new_pop)
     print("LOWER NEIGHBOUR DAILY STATUS #{:2d}: {}".format(day, status))
 
     # if user healthy, determine if upper neighbour is infected so might infect this user
     offset = 1    # check upper neighbour
-    new_pop = check_neighbour(pop, new_pop, offset)
+    (new_pop, new_days_sick) = check_neighbour(pop, new_pop, days_sick, new_days_sick, offset)
     status = format_daily_status(new_pop)
     print("UPPER NEIGHBOUR DAILY STATUS #{:2d}: {}".format(day, status))
 
