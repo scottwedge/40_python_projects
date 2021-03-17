@@ -85,7 +85,7 @@ def format_daily_status(pop):
         status = status + SPACER + str(pop[j])
     return status      
 
-def update_user(pop):
+def update_user(pop, days_sick):
     for j in range(len(pop)):
         # check status of user themself
         if pop[j] == DEAD:    # if user was dead then remains dead
@@ -94,6 +94,7 @@ def update_user(pop):
             random.seed()
             if random.randint(0,100) <= mort_pc/duration:  # spread mortality over duration of illness (??)
                 new_pop[j] = DEAD
+                new_days_sick[j] = 0
             elif days_sick[j] >= duration:
                 new_pop[j] = HEALTHY   # patient has recovered and is healthy
                 new_days_sick[j] = 0
@@ -101,13 +102,12 @@ def update_user(pop):
                 new_pop[j] = INFECTED    # still infected
                 new_days_sick[j] = days_sick[j] + 1
         else:   # was HEALTHY
-            if new_pop[j] != DEAD and new_pop[j] != INFECTED:
-                new_pop[j] = HEALTHY    # still healthy
-    return new_pop
+            new_pop[j] = pop[j]    # still healthy
+    return (new_pop, new_days_sick)
 
 def check_neighbour(pop, new_pop, offset):
-# if offset = -1 then check lower neighbour
-# if offset = 1 then check upper neighbour
+# if offset = -1 then check if lower neighbour infected
+# if offset = 1 then check if upper neighbour infected
     if pop[0] == HEALTHY:   # special case for first person in row
         if pop[1] == INFECTED:    # check upper neighbour
             random.seed()
@@ -157,7 +157,7 @@ while day <= num_days:
     new_pop = init_pop(pop_count, HEALTHY)     # set all of next day's status to HEALTHY by default
     new_days_sick = init_days_sick(pop_count)   # set all of next day's sick day count to zero
 
-    new_pop = update_user(pop)   # update user based on previous health setting
+    (new_pop, new_days_sick) = update_user(pop, days_sick)   # update user based on previous health setting
     status = format_daily_status(new_pop)
     print("   UPDATED USER DAILY STATUS #{:2d}: {}".format(day, status))
 
@@ -174,5 +174,6 @@ while day <= num_days:
     print("UPPER NEIGHBOUR DAILY STATUS #{:2d}: {}".format(day, status))
 
 
-    pop = new_pop.copy()  # overwrite old results with latest results
+    pop = new_pop.copy()  # overwrite old health status results with latest results
+    days_sick = new_days_sick.copy()  # overwrite old sick days count with latest values
     day = day + 1     
