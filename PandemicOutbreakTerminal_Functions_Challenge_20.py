@@ -98,7 +98,7 @@ def update_user(pop, days_sick):
             elif days_sick[j] >= duration:
                 new_pop[j] = HEALTHY   # patient has recovered and is healthy
                 new_days_sick[j] = 0
-            else:                  #  days_sick[0] < duration:
+            else:                  #  days_sick < duration:
                 new_pop[j] = INFECTED    # still infected
                 new_days_sick[j] = days_sick[j] + 1
         else:   # was HEALTHY
@@ -110,12 +110,12 @@ def check_neighbour(pop, new_pop, days_sick, new_days_sick, offset):
 # if offset = 1 then check if upper neighbour infected
     for j in range(len(pop)):
         if (j == 0 and offset == -1) or (j == len(pop) - 1 and offset == 1): # special end cases
-            pass
+            continue
         else: 
-            if pop[j] == HEALTHY and new_pop == HEALTHY:         # if user now and next day is healthy
+            if pop[j] == HEALTHY and new_pop[j] == HEALTHY:         # if user now and next day is healthy
                 if pop[j + offset] == INFECTED:    # check neighbour
                     random.seed()
-                    if random.randint(0,100) <= expose_pcxxxx:
+                    if random.randint(0,100) <= expose_pc:
                         new_pop[j] = INFECTED
                         new_days_sick[j] = 1
                     else:
@@ -153,9 +153,12 @@ while infected_count > 0:
         print("Ignoring index {} since they are already {}".format(infected_index, pop[infected_index]))
 
 status = format_daily_status(pop)
+print("              INITIAL STATUS #{:2d}: {}".format(day, status))   # print current day's health status
 
 
 while day <= num_days: 
+    day = day + 1
+    status = format_daily_status(pop)
     print("                DAILY STATUS #{:2d}: {}".format(day, status))   # print current day's health status
 
     new_pop = init_pop(pop_count, HEALTHY)     # set all of next day's status to HEALTHY by default
@@ -180,4 +183,3 @@ while day <= num_days:
 
     pop = new_pop.copy()  # overwrite old health status results with latest results
     days_sick = new_days_sick.copy()  # overwrite old sick days count with latest values
-    day = day + 1     
