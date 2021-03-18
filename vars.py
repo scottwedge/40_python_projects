@@ -2,6 +2,12 @@
 
 # Fooling around with local and global variables
 
-s = "hello"
+x = "awesome"
 
+def myfunc():
+    global x
+    x = "Terrific"
 
+myfunc()
+
+print("Python is " + x)
