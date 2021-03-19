@@ -154,7 +154,7 @@ while infected_count > 0:
         pass
 
 status = format_daily_status(pop)
-print("INITIAL STATUS #{:2d}: {}".format(day, status))   # print current day's health status
+print("INITIAL STATUS #{:2d}: {}".format(day, status))   # print day #1 health status
 
 
 while day <= num_days: 
