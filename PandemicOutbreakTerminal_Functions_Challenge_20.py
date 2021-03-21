@@ -174,11 +174,23 @@ def main():
         offset = 1    # check upper neighbour
         (new_pop, new_days_sick) = check_neighbour(pop, new_pop, days_sick, new_days_sick, offset, expose_pc)
         status = format_daily_status(new_pop)
+        infect = 0
+        dead = 0
+        total = len(new_pop)
+        for j in new_pop:
+            if j == DEAD:
+                dead = dead + 1
+            elif j == INFECTED:
+                infect = infect + 1
+
+        infect_pc = infect / total
+        dead_pc = dead / total        
+ 
         print("-----Day # {} -----".format(day))
         print("Percentage of Population Infected: {}%".format(infect_pc))
         print("Percentage of Population Dead: {}%".format(dead_pc))
-        print(Total People Infected: {} / {}".format(infect, total))
-        print("Total Deaths: {} / {}".format(deaths, total))
+        print("Total People Infected: {} / {}".format(infect, total))
+        print("Total Deaths: {} / {}".format(dead, total))
         print("  DAILY STATUS #{:2d}: {}".format(day, status))
     
     
