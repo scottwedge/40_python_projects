@@ -123,6 +123,26 @@ def check_neighbour(pop, new_pop, days_sick, new_days_sick, offset, expose_pc):
                         new_days_sick[j] = 0
     return (new_pop, new_days_sick)
 
+def summary(new_pop, day):
+    status = format_daily_status(new_pop)
+    infect = 0
+    dead = 0
+    total = len(new_pop)
+    for j in new_pop:
+        if j == DEAD:
+            dead = dead + 1
+        elif j == INFECTED:
+            infect = infect + 1
+
+    infect_pc = 100 * infect / total
+    dead_pc = 100 * dead / total        
+ 
+    print("-----Day # {} -----".format(day))
+    print("Percentage of Population Infected: {}%".format(infect_pc))
+    print("Percentage of Population Dead: {}%".format(dead_pc))
+    print("Total People Infected: {} / {}".format(infect, total))
+    print("Total Deaths: {} / {}".format(dead, total))
+
 # Main code
 def main():
     # Get all inputs from user
@@ -173,24 +193,8 @@ def main():
         # if user healthy, determine if upper neighbour is infected so might infect this user
         offset = 1    # check upper neighbour
         (new_pop, new_days_sick) = check_neighbour(pop, new_pop, days_sick, new_days_sick, offset, expose_pc)
-        status = format_daily_status(new_pop)
-        infect = 0
-        dead = 0
-        total = len(new_pop)
-        for j in new_pop:
-            if j == DEAD:
-                dead = dead + 1
-            elif j == INFECTED:
-                infect = infect + 1
-
-        infect_pc = 100 * infect / total
-        dead_pc = 100 * dead / total        
- 
-        print("-----Day # {} -----".format(day))
-        print("Percentage of Population Infected: {}%".format(infect_pc))
-        print("Percentage of Population Dead: {}%".format(dead_pc))
-        print("Total People Infected: {} / {}".format(infect, total))
-        print("Total Deaths: {} / {}".format(dead, total))
+        
+        summary(new_pop, day)
         print("  DAILY STATUS #{:2d}: {}".format(day, status))
     
     
