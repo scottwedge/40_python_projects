@@ -183,8 +183,8 @@ def main():
             elif j == INFECTED:
                 infect = infect + 1
 
-        infect_pc = infect / total
-        dead_pc = dead / total        
+        infect_pc = 100 * infect / total
+        dead_pc = 100 * dead / total        
  
         print("-----Day # {} -----".format(day))
         print("Percentage of Population Infected: {}%".format(infect_pc))
