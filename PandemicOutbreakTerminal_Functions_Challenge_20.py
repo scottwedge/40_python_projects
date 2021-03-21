@@ -151,7 +151,6 @@ def main():
             days_sick[infected_index] += 1
             infected_count = infected_count - 1
         else:
-    #        print("Ignoring index {} since they are already {}".format(infected_index, pop[infected_index]))
             pass
     
     status = format_daily_status(pop)
@@ -161,25 +160,25 @@ def main():
     while day <= num_days: 
         day = day + 1
         status = format_daily_status(pop)
-    #    print("                DAILY STATUS #{:2d}: {}".format(day, status))   # print current day's health status
     
         new_pop = init_pop(pop_count, HEALTHY)     # set all of next day's status to HEALTHY by default
         new_days_sick = init_days_sick(pop_count)   # set all of next day's sick day count to zero
     
         (new_pop, new_days_sick) = update_user(pop, new_pop, days_sick, new_days_sick, mort_pc, duration)   # update user based on previous health setting
-    #    status = format_daily_status(new_pop)
-    #    print("   UPDATED USER DAILY STATUS #{:2d}: {}".format(day, status))
     
         # if user healthy, determine if lower neighbour is infected so might infect this user
         offset = -1    # check lower neighbour
         (new_pop, new_days_sick) = check_neighbour(pop, new_pop, days_sick, new_days_sick, offset, expose_pc)
-    #    status = format_daily_status(new_pop)
-    #    print("LOWER NEIGHBOUR DAILY STATUS #{:2d}: {}".format(day, status))
     
         # if user healthy, determine if upper neighbour is infected so might infect this user
         offset = 1    # check upper neighbour
         (new_pop, new_days_sick) = check_neighbour(pop, new_pop, days_sick, new_days_sick, offset, expose_pc)
         status = format_daily_status(new_pop)
+        print("-----Day # {} -----".format(day))
+        print("Percentage of Population Infected: {}%".format(infect_pc))
+        print("Percentage of Population Dead: {}%".format(dead_pc))
+        print(Total People Infected: {} / {}".format(infect, total))
+        print("Total Deaths: {} / {}".format(deaths, total))
         print("  DAILY STATUS #{:2d}: {}".format(day, status))
     
     
