@@ -137,6 +137,7 @@ def summary(new_pop, day):
     infect_pc = 100 * infect / total
     dead_pc = 100 * dead / total        
  
+    print() # blank line
     print("-----Day # {} -----".format(day))
     print("Percentage of Population Infected: {}%".format(infect_pc))
     print("Percentage of Population Dead: {}%".format(dead_pc))
@@ -173,9 +174,10 @@ def main():
         else:
             pass
     
+    summary(pop, day)
     status = format_daily_status(pop)
-    print("INITIAL STATUS #{:2d}: {}".format(day, status))   # print day #1 health status
-    
+    print(status)   # print day #1 health status
+    j = input("Press enter to begin the simulation.")
     
     while day <= num_days: 
         day = day + 1
@@ -195,7 +197,7 @@ def main():
         (new_pop, new_days_sick) = check_neighbour(pop, new_pop, days_sick, new_days_sick, offset, expose_pc)
         
         summary(new_pop, day)
-        print("  DAILY STATUS #{:2d}: {}".format(day, status))
+        print(status)
     
     
         pop = new_pop.copy()  # overwrite old health status results with latest results
