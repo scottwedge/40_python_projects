@@ -179,7 +179,7 @@ def main():
     print(status)   # print day #1 health status
     j = input("Press enter to begin the simulation.")
     
-    while day <= num_days: 
+    while day < num_days: 
         day = day + 1
         status = format_daily_status(pop)
     
@@ -198,6 +198,7 @@ def main():
         
         summary(new_pop, day)
         print(status)
+        j = input("Press enter to advance to the next day.")
     
     
         pop = new_pop.copy()  # overwrite old health status results with latest results
