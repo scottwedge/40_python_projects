@@ -200,7 +200,7 @@ def main():
         summary(new_pop, day)
         print(status)
       
-        if day < duration:
+        if day < num_days:
             j = input("Press enter to advance to the next day.")
         else:
             loop_forever = False  # exit loop since simulation over
