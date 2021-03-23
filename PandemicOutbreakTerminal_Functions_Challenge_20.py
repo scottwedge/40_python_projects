@@ -22,6 +22,7 @@
 
 # Imports
 import random
+import time
 
 # Constants
 INFECTED = "I"
@@ -149,6 +150,11 @@ def summary(new_pop, day):
     print("Total People Infected: {} / {}".format(infect, total))
     print("Total Deaths: {} / {}".format(dead, total))
 
+def get_file():
+    f_time = int(time.time()) # unique number for file name
+    f = r"/tmp/t" + str(f_time)
+    return f
+
 # Main code
 def main():
     # Get all inputs from user
@@ -162,6 +168,10 @@ def main():
     # Initialize all users to be healthy with zero days sick
     pop = init_pop(pop_count, HEALTHY)
     days_sick = init_days_sick(pop_count)
+
+    # Initialize file to store output
+    file = get_file()
+    f = open(file, "w")
     
     day = 1
     # Calculate number of infections on day 1
@@ -182,6 +192,9 @@ def main():
     summary(pop, day)
     status = format_daily_status(pop)
     print(status)   # print day #1 health status
+
+    f.write(status + "\n")   # write to file
+
     j = input("Press enter to begin the simulation.")
     loop_forever = True
     
@@ -204,11 +217,14 @@ def main():
         
         summary(new_pop, day)
         print(status)
+
+        f.write(status + "\n")   # write to file
       
         if day < num_days:
             j = input("Press enter to advance to the next day.")
         else:
             loop_forever = False  # exit loop since simulation over
+            f.close() # close file
     
         pop = new_pop.copy()  # overwrite old health status results with latest results
         days_sick = new_days_sick.copy()  # overwrite old sick days count with latest values
