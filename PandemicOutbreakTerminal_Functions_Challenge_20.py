@@ -13,7 +13,12 @@
 # pop:  health (O or I or X or ???)
 # days_sick:  how many days being infected
 # 
-# Print daily status of population (healthy, infected or dead)
+# Setup day #1 with initial configuration of healthy and unhealthy
+# 
+# After user input for each new day, update a new list of everyone based on last state, 
+# then lower neighbour state if infected, and then upper neighbour state if infected
+# 
+# Then print updated status of population (healthy, infected or dead)
 
 # Imports
 import random
@@ -204,7 +209,6 @@ def main():
             j = input("Press enter to advance to the next day.")
         else:
             loop_forever = False  # exit loop since simulation over
-    
     
         pop = new_pop.copy()  # overwrite old health status results with latest results
         days_sick = new_days_sick.copy()  # overwrite old sick days count with latest values
